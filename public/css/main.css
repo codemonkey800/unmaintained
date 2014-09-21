@@ -1,0 +1,25 @@
+@import url( "fonts.css" );
+
+* {
+    font-family: RobotoRegular;
+}
+
+#brand-img {
+    width: 160px;
+    margin-top: -7px;
+    background-color: white;
+}
+
+#brand-img:hover {
+    background-color: #2ecc71;
+}
+
+.equation {
+	font-size: 3.5vw
+}
+
+@media ( max-width: 400px ) {
+	.equation {
+		font-size: 8vw
+	}
+}

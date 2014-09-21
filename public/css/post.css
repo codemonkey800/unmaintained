@@ -1,0 +1,38 @@
+.post {
+    display: block;
+    background: #bdc3c7;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.post-title  a {
+    color: #2c3e50;
+    font-size: 4vw;
+}
+
+.post-title a:hover {
+    color: #2ecc71;
+}
+
+.post-description {
+    font-size: 2vw;
+}
+
+.post-banner {
+    transition: background-color 0.5s ease-in-out;
+    background-color: #ecf0f1;
+}
+
+.post-banner:hover {
+    background-color: #2ecc71;
+}
+
+@media ( max-width: 400px ) {
+	.post-title a {
+		font-size: 8vw;
+	}
+
+    .post-description {
+        font-size: 5vw;
+    }
+}

@@ -1,0 +1,45 @@
+extends ../../_layouts/default
+
+block title
+    title #harp - Page 1
+
+block content
+    - var postData = [{"date":"9-21-2014","title":"Harp: An awesome static site generator","desc":"Introduction to the static site genereator, Harp","tags":{"#harp":"/filter/harp/1","#javascript":"/filter/javascript/1","#programming":"/filter/programming/1"},"banner":"http://goo.gl/fSV1oN","url":"/posts/9-21-2014-harp--an-awesome-static-site-generator/harp--an-awesome-static-site-generator"}]
+    - for( var i = 0; i < 1; i++ ) {
+        .row
+            .col-md-3
+            .col-md-6
+                .well.well-lg
+                    .jumbotron.post-banner
+                        a( href=postData[ i ].url )
+                            img.img-responsive( src=postData[ i ].banner )
+                    h1.post-title
+                        a( href=postData[ i ].url )
+                            != postData[ i ].title
+                    h4.post-description: != postData[ i ].desc
+                    h5.post-date: != postData[ i ].date
+                    h6.post-tags
+                        - for( var hashtag in postData[ i ].tags ) {
+                            a.hashtag( href=postData[ i ].tags[ hashtag ] ): != hashtag + ' '
+                        - }
+            .col-md-3
+    - }
+    - if( 1 !== 1 ) { // Check if we only have one pagination
+        .text-center
+            ul.pagination.center-block
+                - for( var i = 0; i < 1; i++ ) {
+                    - var pageLink;
+                    - if( i === 0 ) {
+                        - pageLink = '/filter/harp/1';
+                    - } else {
+                        - pageLink = '/filter/harp/' + ( i + 1 );
+                    - }
+                    - if( i === 0 ) {
+                        li.active
+                            a( href=pageLink ): != i + 1
+                    - } else {
+                        li 
+                            a( href=pageLink ): != i + 1
+                    - }
+                - }
+    - }

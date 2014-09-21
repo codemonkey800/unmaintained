@@ -1,0 +1,45 @@
+extends ../../_layouts/default
+
+block title
+    title #mathematics - Page 1
+
+block content
+    - var postData = [{"date":"9-21-2014","title":"Matrix Multiplication using C++","desc":"In this post, I'll show y'all how to develop a matrix class in C++ using efficient C++11 move semantics and using std::vector's for our underlying data structure.","tags":{"#mathematics":"/filter/mathematics/1","#c++":"/filter/c++/1","#programming":"/filter/programming/1"},"banner":"http://goo.gl/fSV1oN","url":"/posts/9-21-2014-matrix-multiplication-using-c++/matrix-multiplication-using-c++"},{"date":"9-16-2014","title":"Simple Explanation of Riemann Sum","desc":"The Riemann Sum is the core of the definite integral, but the explanation can, indeed, be sometimes too mathematical for others. Here's a simpler explanation.","tags":{"#mathematics":"/filter/mathematics/1","#calculus":"/filter/calculus/1"},"banner":"http://goo.gl/fSV1oN","url":"/posts/9-16-2014-simple-explanation-of-riemann-sum/simple-explanation-of-riemann-sum"}]
+    - for( var i = 0; i < 2; i++ ) {
+        .row
+            .col-md-3
+            .col-md-6
+                .well.well-lg
+                    .jumbotron.post-banner
+                        a( href=postData[ i ].url )
+                            img.img-responsive( src=postData[ i ].banner )
+                    h1.post-title
+                        a( href=postData[ i ].url )
+                            != postData[ i ].title
+                    h4.post-description: != postData[ i ].desc
+                    h5.post-date: != postData[ i ].date
+                    h6.post-tags
+                        - for( var hashtag in postData[ i ].tags ) {
+                            a.hashtag( href=postData[ i ].tags[ hashtag ] ): != hashtag + ' '
+                        - }
+            .col-md-3
+    - }
+    - if( 1 !== 1 ) { // Check if we only have one pagination
+        .text-center
+            ul.pagination.center-block
+                - for( var i = 0; i < 1; i++ ) {
+                    - var pageLink;
+                    - if( i === 0 ) {
+                        - pageLink = '/filter/mathematics/1';
+                    - } else {
+                        - pageLink = '/filter/mathematics/' + ( i + 1 );
+                    - }
+                    - if( i === 0 ) {
+                        li.active
+                            a( href=pageLink ): != i + 1
+                    - } else {
+                        li 
+                            a( href=pageLink ): != i + 1
+                    - }
+                - }
+    - }

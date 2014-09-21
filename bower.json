@@ -1,0 +1,26 @@
+{
+  "name": "JeremyAsuncionBlog",
+  "version": "1.0.0",
+  "authors": [
+    "Jeremy Asuncion <fallenskateboarder808@gmail.com>"
+  ],
+  "description": "Jeremy Asuncion's awesome mathematical blog.",
+  "keywords": [
+    "jeremy",
+    "asuncion",
+    "blog",
+    "mathematics",
+    "computer-science",
+    "programming"
+  ],
+  "license": "MIT",
+  "homepage": "http://codemonkey800.github.io",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

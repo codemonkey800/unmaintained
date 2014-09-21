@@ -1,0 +1,8 @@
+{
+    "globals": {
+        "author": "Jeremy Asuncion",
+        "uri": "http://codemonkey800.github.io",
+        "description": "Jeremy Asuncion's awesome mathematical blog.",
+        "postsPerPage": 10
+    }
+}
