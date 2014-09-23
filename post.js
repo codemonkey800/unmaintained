@@ -5,10 +5,14 @@ var util = require( 'util' );
 var today = new Date();
 var todayString = ( today.getMonth() + 1 ) + '-' + today.getDate() + '-' + today.getFullYear();
 
-function getPostPageTemplate() {
-    return fs.readFileSync( 'public/_layouts/post-page.jade' ).toString();
+function isObjectEmpty( obj ) {
+    for( var prop in obj ) {
+        if( !Object.hasOwnProperty.call( obj, prop ) ) {
+            return false;
+        }
+    }
+    return true;
 }
-
 
 function HashTags( tags ) {
     if( tags instanceof Array ) {
@@ -22,10 +26,19 @@ function HashTags( tags ) {
         };
     }
 
+    for( var i = 0; i < this.tags.length; i++ ) {
+        if( this.tags[ i ] === '' ) {
+            this.tags.splice( i, 1 );
+        }
+    }
+
     this.constructHashTags = function() {
+        if( this.tags.length === 0 ) {
+            return {};
+        }
         var hashtags = {};
         for( var i = 0; i < this.tags.length; i++ ) {
-            hashtags[ this.tags[ i ] ] = '/filter/' + this.tags[ i ].slice( 1, this.tags[ i ].length ) + '/1';	
+            hashtags[ this.tags[ i ] ] = '/filter/' + this.tags[ i ].slice( 1, this.tags[ i ].length ) + '/1';  
         }
         return hashtags;
     };
@@ -33,13 +46,20 @@ function HashTags( tags ) {
     this.toHtmlString = function() {
         var htmlStr = '';
         var hashtags = this.constructHashTags();
+        if( isObjectEmpty( hashtags ) ) {
+            return htmlStr;
+        }
         for( var hashtag in hashtags ) {
             htmlStr += util.format( '            a.hashtag( href="%s" ) %s \n',
-                                    '/filter/' + hashtag.slice( 1, hashtag.length ),
+                                    '/filter/' + hashtag.slice( 1, hashtag.length ) + '/1',
                                     hashtag );
         }
         return htmlStr;
     };
+}
+
+function getPostPageTemplate() {
+    return fs.readFileSync( 'public/_layouts/post-page.jade' ).toString();
 }
 
 function getPostData() {
@@ -50,7 +70,7 @@ function writePostData( postData ) {
 	fs.writeFileSync( 'public/posts/_data.json', JSON.stringify( postData, null, 4 ) );
 }
 
-function isPostsEmpty() {
+function arePostsEmpty() {
 	return getPostData().length === 0;
 }
 
@@ -81,7 +101,13 @@ function addPost( title, description, tags, banner ) {
 	try {
 		fs.mkdirSync( 'public' + postDir );
 		fs.writeFileSync( 'public' + postDir + '/' + fileFriendlyTitle + '.jade',
-                          util.format( getPostPageTemplate(), banner, title, todayString, hashtags.toHtmlString() ) );
+                          util.format( getPostPageTemplate(), 
+                                       title, 
+                                       banner, 
+                                       title, 
+                                       todayString, 
+                                       hashtags.toHtmlString(),
+                                       "Content Goes Here" ) );
 	} catch( e ) {
 		console.log( e );
 		return;
@@ -131,10 +157,33 @@ function listPosts() {
 	}
 }
 
+function reloadPosts() {
+    var postData = getPostData();
+    var template = getPostPageTemplate();
+
+    for( var i = 0; i < postData.length; i++ ) {
+        var content = fs.readFileSync( 'public' + postData[ i ].url + '.jade' ).toString();
+        var match = /\.well\.well-lg[\s\S]+(?=        include )/.exec( content );
+
+        var tags = [];
+        for( var tag in postData[ i ].tags ) {
+            tags.push( tag );
+        }
+        fs.writeFileSync( 'public' + postData[ i ].url + '.jade', 
+                          util.format( template, 
+                                       postData[ i ].title, 
+                                       postData[ i ].banner,
+                                       postData[ i ].title,
+                                       postData[ i ].date,
+                                       new HashTags( tags ).toHtmlString(),
+                                       match[ 0 ].slice( 15, match[ 0 ].length - 5 ) ) );
+    }
+}
+
 function main( args ) {
 	if( args.length == 2 ) {
 		console.log( '\nDescription: A small script used to generate new posts.' )
-		console.log( 'Usage: node ' + path.basename( args[ 1 ] ) + ' [add title [desc="Le Post"] [tags=""] [banner="http://goo.gl/fSV1oN"] | remove [title|date...] | list]');
+		console.log( 'Usage: node ' + path.basename( args[ 1 ] ) + ' [add title [desc="Le Post"] [tags=""] [banner="http://goo.gl/fSV1oN"] | remove [title...] | list | reload]');
 		console.log( 'Example of add: node ' + path.basename( args[ 1 ] ) + ' add HerpDerp "An awesome description" "#swerg #math"' );
 		console.log( 'Example of remove: node ' + path.basename( args[ 1 ] ) + ' remove HerpDerp' );
 		console.log( 'Example of remove using date: node ' + path.basename( args[ 1 ] ) + ' remove 9-6-2014' );
@@ -149,7 +198,7 @@ function main( args ) {
 		}
 		addPost( args[ 3 ], args[ 4 ], args[ 5 ], args[ 6 ] );
 	} else if( args[ 2 ] === 'remove' ) {
-		if( isPostsEmpty() ) {
+		if( arePostsEmpty() ) {
 			console.log( 'There are no posts' );
 		} else {
 			for( var i = 3; i < args.length; i++ ) {
@@ -157,12 +206,18 @@ function main( args ) {
 			}
 		}
 	} else if( args[ 2 ] === 'list' ) {
-		if( isPostsEmpty() ) {
+		if( arePostsEmpty() ) {
 			console.log( 'There are no posts' );
 		} else {
 			listPosts();
 		}
-	} else {
+     } else if( args[ 2 ] === 'reload' ) {
+        if( arePostsEmpty() ) {
+            console.log( 'There are no posts' );
+        } else {
+            reloadPosts();
+        }
+    } else {
 		console.log( args[ 2 ] + ' is not a valid operation.' );
 	}
 }

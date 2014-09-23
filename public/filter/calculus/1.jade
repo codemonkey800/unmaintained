@@ -4,7 +4,7 @@ block title
     title #calculus - Page 1
 
 block content
-    - var postData = [{"date":"9-16-2014","title":"Simple Explanation of Riemann Sum","desc":"The Riemann Sum is the core of the definite integral, but the explanation can, indeed, be sometimes too mathematical for others. Here's a simpler explanation.","tags":{"#mathematics":"/filter/mathematics/1","#calculus":"/filter/calculus/1"},"banner":"http://goo.gl/fSV1oN","url":"/posts/9-16-2014-simple-explanation-of-riemann-sum/simple-explanation-of-riemann-sum"}]
+    - var postData = [{"date":"9-22-2014","title":"Animated Area Under the Curve in HTML","desc":"There are a lot of JavaScript libraries used for drawing mathematical curves in HTML. However, I have yet to find one that allows me to animate the area under the curve. Using MathBox.js, It's possible","tags":{"#mathematics":"/filter/mathematics/1","#calculus":"/filter/calculus/1","#javascript":"/filter/javascript/1","#mathboxjs":"/filter/mathboxjs/1"},"banner":"http://goo.gl/QVUAg0","url":"/posts/9-22-2014-animated-area-under-the-curve-in-html/animated-area-under-the-curve-in-html"}]
     - for( var i = 0; i < 1; i++ ) {
         .row
             .col-md-3
@@ -22,6 +22,9 @@ block content
                         - for( var hashtag in postData[ i ].tags ) {
                             a.hashtag( href=postData[ i ].tags[ hashtag ] ): != hashtag + ' '
                         - }
+                    - var postComments = postData[ i ].url + '#disqus_thread'
+                    h6
+                        a( href=postComments )
             .col-md-3
     - }
     - if( 1 !== 1 ) { // Check if we only have one pagination

@@ -1,6 +1,7 @@
 var harp                = require( 'harp' );
 var fs                  = require( 'fs' );
 var path                = require( 'path' );
+var spawn               = require( 'child_process' ).spawn;
 var postFilter          = require( './plugins/PostFilter' );
 var PaginationGenerator = require( './plugins/PaginationGenerator' ).PaginationGenerator;
 
@@ -14,39 +15,55 @@ function getPostsData() {
     return JSON.parse( fs.readFileSync( 'public/posts/_data.json' ).toString() );
 }
 
+function getTimeStamp() {
+    var now = new Date();
+    return '[ ' + ( now.getMonth() + 1 ) + '-' + now.getDate() + '-' + now.getFullYear()
+                + ' ' + ( now.getHours() + 1 ) + 'h:' + now.getMinutes() + 'm:'
+                + now.getSeconds() + 's:' + now.getMilliseconds() + 'ms ]';
+}
+
+function printMessage( message ) {
+    console.log( getTimeStamp() + ' ' + message );
+}
+
 function startHarpServer( port ) {
-    console.log( 'Port started on port ' + port );
+    printMessage( 'Port started on port ' + port );
     harp.server( '.', { port: port } );
 
-    postFilter.createFilterPages();
-    generator.generate();
-
-    fs.watchFile( 'public/posts/_data.json', function() {
-        var result = postFilter.createFilterPages();
-        console.log( 'Filter Pages Enabled:' );
-        console.log( result.pagesCreated );
-        console.log( 'Filter Pages Removed:' );
-        console.log( result.pagesRemoved );
-    } );
-    fs.watchFile( 'public/_layouts/filter-page.jade', function() {
-        console.log( 'Layout for filter page changed...' );
-        var result = postFilter.createFilterPages();
-        console.log( 'Filter pages regenerated' ) ;
-    } );
-    fs.watchFile( 'public/_layouts/paginated-page.jade', function() {
-        console.log( 'Layout for paginated pages changed...' );
+    var regen = function() {
         postFilter.createFilterPages();
         generator.generate();
-        console.log( 'Paginated pages changed' );
+    };
+    regen();
+
+    fs.watchFile( 'public/posts/_data.json', function() {
+        printMessage( 'Posts data changed...' );
+        regen();
+        printMessage( 'Posts updated.' );
+    } );
+    fs.watchFile( 'public/_layouts/filter-page.jade', function() {
+        printMessage( 'Filter page layout changed...' );
+        regen();
+        printMessage( 'Filter pages updated.' );
+    } );
+    fs.watchFile( 'public/_layouts/paginated-page.jade', function() {
+        printMessage( 'Paginated page layout changed...' );
+        regen();
+        printMessage( 'Paginated pages updated.' );
+    } );
+    fs.watchFile( 'public/_layouts/post-page.jade', function() {
+        printMessage( 'Post page layout changed...' );
+        spawn( 'node', [ 'post', 'reload' ] ).on( 'close', function() {
+            printMessage( 'Post pages updated.' );
+        } );
     } );
     fs.watchFile( 'harp.json', function() {
-        console.log( 'Globals changed...' );
-        postFilter.createFilterPages();
+        printMessage( 'Globals changed...' );
         var options = generator.getOptions();
         options.postsPerPage = getGlobalData().postsPerPage;
         generator.setOptions( options );
-        generator.generate();
-        console.log( 'Finished making changes' );
+        regen();
+        printMessage( 'Globals updated.' );
     } );
 }
 

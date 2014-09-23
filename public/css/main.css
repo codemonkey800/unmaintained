@@ -1,9 +1,5 @@
 @import url( "fonts.css" );
 
-* {
-    font-family: RobotoRegular;
-}
-
 #brand-img {
     width: 160px;
     margin-top: -7px;
@@ -18,8 +14,20 @@
 	font-size: 3.5vw
 }
 
-@media ( max-width: 400px ) {
+.equation-small {
+    font-size: 2vw;
+}
+
+code {
+    background: #272822;
+    color: #00ff00;
+}
+
+@media ( max-width: 700px ) {
 	.equation {
 		font-size: 8vw
 	}
+    .equation-small {
+        font-size: 4vw;
+    }
 }

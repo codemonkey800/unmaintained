@@ -1,5 +1,8 @@
 extends ../../_layouts/default
 
+block title
+    title %s
+
 block content
     .container
         img.img-responsive( src="%s" )
@@ -7,3 +10,8 @@ block content
         h3 %s
         h6
 %s
+
+        .well.well-lg
+%s
+
+        include ../../_includes/comments

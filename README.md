@@ -74,7 +74,7 @@ post, simply use a string in the form
 Banner refers to a banner image to use for the post. Make sure you define one, otherwise your 
 default banner will be this:
 
-![There was an image here. It's no longer here]( http://goo.gl/fSV1oN )
+![There was an image here. It's no longer here.]( http://goo.gl/fSV1oN )
 
 The script will create a new folder with a [title].jade file and add  the new post at the top of the JSON data.
 
@@ -84,3 +84,8 @@ The script will create a new folder with a [title].jade file and add  the new po
 The server.js and post.js scripts uses NodeJS to function properly. Moreover, the two scripts use
 synchronous calls rather than asynchronous calls to simplify its development. Also, the two are meant to 
 be run in the command line anyway, so it's okay.
+
+# Excelsio
+---
+
+![There was an image here. It's no longer here.](http://goo.gl/XBz6u0)

@@ -38,7 +38,7 @@ exports.createHashtagFilterPage = function( hashtag, filteredPostData ) {
     var postsPerPage = JSON.parse( fs.readFileSync( 'harp.json' ).toString() ).globals.postsPerPage;
     var filterDir    = '/filter/' + hashtag + '/';
 
-    fs.mkdirpSync( filterDir );
+    fs.mkdirpSync( 'public' + filterDir );
     var options = {
         postsPerPage: postsPerPage,
         postsData: filteredPostData,

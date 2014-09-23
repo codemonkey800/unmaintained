@@ -22,6 +22,9 @@ block content
                         - for( var hashtag in postData[ i ].tags ) {
                             a.hashtag( href=postData[ i ].tags[ hashtag ] ): != hashtag + ' '
                         - }
+                    - var postComments = postData[ i ].url + '#disqus_thread'
+                    h6
+                        a( href=postComments )
             .col-md-3
     - }
     - if( %d !== 1 ) { // Check if we only have one pagination

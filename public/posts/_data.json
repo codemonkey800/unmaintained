@@ -1,75 +1,15 @@
 [
     {
-        "date": "9-21-2014",
-        "title": "Harp: An awesome static site generator",
-        "desc": "Introduction to the static site genereator, Harp",
+        "date": "9-22-2014",
+        "title": "Animated Area Under the Curve in HTML",
+        "desc": "There are a lot of JavaScript libraries used for drawing mathematical curves in HTML. However, I have yet to find one that allows me to animate the area under the curve. Using MathBox.js, It's possible",
         "tags": {
-            "#harp": "/filter/harp/1",
+            "#mathematics": "/filter/mathematics/1",
+            "#calculus": "/filter/calculus/1",
             "#javascript": "/filter/javascript/1",
-            "#programming": "/filter/programming/1"
+            "#mathboxjs": "/filter/mathboxjs/1"
         },
-        "banner": "http://goo.gl/fSV1oN",
-        "url": "/posts/9-21-2014-harp--an-awesome-static-site-generator/harp--an-awesome-static-site-generator"
-    },
-    {
-        "date": "9-21-2014",
-        "title": "Matrix Multiplication using C++",
-        "desc": "In this post, I'll show y'all how to develop a matrix class in C++ using efficient C++11 move semantics and using std::vector's for our underlying data structure.",
-        "tags": {
-            "#mathematics": "/filter/mathematics/1",
-            "#c++": "/filter/c++/1",
-            "#programming": "/filter/programming/1"
-        },
-        "banner": "http://goo.gl/fSV1oN",
-        "url": "/posts/9-21-2014-matrix-multiplication-using-c++/matrix-multiplication-using-c++"
-    },
-    {
-        "date": "9-18-2014",
-        "title": "Linked Lists",
-        "desc": "Learn how to implement linked lists in C++!",
-        "tags": {
-            "#c++": "/filter/c++/1",
-            "#computer-science": "/filter/computer-science/1",
-            "#algorithms": "/filter/algorithms/1",
-            "#data-structures": "/filter/data-structures/1"
-        },
-        "banner": "http://goo.gl/fSV1oN",
-        "url": "/posts/9-18-2014-linked-lists/linked-lists"
-    },
-    {
-        "date": "9-16-2014",
-        "title": "Simple Explanation of Riemann Sum",
-        "desc": "The Riemann Sum is the core of the definite integral, but the explanation can, indeed, be sometimes too mathematical for others. Here's a simpler explanation.",
-        "tags": {
-            "#mathematics": "/filter/mathematics/1",
-            "#calculus": "/filter/calculus/1"
-        },
-        "banner": "http://goo.gl/fSV1oN",
-        "url": "/posts/9-16-2014-simple-explanation-of-riemann-sum/simple-explanation-of-riemann-sum"
-    },
-    {
-        "date": "9-16-2014",
-        "title": "Getting Started With Android Development",
-        "desc": "Android is the leading platform in the mobile market. Developing apps is fun, and with Android development being available to all OSs, I'll show you how to get started.",
-        "tags": {
-            "#android": "/filter/android/1",
-            "#java": "/filter/java/1",
-            "#programming": "/filter/programming/1",
-            "#mobile": "/filter/mobile/1"
-        },
-        "banner": "http://goo.gl/fSV1oN",
-        "url": "/posts/9-16-2014-getting-started-with-android-development/getting-started-with-android-development"
-    },
-    {
-        "date": "9-16-2014",
-        "title": "Why You Should Use Android",
-        "desc": "Android phones are the leading platform in the mobile market, and here's why.",
-        "tags": {
-            "#android": "/filter/android/1",
-            "#technology": "/filter/technology/1",
-            "#smartphones": "/filter/smartphones/1"
-        },
-        "banner": "http://goo.gl/fSV1oN",
-        "url": "/posts/9-16-2014-why-you-should-use-android/why-you-should-use-android"
+        "banner": "http://goo.gl/QVUAg0",
+        "url": "/posts/9-22-2014-animated-area-under-the-curve-in-html/animated-area-under-the-curve-in-html"
     }
 ]

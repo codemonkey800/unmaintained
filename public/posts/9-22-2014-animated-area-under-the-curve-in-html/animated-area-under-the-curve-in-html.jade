@@ -1,0 +1,387 @@
+extends ../../_layouts/default
+
+block title
+    title Animated Area Under the Curve in HTML
+
+block content
+    .container
+        img.img-responsive( src="http://goo.gl/QVUAg0" )
+        h1 Animated Area Under the Curve in HTML
+        h3 9-22-2014
+        h6
+
+
+        .well.well-lg
+            h6
+                strong Introduction
+                p.
+                    Before we go into the maths and code, let's go over some background. My reason for needing
+                    an aniamted area under the curve shading was for AP Statistics class during 
+                    my senior year of high school. My final project for AP Stats was to collect data from a 
+                    subset of students in my school and then present the data in a meaningful way. Being the
+                    try-hard programmer I am, I decided to write my own presentation using 
+                    <a href="http://goo.gl/51Eg7">Reveal.js</a>, a JavaScript framework for HTML
+                    presentations.
+
+                br
+
+                p.
+                    For my presentation, my group and I decided to use the 
+                    <a href="http://goo.gl/ROn1">Student's \( t \)</a> and
+                    <a href="http://goo.gl/oZVwO">\( \chi^2 \)</a> models to make a hypothesis from the data we collected. 
+                    Both models have distinct curves. The Student's \( t \) curve looks like this:
+
+                .jumbotron
+                    img.img-responsive.post-img( src="images/student-t-plot.png" )
+
+                p.
+                    and the \( \chi^2 \) curve looks like this;
+
+                .jumbotron
+                    img.img-responsive.post-img( src="images/chi-square-plot.png" )
+
+                p.
+                    Now if I weren't trying to animate the shading, these two graphs would be completely fine.
+                    And I would've gone with them too if it wasn't for <a href="http://goo.gl/j6vDuk">MathBox.js</a>
+            h6
+                strong MathBox.js
+                p Straight from the MathBox GitHub:
+                blockquote
+                    p.
+                        MathBox is a library for rendering presentation-quality math diagrams in a browser using WebGL. 
+                        Built on top of Three.js and tQuery, it provides a clean API to visualize mathematical relationships 
+                        and animate them smoothly.
+                    footer Steven Wittens
+                p.
+                    That sounds awesome right? Well, for the most part, yes. The only difficult part
+                    is animating the area under a curve. What's great about MathBox is that it supports very 
+                    primitive mathematical objects such as <strong>curves</strong>, <strong>surfaces</strong>, and <strong>axes</strong>. 
+                    In fact, those are 
+                    the only three we'll be needing for the animation.
+            h6
+                strong Mathematical Theory
+                p.
+                    Now that we've gotten the introductions out of the way, let's dive into the maths behind the 
+                    code.
+                br
+                p.
+                    First, consider a random variable \( X \). We let \( f\left( x \right) \) be a 
+                    <a href="http://goo.gl/pa6jI"><em>Probability Density Function</em></a>, 
+                    or PDF, for some probability distribution. The PDF
+                    computes the probability for some some value \( x \in X \). When we find the area under
+                    the PDF, we find the <em>cumulative probability</em> of over some interval
+                    \( \left[ a \leq X \leq b \right] \). This is known as the 
+                    <a href="http://goo.gl/ojuQ"><em>Cumulative Distribution Function</em></a>, or CDF. 
+                br  
+                p.
+                    The PDF for the Student's \( t \) and \( \chi^2 \) models are given here:
+                h6.text-center 
+                    strong Student's \( t \)
+                p.equation-small.
+                    \[
+                        f\left( t \right) =
+                        \frac{ \Gamma\left( \frac{ \nu + 1 }{ 2 } \right) }
+                               { \sqrt{ \nu \pi } \Gamma\left( \frac{\nu}{2} \right) }
+                          \left( 1 + \frac{t^2}{2} \right)^{ -\frac{\nu + 1}{2} }
+                    \]
+                h6.text-center
+                    strong \( \chi^2 \)
+                p.equation-small.
+                    \[
+                        f\left( x; k \right) = 
+                        \begin{cases}
+                            \displaystyle \frac{ x^{ k/2 - 1 } e^{-x/2} }{ 2^k \Gamma\left( \frac{k}{2} \right) }, & x \geq 0 \\
+                            \displaystyle 0,                               & x < 0
+                        \end{cases}
+                    \]
+                br
+                p.
+                    Imagine integrating both of those functions. I don't even know if it's possible. Thankfully,
+                    we only have to implement the PDFs for both distributions. From inspection, the difficulty
+                    arises from the Gamma function which is not easily computable. Now that we have the theory,
+                    let's dive into some code.
+            h6
+                strong Gamma Function Implementation
+                p.
+                    The difficulty in plotting the two distributions come from the 
+                    <a href="http://goo.gl/sivx">Gamma function</a> that
+                    is in both PDFs. Gamma is a function 
+                p.equation-small.
+                    \[ 
+                        \Gamma: \mathbb{C} \mapsto \mathbb{C}.
+                    \]
+                p.
+                    Implementing the function in code is not an easy task. Thankfully, an awesome mathematician named
+                    <a href="http://goo.gl/PRly87">Cornelius Lanczos</a> developed an algorithm for numerically
+                    computing the Gamma function. The algorithm is known as 
+                    <a href="http://goo.gl/pXb5YA"><em>Lanczos approximation</em></a>. The mathematics
+                    behind his algorithm is a bit complex ( Well, at least for me at the moment ), so
+                    we'll skip straight ahead to the code. The implementation of the algorithm 
+                    has a complex argument, but for our purposes, we'll only focus on real numbers.
+                    With a little editing and translation to JavaScript, we have:
+                .editor( data-language="javascript", data-height="500px" ).
+                    // Coefficients
+                    var g = 7;
+                    var p = [
+                        0.99999999999980993, 676.5203681218851, -1259.1392167224028,
+                        771.32342877765313, -176.61502916214059, 12.507343278686905,
+                        -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7
+                    ];
+
+                    function gamma( z ) {
+                        z++;
+                        if( z &lt; 0.5 ) {
+                            return Math.PI / ( Math.sin( Math.PI * z ) * gamma( 1 - z ) );
+                        } else {
+                            z--;
+                            var x = p[ 0 ];
+                            for( var i = 1; i &lt; p.length; i++ ) {
+                                x += p[ i ] / ( z + i );
+                            }
+                            var t = z + g + 0.5;
+                            return Math.sqrt( 2 * Math.PI ) * Math.pow( t, z + 0.5 ) * Math.exp( -t ) * x;
+                        }
+                    }
+                p.
+                    This algorithm computes \( \Gamma\left( n \right) \) for some \( n \in \mathbb{R} \).
+                    The original algorithm computes \(\Gamma\left( n + 1\right) \), but by adding in 
+                    <code>z++</code> at the start of the function, we convert the function to 
+                    \( \Gamma\left( n \right) \).
+            h6
+                strong PDF Implementations
+                p.
+                    Now that we've implemented the Gamma function, we can easily implement the
+                    PDFs for Student's \( t \) and \( \chi^2 \):
+                .editor( data-language="javascript", data-height="300px").
+                    function studentTModel( t, df ) {
+                        return ( gamma( ( df + 1 ) / 2 ) ) / ( Math.sqrt( df * Math.PI ) * gamma( df / 2 ) ) * 
+                        Math.pow( 1 + ( t * t ) / 2, -( df + 1 ) / 2);
+                    }
+
+                    function chiSquared( x, df ) {
+                        if( x < 0 ) {
+                            return 0;
+                        } else {
+                            return ( Math.pow( x, df / 2 - 1 ) * Math.exp( -x / 2 ) ) /
+                            ( Math.pow( 2, k / 2 ) * gamma( df / 2 ) );
+                        }
+                    }
+                p.
+                    Admittedly, this is not the most efficient way of computing the algorithm,
+                    but it works fine for our purpose of presentation.
+            h6
+                strong Animations in MathBox.js
+                p.
+                    Animations in MathBox are very simple to produce. It's literally as simple as passing
+                    in an object that contains the keyframes that MathBox will ease into. MathBox has
+                    a function animate() where we pass in an object that'll gradually have a specified
+                    property changed over a certain duration of time. Now that's fine and dandy,
+                    but for my presentation, I needed, well, a presentation. Lucky for me that
+                    the brilliant Steven Wittens wrote a Director class in MathBox.
+                p.
+                    The MathBox.Director class is a helper class in the MathBox library for simplifying
+                    aniamtions and presentation. The core of the Director class is the presentation object
+                    that is passed in. This presentation object is essentially a nesting of arrays
+                    that structure the presentation:
+                .editor( data-language="javascript", data-height="650px" ).
+                    var presentation = [  // Root level
+                        // Second level
+                        // Think of this level as slides
+                        // Each array represents a different step, or slide ,throughout the presentaion
+                        [ 
+                            // Third level
+                            // This level represents all of the actions
+                            // This step should perform
+                            [
+                                'add', 'axis', {
+                                    axis: 0,
+                                    color: 0x000000,
+                                    ticks: 8,
+                                    lineWidth: 2,
+                                    labels: true
+                                }, {
+                                    duration: 500
+                                }
+                            ],
+                            [
+                                ...
+                            ],
+                            ...
+                        ],
+                        [  
+                            ...
+                        ],
+                        ...
+                    ];
+                p.
+                    Actions are typically in the form <code>'action' 'object' 'options'</code>,
+                    where "action" can be something like "add" or "animate". "object" is 
+                    the object for the action to act upon. "options" are the options for the speicifed action.
+                    The options are different based on what action is chosen. Animating between steps
+                    is pretty simple: we start with an inital action in the first step, and then
+                    make a change in the next step. For instance, say I wanted to animate 
+                    the domain for a curve:
+                .editor( data-language="javascript", data-height="500px" ).
+                    var presentation = [
+                        [
+                            [
+                                'add', 'curve', {
+                                    id: 'myCurve',
+                                    domaing: [ 0, 0 ],
+                                    expression: function( x ) {
+                                        return x * x;
+                                    }
+                                }
+                            ]
+                        ],
+                        [
+                            [
+                                'animate', '#myCurve', {
+                                    domaing: [ 0, 10 ]
+                                }, {
+                                    duration: 3000
+                                }
+                            ]
+                        ]
+                    ];
+                p.
+                    This code animates the domain of the function \( f\left( x \right) = x^2 \) from
+                    \( \left[ 0, 0 \right] \) to \( \left[ 0, 10 \right] \). Doing so draws the curve 
+                    gradually.
+            h6
+                strong Drawing the Area 
+                p.
+                    Now after all we've done, it's time to learn how to animate the area under the curve.
+                    Animating the area shouldn't be too hard, and it should follow the same process
+                    as animating the curve itself. The difficulty lies in properly drawing the surface for the curve.
+                    MathBox provides a surface object for drawing surfaces. Using the expression property,
+                    we can return a 2D array representing the \( \left( x, y \right) \) coordinates of the surface.
+                    The expression is a function of two variables, and therefore is a function of 2 domains.
+                    Drawing the surface under the curve is given by the algorithm:
+                .editor( data-language="javascript", data-height="180px" ).
+                    function areaShader( x, y ) {
+                        var yPoint = f( x ) - y;
+                        if( yPoint &gt; 0 ) {
+                            return [ x, yPoint ];
+                        } else {
+                            return [ x, 0 ];
+                        }
+                    }
+                p.
+                    Let's me give a walkthrough of the code. <code>areaShader()</code> is a function
+                    that takes two parameters: <code>x</code> and <code>y</code>. Each have their own domains
+                    in the real numbers. <code>f()</code> is a mathematical function of \( x \).
+                    The function returns a 2D array repreenting the coordinates of the surface. 
+
+                br
+                p.
+                    For some odd reason that I'm not entirely sure about, the value of 
+                    <code>f( x )</code> returns a set of coordinates much higher than the 
+                    the coordinates for the curve. Subtracting <code>y</code> fixed the problem.
+                br  
+                p.
+                    Now for a more interesting part. The next section of code returns either
+                    <code>[ x, yPoint ]</code> or <code>[ x, 0 ]</code>. You might be wondering,
+                    "why not return <code>[ x, Math.abs( yPoint ) ]</code> instead of writing
+                    more code?" I agree wholeheartedly. But there's a huge fundamental problem with that:
+                .well
+                    img.img-responsive.center-block( src="images/plot-error.png" )
+                p.
+                    The code produces an incorrect graph. So what the heck happened here? Well see, if
+                    we returned <code>[ x, Math.abs( yPoint ) ]</code>, we'd also be returning
+                    <em>unwanted</em> values. What exactly do I mean by <em>unwanted</em> you ask?
+                    Let me tell you. When we calculate the value of <code>yPoint</code>, we also calculaed
+                    values below <code>yPoint</code>. For instance, say we have a value \( x = 4 \).
+                    Assuming we were using the Student's \( t \) distribution, we'd have 
+                    \( f\left( 4 \right) = 0 \). But in our calcuation of <code>yPoint</code>, we 
+                    subtracted the value of <code>y</code>, and for \( x = 4 \), we'd have
+                    \( y = 0.4 \), which is the maximum of the PDF. 
+                br
+                p.
+                    Returning <code>[ x, Math.abs( yPoint ) ]</code> would return 
+                    <code>[ 4, 0.4 ]</code> which is completely wrong. In fact, notice how at 
+                    \( x = 4 \), the curve reaches \( \left( 4, 0.4 \right) \). To counteract
+                    this problem, rather than returning the absolute value, we return the coordinates
+                    \( \left( x, 0 \right) \) for \( yPoint &lt; 0 \), and then we return 
+                    \( \left( x, yPoint \right) \) for \( yPoint \geq 0 \).
+                br
+                    p.
+                        Now that we've implemented the expression for drawing the area,
+                        animating it should be much easier.
+            h6
+                strong Animating the Area
+                p.
+                    Animating the area is as easy as changing the properties
+                    of the surface domain in different steps:
+                .editor( data-language="javascript", data-height="1020px").
+                    var presentaion = [
+                        [
+                            [
+                                'add', 'surface', {
+                                    id: 'areaSurface',
+                                    n: [ 64, 64 ],
+                                    domain: [ [ 1.967, 1.967 ], [ 0, 0.3 ] ],
+                                    expression: function( x, y ) {
+                                        var yPoint = f( x ) - y;
+                                        if( yPoint > 0 ) {
+                                            return [ x, yPoint ];
+                                        } else {
+                                            return [ x, 0 ];
+                                        }
+                                    },
+                                    mesh: true
+                                }
+                            ],
+                            [
+                                'add', 'curve', {
+                                    id: 'myCurve',
+                                    domain: [ 0, 0 ],
+                                    lineWidth: 8,
+                                    expression: function( x ) {
+                                        return  chiSquared( x );
+                                    }
+                                }
+                            ]
+                        ],
+                        [
+                            [
+                                'animate', '#myCurve', {
+                                    domain: [ 0, 10 ]
+                                }, {
+                                    duration: 3000
+                                }
+                            ],
+                            [
+                                'animate', '#areaSurface', {
+                                    domain: [ [ 1.967, 10 ], [ 0, 0.3 ] ]
+                                }, {
+                                    duration: 3000
+                                }
+                            ]
+                        ]
+                    ];
+                p.
+                    By starting at an inital domain of \( \left[ 0, 0 \right] \) and 
+                    \( \left[ 1.1967, 1.967 \right] \), we're able to gradually draw the curve 
+                    and it's area.
+            h6
+                strong Finished Product
+                p Hint: Use your arrow keys if you're on a computer, or tap on it if you're on a phone.
+                h6.text-center
+                    strong Student's \( t \)
+                .well
+                    .embed-responsive.embed-responsive-16by9
+                        iframe.embed-responsive-item( src="http://goo.gl/xUlWae" )
+                h6.text-center
+                    strong \( \chi^2 \)
+                .well
+                    .embed-responsive.embed-responsive-16by9
+                        iframe.embed-responsive-item( src="http://goo.gl/PXEGKX" )
+            h6
+                strong Conclusions
+                p.
+                    Animating the area under the curve is a nice icing on the cake
+                    for a mathematical presentaiton. It helps people visualize what exactly
+                    the area is and in a fun
+
+        include ../../_includes/comments
