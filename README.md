@@ -85,7 +85,7 @@ The server.js and post.js scripts uses NodeJS to function properly. Moreover, th
 synchronous calls rather than asynchronous calls to simplify its development. Also, the two are meant to 
 be run in the command line anyway, so it's okay.
 
-# Excelsio
+# Excelsior
 ---
 
 ![There was an image here. It's no longer here.](http://goo.gl/XBz6u0)
