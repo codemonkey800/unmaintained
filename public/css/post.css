@@ -7,7 +7,7 @@
 
 .post-title  a {
     color: #2c3e50;
-    font-size: 4vw;
+    font-size: 3vw;
 }
 
 .post-title a:hover {
@@ -15,7 +15,7 @@
 }
 
 .post-description {
-    font-size: 2vw;
+    font-size: 1.5vw;
 }
 
 .post-banner {
@@ -27,12 +27,24 @@
     background-color: #2ecc71;
 }
 
-@media ( max-width: 400px ) {
+.post-date {
+    font-size: 2vw;
+}
+
+@media ( max-width: 600px ) {
 	.post-title a {
-		font-size: 8vw;
+		font-size: 6vw;
 	}
 
     .post-description {
         font-size: 5vw;
+    }
+
+    .post-date {
+        font-size: 6vw;
+    }
+
+    .post-tags {
+        font-size: 4.5vw; 
     }
 }

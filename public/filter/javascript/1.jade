@@ -16,8 +16,8 @@ block content
                     h1.post-title
                         a( href=postData[ i ].url )
                             != postData[ i ].title
+                    h6.post-date: != postData[ i ].date
                     h4.post-description: != postData[ i ].desc
-                    h5.post-date: != postData[ i ].date
                     h6.post-tags
                         - for( var hashtag in postData[ i ].tags ) {
                             a.hashtag( href=postData[ i ].tags[ hashtag ] ): != hashtag + ' '

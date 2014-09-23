@@ -1,5 +1,3 @@
-@import url( "fonts.css" );
-
 #brand-img {
     width: 160px;
     margin-top: -7px;
@@ -23,11 +21,34 @@ code {
     color: #00ff00;
 }
 
+#about-img {
+    width: 300px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.about-row {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.img-link {
+    transition: -webkit-filter 0.3s ease-in-out;
+    -webkit-filter: brightness( 100% );
+}
+
+.img-link:hover {
+    -webkit-filter: brightness( 150% );
+}
+
 @media ( max-width: 700px ) {
 	.equation {
 		font-size: 8vw
 	}
     .equation-small {
         font-size: 4vw;
+    }
+    #about-img {
+        width: 150px;
     }
 }

@@ -4,8 +4,8 @@ block title
     title Home
 
 block content
-    - var postData = [{"date":"9-22-2014","title":"Hello, World!","desc":"I'll show y'all Hello, World! in Android","tags":{"#android":"/filter/android/1","#java":"/filter/java/1","#programming":"/filter/programming/1"},"banner":"http://goo.gl/fSV1oN","url":"/posts/9-22-2014-hello,-world!/hello,-world!"},{"date":"9-22-2014","title":"Animated Area Under the Curve in HTML","desc":"There are a lot of JavaScript libraries used for drawing mathematical curves in HTML. However, I have yet to find one that allows me to animate the area under the curve. Using MathBox.js, It's possible","tags":{"#mathematics":"/filter/mathematics/1","#calculus":"/filter/calculus/1","#javascript":"/filter/javascript/1","#mathboxjs":"/filter/mathboxjs/1"},"banner":"http://goo.gl/QVUAg0","url":"/posts/9-22-2014-animated-area-under-the-curve-in-html/animated-area-under-the-curve-in-html"}]
-    - for( var i = 0; i < 2; i++ ) {
+    - var postData = [{"date":"9-22-2014","title":"Animated Area Under the Curve in HTML","desc":"There are a lot of JavaScript libraries used for drawing mathematical curves in HTML. However, I have yet to find one that allows me to animate the area under the curve. Using MathBox.js, It's possible","tags":{"#mathematics":"/filter/mathematics/1","#calculus":"/filter/calculus/1","#javascript":"/filter/javascript/1","#mathboxjs":"/filter/mathboxjs/1"},"banner":"http://goo.gl/QVUAg0","url":"/posts/9-22-2014-animated-area-under-the-curve-in-html/animated-area-under-the-curve-in-html"}]
+    - for( var i = 0; i < 1; i++ ) {
         .row
             .col-md-3
             .col-md-6
@@ -16,8 +16,8 @@ block content
                     h1.post-title
                         a( href=postData[ i ].url )
                             != postData[ i ].title
+                    h6.post-date: != postData[ i ].date
                     h4.post-description: != postData[ i ].desc
-                    h5.post-date: != postData[ i ].date
                     h6.post-tags
                         - for( var hashtag in postData[ i ].tags ) {
                             a.hashtag( href=postData[ i ].tags[ hashtag ] ): != hashtag + ' '
