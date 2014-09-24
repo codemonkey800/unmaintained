@@ -38,6 +38,9 @@ function startHarpServer( port ) {
 
     fs.watchFile( 'public/posts/_data.json', function() {
         printMessage( 'Posts data changed...' );
+        var options = generator.getOptions();
+        options.postsData = getPostsData();
+        generator.setOptions( options );
         regen();
         printMessage( 'Posts updated.' );
     } );

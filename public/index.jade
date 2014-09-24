@@ -4,25 +4,26 @@ block title
     title Home
 
 block content
-    - var postData = [{"date":"9-22-2014","title":"Animated Area Under the Curve in HTML","desc":"There are a lot of JavaScript libraries used for drawing mathematical curves in HTML. However, I have yet to find one that allows me to animate the area under the curve. Using MathBox.js, It's possible","tags":{"#mathematics":"/filter/mathematics/1","#calculus":"/filter/calculus/1","#javascript":"/filter/javascript/1","#mathboxjs":"/filter/mathboxjs/1"},"banner":"http://goo.gl/QVUAg0","url":"/posts/9-22-2014-animated-area-under-the-curve-in-html/animated-area-under-the-curve-in-html"}]
-    - for( var i = 0; i < 1; i++ ) {
+    - var postData = [{"date":"9-24-2014","title":"Why I switched to Harp","desc":"Harp.js is a static site generator that is a module of Node.js. Switching was a matter of personal preference, and here's why.","tags":{"#nodejs":"/filter/nodejs/1","#harpjs":"/filter/harpjs/1","#javascript":"/filter/javascript/1","#dev-blog":"/filter/dev-blog/1"},"banner":"http://goo.gl/iSI1zV","url":"/posts/9-24-2014-why-i-switched-to-harp/why-i-switched-to-harp"},{"date":"9-22-2014","title":"Animated Area Under the Curve in HTML","desc":"There are a lot of JavaScript libraries used for drawing mathematical curves in HTML. However, I have yet to find one that allows me to animate the area under the curve. Using MathBox.js, It's possible","tags":{"#mathematics":"/filter/mathematics/1","#calculus":"/filter/calculus/1","#javascript":"/filter/javascript/1","#mathboxjs":"/filter/mathboxjs/1"},"banner":"http://goo.gl/QVUAg0","url":"/posts/9-22-2014-animated-area-under-the-curve-in-html/animated-area-under-the-curve-in-html"}]
+    - for( var i = 0; i < 2; i++ ) {
         .row
             .col-md-3
             .col-md-6
                 .well.well-lg
                     .jumbotron.post-banner
-                        a( href=postData[ i ].url )
+                        a( href=postData[ i ].url + '.html' )
                             img.img-responsive( src=postData[ i ].banner )
                     h1.post-title
-                        a( href=postData[ i ].url )
+                        a( href=postData[ i ].url + '.html' )
                             != postData[ i ].title
                     h6.post-date: != postData[ i ].date
                     h4.post-description: != postData[ i ].desc
                     h6.post-tags
                         - for( var hashtag in postData[ i ].tags ) {
-                            a.hashtag( href=postData[ i ].tags[ hashtag ] ): != hashtag + ' '
+                            - var tagUrl = postData[ i ].tags[ hashtag ] + '.html';
+                            a.hashtag( href=tagUrl ): != hashtag + ' '
                         - }
-                    - var postComments = postData[ i ].url + '#disqus_thread'
+                    - var postComments = postData[ i ].url + '.html' + '#disqus_thread'
                     h6
                         a( href=postComments )
             .col-md-3
@@ -33,9 +34,9 @@ block content
                 - for( var i = 0; i < 1; i++ ) {
                     - var pageLink;
                     - if( i === 0 ) {
-                        - pageLink = '/index';
+                        - pageLink = '/index.html';
                     - } else {
-                        - pageLink = '/page/' + ( i + 1 );
+                        - pageLink = '/page/' + ( i + 1 ) + '.html';
                     - }
                     - if( i === 0 ) {
                         li.active

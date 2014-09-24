@@ -38,18 +38,25 @@ html, body {
     min-width: 100%;
     padding-bottom: 10px;
 }
+
 #footer-logo {
-    width: 100px;
     margin-top: 30px;
+    display: block;
+    transition: -webkit-filter 0.3s ease-in-out;
+    -webkit-filter: brightness( 100% );
 }
 
-#footer-logo-col {
-    padding-left: 80px;
+#footer-logo:hover {
+    -webkit-filter: brightness( 130% );
 }
 
 .footer-title {
     font-size: 50px;
     margin-top: 15px;
+}
+
+#shit {
+    padding-right: -10px;
 }
 
 @media ( max-width: 400px ) {

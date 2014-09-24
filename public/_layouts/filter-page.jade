@@ -11,10 +11,10 @@ block content
             .col-md-6
                 .well.well-lg
                     .jumbotron.post-banner
-                        a( href=postData[ i ].url )
+                        a( href=postData[ i ].url + '.html' )
                             img.img-responsive( src=postData[ i ].banner )
                     h1.post-title
-                        a( href=postData[ i ].url )
+                        a( href=postData[ i ].url + '.html' )
                             != postData[ i ].title
                     h4: != postData[ i ].desc
                     h5.post-date: != postData[ i ].date

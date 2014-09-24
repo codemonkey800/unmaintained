@@ -5,15 +5,6 @@ var util = require( 'util' );
 var today = new Date();
 var todayString = ( today.getMonth() + 1 ) + '-' + today.getDate() + '-' + today.getFullYear();
 
-function isObjectEmpty( obj ) {
-    for( var prop in obj ) {
-        if( !Object.hasOwnProperty.call( obj, prop ) ) {
-            return false;
-        }
-    }
-    return true;
-}
-
 function HashTags( tags ) {
     if( tags instanceof Array ) {
         this.tags = tags;
@@ -34,7 +25,7 @@ function HashTags( tags ) {
 
     this.constructHashTags = function() {
         if( this.tags.length === 0 ) {
-            return {};
+            return null;
         }
         var hashtags = {};
         for( var i = 0; i < this.tags.length; i++ ) {
@@ -46,12 +37,12 @@ function HashTags( tags ) {
     this.toHtmlString = function() {
         var htmlStr = '';
         var hashtags = this.constructHashTags();
-        if( isObjectEmpty( hashtags ) ) {
-            return htmlStr;
+        if( hashtags === null ) {
+            return '';
         }
         for( var hashtag in hashtags ) {
             htmlStr += util.format( '            a.hashtag( href="%s" ) %s \n',
-                                    '/filter/' + hashtag.slice( 1, hashtag.length ) + '/1',
+                                    '/filter/' + hashtag.slice( 1, hashtag.length ) + '/1.html',
                                     hashtag );
         }
         return htmlStr;
@@ -107,7 +98,7 @@ function addPost( title, description, tags, banner ) {
                                        title, 
                                        todayString, 
                                        hashtags.toHtmlString(),
-                                       "Content Goes Here" ) );
+                                       '            p Content Goes Here' ) );
 	} catch( e ) {
 		console.log( e );
 		return;

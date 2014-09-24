@@ -25,9 +25,16 @@ script.
     var editors = document.querySelectorAll( '.editor' );
     for( var i = 0; i < editors.length; i++ ) {
         var editor = ace.edit( editors[ i ] );
+    
+        editor.setOptions( {
+            maxLines: editor.getSession().getLength()
+        } );
 
-        editors[ i ].style.height = editors[ i ].dataset.height;
-        editors[ i ].style.fontSize = '18px';
+        if( window.innerWidth <= 400 ) {
+            editors[ i ].style.fontSize = '12px';        
+        } else {
+            editors[ i ].style.fontSize = '18px';
+        }
 
         editor.setTheme( 'ace/theme/monokai' );
         editor.setReadOnly( true );

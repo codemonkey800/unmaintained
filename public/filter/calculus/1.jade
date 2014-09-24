@@ -11,18 +11,19 @@ block content
             .col-md-6
                 .well.well-lg
                     .jumbotron.post-banner
-                        a( href=postData[ i ].url )
+                        a( href=postData[ i ].url + '.html' )
                             img.img-responsive( src=postData[ i ].banner )
                     h1.post-title
-                        a( href=postData[ i ].url )
+                        a( href=postData[ i ].url + '.html' )
                             != postData[ i ].title
                     h6.post-date: != postData[ i ].date
                     h4.post-description: != postData[ i ].desc
                     h6.post-tags
                         - for( var hashtag in postData[ i ].tags ) {
-                            a.hashtag( href=postData[ i ].tags[ hashtag ] ): != hashtag + ' '
+                            - var tagUrl = postData[ i ].tags[ hashtag ] + '.html';
+                            a.hashtag( href=tagUrl ): != hashtag + ' '
                         - }
-                    - var postComments = postData[ i ].url + '#disqus_thread'
+                    - var postComments = postData[ i ].url + '.html' + '#disqus_thread'
                     h6
                         a( href=postComments )
             .col-md-3
@@ -33,9 +34,9 @@ block content
                 - for( var i = 0; i < 1; i++ ) {
                     - var pageLink;
                     - if( i === 0 ) {
-                        - pageLink = '/filter/calculus/1';
+                        - pageLink = '/filter/calculus/1.html';
                     - } else {
-                        - pageLink = '/filter/calculus/' + ( i + 1 );
+                        - pageLink = '/filter/calculus/' + ( i + 1 ) + '.html';
                     - }
                     - if( i === 0 ) {
                         li.active

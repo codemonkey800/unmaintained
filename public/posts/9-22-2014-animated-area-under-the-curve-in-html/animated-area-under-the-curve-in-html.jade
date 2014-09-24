@@ -5,10 +5,14 @@ block title
 
 block content
     .container
-        img.img-responsive( src="http://goo.gl/QVUAg0" )
+        img.img-responsive.center-block( src="http://goo.gl/QVUAg0" )
         h3 Animated Area Under the Curve in HTML
         h4 9-22-2014
         h6
+            a.hashtag( href="/filter/mathematics/1.html" ) #mathematics 
+            a.hashtag( href="/filter/calculus/1.html" ) #calculus 
+            a.hashtag( href="/filter/javascript/1.html" ) #javascript 
+            a.hashtag( href="/filter/mathboxjs/1.html" ) #mathboxjs 
 
 
         .well.well-lg
@@ -69,7 +73,7 @@ block content
                     <a href="http://goo.gl/pa6jI"><em>Probability Density Function</em></a>, 
                     or PDF, for some probability distribution. The PDF
                     computes the probability for some some value \( x \in X \). When we find the area under
-                    the PDF, we find the <em>cumulative probability</em> of over some interval
+                    the PDF, we find the <em>cumulative probability</em> over some interval
                     \( \left[ a \leq X \leq b \right] \). This is known as the 
                     <a href="http://goo.gl/ojuQ"><em>Cumulative Distribution Function</em></a>, or CDF. 
                 br  
@@ -119,7 +123,7 @@ block content
                     we'll skip straight ahead to the code. The implementation of the algorithm 
                     has a complex argument, but for our purposes, we'll only focus on real numbers.
                     With a little editing and translation to JavaScript, we have:
-                .editor( data-language="javascript", data-height="500px" ).
+                .editor( data-language="javascript" ).
                     // Coefficients
                     var g = 7;
                     var p = [
@@ -152,7 +156,7 @@ block content
                 p.
                     Now that we've implemented the Gamma function, we can easily implement the
                     PDFs for Student's \( t \) and \( \chi^2 \):
-                .editor( data-language="javascript", data-height="300px").
+                .editor( data-language="javascript").
                     function studentTModel( t, df ) {
                         return ( gamma( ( df + 1 ) / 2 ) ) / ( Math.sqrt( df * Math.PI ) * gamma( df / 2 ) ) * 
                         Math.pow( 1 + ( t * t ) / 2, -( df + 1 ) / 2);
@@ -183,7 +187,7 @@ block content
                     aniamtions and presentation. The core of the Director class is the presentation object
                     that is passed in. This presentation object is essentially a nesting of arrays
                     that structure the presentation:
-                .editor( data-language="javascript", data-height="650px" ).
+                .editor( data-language="javascript" ).
                     var presentation = [  // Root level
                         // Second level
                         // Think of this level as slides
@@ -221,7 +225,7 @@ block content
                     is pretty simple: we start with an inital action in the first step, and then
                     make a change in the next step. For instance, say I wanted to animate 
                     the domain for a curve:
-                .editor( data-language="javascript", data-height="500px" ).
+                .editor( data-language="javascript" ).
                     var presentation = [
                         [
                             [
@@ -258,7 +262,7 @@ block content
                     we can return a 2D array representing the \( \left( x, y \right) \) coordinates of the surface.
                     The expression is a function of two variables, and therefore is a function of 2 domains.
                     Drawing the surface under the curve is given by the algorithm:
-                .editor( data-language="javascript", data-height="180px" ).
+                .editor( data-language="javascript" ).
                     function areaShader( x, y ) {
                         var yPoint = f( x ) - y;
                         if( yPoint &gt; 0 ) {
@@ -313,7 +317,7 @@ block content
                 p.
                     Animating the area is as easy as changing the properties
                     of the surface domain in different steps:
-                .editor( data-language="javascript", data-height="1020px").
+                .editor( data-language="javascript").
                     var presentaion = [
                         [
                             [
@@ -382,6 +386,9 @@ block content
                 p.
                     Animating the area under the curve is a nice icing on the cake
                     for a mathematical presentaiton. It helps people visualize what exactly
-                    the area is and in a 
+                    the area is.
+
+            p
+                em Edited 9-23-1
 
         include ../../_includes/comments

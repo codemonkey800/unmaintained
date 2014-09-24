@@ -1,11 +1,11 @@
-extends %s_layouts/default
+extends ../../_layouts/default
 
 block title
-    title %s
+    title #dev-blog - Page 1
 
 block content
-    - var postData = %j
-    - for( var i = %d; i < %d; i++ ) {
+    - var postData = [{"date":"9-24-2014","title":"Why I switched to Harp","desc":"Harp.js is a static site generator that is a module of Node.js. Switching was a matter of personal preference, and here's why.","tags":{"#nodejs":"/filter/nodejs/1","#harpjs":"/filter/harpjs/1","#javascript":"/filter/javascript/1","#dev-blog":"/filter/dev-blog/1"},"banner":"http://goo.gl/iSI1zV","url":"/posts/9-24-2014-why-i-switched-to-harp/why-i-switched-to-harp"}]
+    - for( var i = 0; i < 1; i++ ) {
         .row
             .col-md-3
             .col-md-6
@@ -28,17 +28,17 @@ block content
                         a( href=postComments )
             .col-md-3
     - }
-    - if( %d !== 1 ) { // Check if we only have one pagination
+    - if( 1 !== 1 ) { // Check if we only have one pagination
         .text-center
             ul.pagination.center-block
-                - for( var i = 0; i < %d; i++ ) {
+                - for( var i = 0; i < 1; i++ ) {
                     - var pageLink;
                     - if( i === 0 ) {
-                        - pageLink = '%s.html';
+                        - pageLink = '/filter/dev-blog/1.html';
                     - } else {
-                        - pageLink = '%s' + ( i + 1 ) + '.html';
+                        - pageLink = '/filter/dev-blog/' + ( i + 1 ) + '.html';
                     - }
-                    - if( i === %d ) {
+                    - if( i === 0 ) {
                         li.active
                             a( href=pageLink ): != i + 1
                     - } else {

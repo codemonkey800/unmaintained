@@ -1,5 +1,18 @@
 [
     {
+        "date": "9-24-2014",
+        "title": "Why I switched to Harp",
+        "desc": "Harp.js is a static site generator that is a module of Node.js. Switching was a matter of personal preference, and here's why.",
+        "tags": {
+            "#nodejs": "/filter/nodejs/1",
+            "#harpjs": "/filter/harpjs/1",
+            "#javascript": "/filter/javascript/1",
+            "#dev-blog": "/filter/dev-blog/1"
+        },
+        "banner": "http://goo.gl/iSI1zV",
+        "url": "/posts/9-24-2014-why-i-switched-to-harp/why-i-switched-to-harp"
+    },
+    {
         "date": "9-22-2014",
         "title": "Animated Area Under the Curve in HTML",
         "desc": "There are a lot of JavaScript libraries used for drawing mathematical curves in HTML. However, I have yet to find one that allows me to animate the area under the curve. Using MathBox.js, It's possible",
