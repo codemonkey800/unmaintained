@@ -154,7 +154,7 @@ function reloadPosts() {
 
     for( var i = 0; i < postData.length; i++ ) {
         var content = fs.readFileSync( 'public' + postData[ i ].url + '.jade' ).toString();
-        var match = /\.well\.well-lg[\s\S]+(?=        include )/.exec( content );
+        var match = /\.well\.well-lg([\s\S]+)(?=        include \.\.\/\.\.\/_includes\/comments)/.exec( content );
 
         var tags = [];
         for( var tag in postData[ i ].tags ) {
@@ -167,7 +167,7 @@ function reloadPosts() {
                                        postData[ i ].title,
                                        postData[ i ].date,
                                        new HashTags( tags ).toHtmlString(),
-                                       match[ 0 ].slice( 15, match[ 0 ].length - 5 ) ) );
+                                       match[ 1 ].slice( 2, match[ 1 ].length - 4 ) ) );
     }
 }
 

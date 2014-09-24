@@ -26,53 +26,60 @@ function printMessage( message ) {
     console.log( getTimeStamp() + ' ' + message );
 }
 
+function regeneratePosts() {
+    postFilter.createFilterPages();
+    generator.generate();
+}
+
+function reloadPostData( callback ) {
+    spawn( 'node', [ 'post', 'reload' ] ).on( 'close', callback );
+}
+
+function regenerateGlobalData() {
+    var options = generator.getOptions();
+        options.postsPerPage = getGlobalData().postsPerPage;
+        generator.setOptions( options );
+}
+
 function startHarpServer( port ) {
     printMessage( 'Port started on port ' + port );
     harp.server( '.', { port: port } );
 
-    var regen = function() {
-        postFilter.createFilterPages();
-        generator.generate();
-    };
-    regen();
+    regeneratePosts();
 
     fs.watchFile( 'public/posts/_data.json', function() {
         printMessage( 'Posts data changed...' );
-        var options = generator.getOptions();
-        options.postsData = getPostsData();
-        generator.setOptions( options );
-        regen();
-        printMessage( 'Posts updated.' );
+        reloadPostData( function() {
+            printMessage( 'Posts updated.' );
+        } );
     } );
     fs.watchFile( 'public/_layouts/filter-page.jade', function() {
         printMessage( 'Filter page layout changed...' );
-        regen();
+        regeneratePosts();
         printMessage( 'Filter pages updated.' );
     } );
     fs.watchFile( 'public/_layouts/paginated-page.jade', function() {
         printMessage( 'Paginated page layout changed...' );
-        regen();
+        regeneratePosts();
         printMessage( 'Paginated pages updated.' );
     } );
     fs.watchFile( 'public/_layouts/post-page.jade', function() {
         printMessage( 'Post page layout changed...' );
-        spawn( 'node', [ 'post', 'reload' ] ).on( 'close', function() {
+        reloadPostData( function() {
             printMessage( 'Post pages updated.' );
         } );
     } );
     fs.watchFile( 'harp.json', function() {
         printMessage( 'Globals changed...' );
-        var options = generator.getOptions();
-        options.postsPerPage = getGlobalData().postsPerPage;
-        generator.setOptions( options );
-        regen();
+        regeneratePosts();
         printMessage( 'Globals updated.' );
     } );
 }
 
 function compileSite() {
-    postFilter.createFilterPages(); 
-    generator.generate();
+    reloadPostData( function() {} );
+    regenerateGlobalData();
+    regeneratePosts();
     harp.compile( '.', '.' );
 }
 
