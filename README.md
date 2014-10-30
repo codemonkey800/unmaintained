@@ -88,4 +88,4 @@ be run in the command line anyway, so it's okay.
 # Excelsior
 ---
 
-![There was an image here. It's no longer here.](http://goo.gl/XBz6u0)
+![There was an image here. It's no longer here.](http://goo.gl/Tu3BUa)
