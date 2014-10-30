@@ -1,0 +1,26 @@
+doctype
+
+html( lang="en" )
+    head
+        title!= title
+        meta( charset="utf-8" )
+        meta( name="viewport", content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes" )
+
+        link( rel="import", href="/polymer/platform/platform.js" )
+        link( rel="import", href="/polymer/roboto/roboto.html" )
+        link( rel="import", href="/polymer/paper-toast/paper-toast.html" )
+
+        link( rel="import", href="/components/login-card.html" )
+        link( rel="stylesheet", href="/css/main.css" )
+
+    body( unresolved )
+
+        #loginCard( layout, vertical, center )
+            - var isLinked = linked;
+            - var linkedMessage = message;
+            login-card( isLinked=isLinked, linkedMessage=message )
+
+        paper-toast#errorToast
+
+        script( src="/socket.io/socket.io.js" )
+        script( src="/js/login.js" )
