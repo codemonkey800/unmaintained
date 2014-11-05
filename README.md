@@ -4,6 +4,9 @@ MathChat
 An awesome web app that allows people to talk in mathematics to each other. Inspired by the project, [MathIm](http://mathim.com/),
 MathChat aims to be another mathematics chatting web app while looking nice at the same time.
 
+The app is hosted on [Openshift](https://www.openshift.com/) and can be used here: 
+[http://mathchat-jermsapp.rhcloud.com/](http://mathchat-jermsapp.rhcloud.com/).
+
 Libraries
 ---------
 MathChat runs on Node.js, and its backend is written in JavaScript and its frontend written in Jade. The website uses 
