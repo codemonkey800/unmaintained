@@ -1,0 +1,104 @@
+<link rel="import" href="/polymer/polymer/polymer.html">
+<link rel="import" href="/polymer/core-icon/core-icon.html">
+<link rel="import" href="/polymer/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="/polymer/paper-item/paper-item.html">
+<link rel="import" href="/polymer/paper-fab/paper-fab.html">
+<link rel="import" href="/polymer/paper-shadow/paper-shadow.html">
+<link rel="import" href="/polymer/paper-input/paper-input.html">
+<link rel="import" href="/polymer/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="/polymer/paper-radio-button/paper-radio-button.html">
+
+<!-- 
+
+    A Polymer component representing a login form in a card.
+    The card displays a form where the user can enter a chat room
+    via available public rooms or specifically named room.
+    A user must use an Alias when in the chat room. The server
+    will check for duplicates before allowing a login.
+
+    The isLinked attribute is passed when a user is connecting from
+    a direct chat room url, such as /chat-room/SwagSwag.
+    The alias text edit and connect button will be the only 
+    inputs displayed on the card.
+
+    The login-card element itself is responsive and should work on most
+    screens.
+
+ -->
+<polymer-element name="login-card" attributes="isLinked linkedMessage">
+
+    <template>
+
+        <link rel="stylesheet" href="/components/login-card/style.css">
+
+        <form id="form" action="" layout vertical center>
+            <paper-dropdown-menu id="roomDropdown" label="Select a Room"></paper-dropdown-menu>
+
+            <h2 id="orText">or</h2>
+
+            <paper-input id="customRoomText" 
+                         label="Room Name" 
+                         floatingLabel="true"
+                         max="10">
+            </paper-input>  
+
+            <paper-input required 
+                         id="aliasText" 
+                         label="Alias" 
+                         floatingLabel="true"
+                         max="15">
+            </paper-input>
+
+            <div id="privateRoomSelectorRow" layout horizontal center>
+                <h3>Private?: </h3>
+                <paper-radio-group id="privateRoomSelector" selected="no">
+    
+                    <paper-radio-button name="yes" label="Yes"></paper-radio-button>
+                    <paper-radio-button name="no" label="no"></paper-radio-button>
+    
+                </paper-radio-group>
+            </div>
+
+            <paper-fab id="submitButton" on-down="{{ submitClick }}" src="/images/connect.svg">
+            </paper-fab>
+
+        </form>
+        <paper-shadow z="1"></paper-shadow>
+
+    </template>
+
+    <script>
+        Polymer( {
+            isLinked: false,
+            linkedMessage: null,
+            otherReady: function() {
+                if( this.isLinked ) {
+                    this.$.roomDropdown.style.display           = 'none';
+                    this.$.customRoomText.style.display         = 'none';
+                    this.$.privateRoomSelectorRow.style.display = 'none';
+                    if( this.linkedMessage ) {
+                        this.$.orText.textContent               = this.linkedMessage;
+                    } else {        
+                        this.$.orText.style.display             = 'none';
+                    }
+                }
+            },
+            setRooms: function( rooms ) {
+                if( rooms instanceof Array ) {
+                    for( var i = 0; i < rooms.length; i++ ) {
+                        var node = document.createElement( 'paper-item' );
+                        node.label = rooms[ i ];
+                        this.$.roomDropdown.appendChild( node );
+                    }
+                }
+            }, 
+            // This function is meant to be overriden.
+            submitClick: function() {
+                this.$.form.submit();
+            }
+
+        } );
+
+    </script>
+
+</polymer-element>

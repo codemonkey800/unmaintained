@@ -1,0 +1,31 @@
+<link rel="import" href="/polymer/polymer/polymer.html">
+
+<polymer-element name="chat-message-listing">
+
+    <template>
+
+        <link rel="stylesheet" href="/components/chat-message-listing/style.css">
+
+        <ul id="messageListing"></ul>
+
+    </template>
+
+    <script>
+
+        Polymer( {
+            appendMessage: function( message, alias ) {
+                var messageNode = document.createElement( 'li' );
+                messageNode.innerHTML = '[ ' + alias + ' ] - ' + message;
+                this.$.messageListing.appendChild( messageNode );
+
+                MathJax.Hub.Queue( [ 'Typeset', MathJax.Hub, this.$.messageListing ] );
+            },
+
+            clearMessages: function() {
+                this.$.messageListing.innerHTML = '';
+            }
+        } );
+
+    </script>
+
+</polymer-element>

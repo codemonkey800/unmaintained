@@ -1,0 +1,83 @@
+:host {
+    display: block;
+    background: white;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Control styling */
+
+#submitButton {
+    background: #BA68C8;
+}
+
+#submitButton::shadow #ripple{
+    color: #6A1B9A;
+}
+
+paper-radio-button::shadow #onRadio {
+  background-color: #BA68C8;
+}
+
+paper-radio-button::shadow #ink {
+    color: #6A1B9A;
+}
+
+
+/* End Control styling*/
+
+#orText {
+    text-align: center;
+}
+
+/* Media queries copied from http://goo.gl/3Ayl7Z */
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */ 
+@media only screen and (min-width : 320px) {
+    #roomDropdown, #customRoomText, #aliasText {
+        width: 210px;
+    }
+}
+
+/* iPhone 6 */
+@media only screen and ( min-width : 375px ) {
+    #roomDropdown, #customRoomText, #aliasText {
+        width: 250px;
+    }
+}
+
+/* iPhone 6 Plus */
+@media only screen and ( min-width : 414px ) {
+    #roomDropdown, #customRoomText, #aliasText {
+        width: 280px;
+    }
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+    #roomDropdown, #customRoomText, #aliasText {
+        width: 350px;
+    }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+    #roomDropdown, #customRoomText, #aliasText {
+        width: 380px;
+    }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+    #roomDropdown, #customRoomText, #aliasText {
+        width: 400px;
+    }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+    #roomDropdown, #customRoomText, #aliasText {
+        width: 400px;
+    }
+}

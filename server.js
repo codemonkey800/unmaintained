@@ -1,65 +1,12 @@
 #!/bin/env node
 var express  = require( 'express' );
 var http     = require( 'http' );
-
-String.prototype.replaceAll = function( find, replace ) {
-    return this.replace( new RegExp( find, 'g' ), replace );
-}
-
-var ChatParticipant = function( alias, socket ) {
-
-    this.alias  = alias;
-    this.socket = socket;
-
-}
-
-var ChatRoom = function( name, options ) {
-
-    // Ew
-    var urlName         = name.replaceAll( '-', '' ).replaceAll( ' ', '-' ).replaceAll( '--', '-' ).toLowerCase();
-    var participants    = [];
-    if( options === undefined ) options = {};
-    var roomName        = options.roomName || 'HerpDerp';
-    var maxParticipants = options.maxParticipants || -1;
-    var privateRoom     = options.privateRoom || false;
-
-    this.addParticipant = function( participant ) {
-        participants.push( participant );
-    }
-
-    this.removeParticipant = function( participant ) {
-        for( var i = 0; i < participants.length; i++ ) {
-            if( participants[ i ].alias === participant.alias ) {
-                participants.splice( i, 1 );
-            }
-        }
-    }
-
-    this.removeParticipantIndex = function( index ) {
-        participants.splice( index, 1 );
-    }
-
-    this.broadCastMessage = function( msg ) {
-
-    }
-
-    this.setName = function( newName ) {
-
-    }
-
-    this.getName = function() {
-        return name;
-    }
-
-    this.getUrlName = function() {
-        return urlName;
-    }
-
-}
+var jade     = require( 'jade' );
+var chat     = require( './libs/ChatRoomLib' );
 
 var MathChatApp = function() {
 
-    var chatRooms = [];
+    var chatRoomList = new chat.ChatRoomList();
     var chatRoomRegex = new RegExp( '\/chat-room\/([a-zA-Z0-9-_]+)' );
 
     var app;
@@ -70,7 +17,7 @@ var MathChatApp = function() {
         app = express();
         app.set( 'views', './views' );
         app.set( 'view engine', 'jade' );
-        app.engine( 'jade', require( 'jade' ).__express );
+        app.engine( 'jade', jade.__express );
         app.use( '/css/', express.static( __dirname + '/views/css' ) );
         app.use( '/images/', express.static( __dirname + '/views/images' ) );
         app.use( '/js/', express.static( __dirname + '/views/js' ) );
@@ -78,41 +25,115 @@ var MathChatApp = function() {
         app.use( '/components/', express.static( __dirname + '/views/components' ) );
 
         server = http.Server( app );
-        server.listen( process.env.OPENSHIFT_NODEJS_PORT || 8080 );
+
+        var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+        var ip   = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+
+        server.listen( port, ip, function() {
+            console.log( 'Listening on ' + ip + ':' + port );
+        } );
 
         io = require( 'socket.io' )( server );
     }
 
-    function serializeObject( object ) {
-        return JSON.stringify( object );
-    }
-
     function initalizeSocketStuff() {
         io.on( 'connection', function( socket ) {
-            var chatRoomNames = [];
-            for( var i = 0; i < chatRooms.length; i++ ) {
-                chatRoomNames.push( chatRooms[ i ].getName() );
-            }
-            socket.emit( 'existing-rooms', chatRoomNames );
-        } );
-    }
 
-    function getChatRoom( urlName ) {
-        for( var i = 0; i < chatRooms.length; i++ ) {
-            if( chatRooms[ i ].getUrlName() === urlName ) {
-                return chatRooms[ i ];
+            var chatRoomNames = [];
+            for( var i = 0; i < chatRoomList.length(); i++ ) {
+                var chatRoom = chatRoomList.getChatRoomAt( i );
+                if( !chatRoom.isPrivate() ) {
+                    chatRoomNames.push( chatRoom.getName() );
+                }
             }
-        }
-        return null;
+
+            socket.emit( 'existing-rooms', chatRoomNames );
+
+            socket.on( 'new-participant', function( userInfo ) {
+                var alias       = null;
+                var room        = null;
+                var participant = null;
+
+                if( userInfo.room.isDirectLink ) {
+                    alias = userInfo.alias;
+                    room  = chatRoomList.getChatRoomByUrlName( userInfo.room.roomName );
+                    if( room === null ) {
+                        socket.emit( 'null-room', {
+                            error: 'Null Room',
+                            message: 'Room doesn\'t exist'
+                        } );
+                    } else {
+                        participant = new chat.ChatParticipant( userInfo.alias, socket );
+                        try {
+                            room.addParticipant( participant );
+                        } catch( e ) {
+                            socket.emit( 'user-already-exists', e );
+                            return;
+                        }
+                        socket.emit( 'added', {
+                            alias: alias,
+                            isDirectLink: true,
+                            roomName: room.getName(),
+                            roomUrlName: '',
+                            participants: room.getParticipantsAliases()
+                        } );
+                    }
+                } else {
+                    alias = userInfo.alias;
+                    room  = chatRoomList.getChatRoom( userInfo.room.roomName );
+                    if( room === null ) {
+                        room = new chat.ChatRoom( userInfo.room.roomName, { isPrivate: userInfo.room.isPrivate } );
+                        console.log( alias + ' created a new room ' + room.getName() );
+                        try {
+                            chatRoomList.addChatRoom( room );
+                        } catch( e ) {
+                            socket.emit( 'room-already-exists', e );
+                            return;
+                        }
+                    }
+                    participant = new chat.ChatParticipant( userInfo.alias, socket );
+                    try {
+                        room.addParticipant( participant );
+                    } catch( e ) {
+                        socket.emit( 'user-already-exists', e );
+                        return;
+                    }
+                    socket.emit( 'added', {
+                        alias: alias,
+                        isDirectLink: false,
+                        roomName: room.getName(),
+                        roomUrlName: room.getUrlName(),
+                        participants: room.getParticipantsAliases()
+                    } );
+                }
+
+                if( room === null ) return;
+
+                room.on( 'user-connected', function( userAlias, chatRoom ) {
+                    console.log( userAlias + ' entered room ' + chatRoom.getName() );
+                    socket.emit( 'user-connected', userAlias );
+                } )
+
+                room.on( 'user-disconnected', function( userAlias, chatRoom ) {
+                    console.log( userAlias + ' left room ' + chatRoom.getName() );
+                    if( chatRoom.length() === 0 ) {
+                        chatRoomList.removeChatRoom( chatRoom );
+                    }
+                    socket.emit( 'user-disconnected', userAlias );
+                } );
+
+                socket.on( 'new-message', function( messageInfo ) {
+                    room.broadcastMessage( messageInfo.message, messageInfo.alias );
+                } );
+
+            } );
+
+        } );
     }
 
     this.start = function() {
         initalizeServer();
         initalizeSocketStuff();
-
-        chatRooms.push( new ChatRoom( 'Mathematics' ) );
-        chatRooms.push( new ChatRoom( 'Calculus II' ) );
-        chatRooms.push( new ChatRoom( 'HerpDerp - Global Room' ) );
 
         app.use( function( req, res, next ) {
             var match = chatRoomRegex.exec( req.url );
@@ -123,7 +144,7 @@ var MathChatApp = function() {
                     linked: false
                 } );
             } else if( match ) {
-                var chatRoom = getChatRoom( match[ 1 ] );
+                var chatRoom = chatRoomList.getChatRoomByUrlName( match[ 1 ] );
                 if( chatRoom === null ) {
                     res.render( '404' );
                     return;

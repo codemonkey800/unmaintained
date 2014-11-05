@@ -1,0 +1,59 @@
+<link rel="import" href="/polymer/polymer/polymer.html">
+
+<polymer-element name="chat-participants-listing">
+
+    <template>
+
+        <link rel="stylesheet" href="/components/chat-participants-listing/style.css">
+
+        <h1 id="title">Mathematicians Online:</h1>
+        <ul id="participantsListing"></ul>
+
+    </template>
+
+    <script>
+
+        Polymer( {
+            participants: [],
+
+            addParticipant: function( alias ) {
+                this.participants.push( alias );
+                var participantNode = document.createElement( 'li' );
+                participantNode.textContent = alias;
+                this.$.participantsListing.appendChild( participantNode );
+            },
+
+            removeParticipant: function( alias ) {
+                if( this.participants.length === 0 ) return;
+                for( var i = 0; i < this.participants.length; i++ ) {
+                    if( this.participants[ i ] === alias ) {
+                        this.participants.splice( i, 1 );
+                        break;
+                    }
+                }
+                var participantNodes = this.$.participantsListing.childNodes;
+                for( var i = 0; i < participantNodes.length; i++ ) {
+                    if( participantNodes[ i ].textContent === alias ) {
+                        this.$.participantsListing.removeChild( participantNodes[ i ] );
+                        break;
+                    }
+                }
+            },
+
+            setParticipants: function( participantsAliases ) {
+                this.participants = participantsAliases;
+                for( var i = 0; i < this.participants.length; i++ ) {
+                    var participantNode = document.createElement( 'li' );
+                    participantNode.textContent = this.participants[ i ];
+                    this.$.participantsListing.appendChild( participantNode );
+                }
+            },
+
+            clearParticipants: function() {
+                this.$participantsListing.innerHTML = '';
+            }
+        } );
+
+    </script>
+
+</polymer-element>

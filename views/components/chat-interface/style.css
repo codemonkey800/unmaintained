@@ -1,0 +1,146 @@
+@font-face {
+    font-family: cmu;
+    src: url( /css/fonts/cmunrm.ttf );
+}
+
+:host {
+    display: block;
+    padding: 40px;
+}
+
+/* Begin control style */
+
+#sendButton {
+    background: #BA68C8;
+    margin-right: 100px;
+    margin-top: -50px;
+}
+
+#sendButton::shadow #ripple{
+    color: #6A1B9A;
+}
+
+#clearButton {
+    background: #F44336;
+    margin-right: 40px;
+    margin-top: -50px;
+}
+
+#clearButton::shadow #icon {
+    color: white;
+}
+
+
+/* End control style */
+
+#messagePreview {
+    width: 50%;
+    background: white;
+    margin: 20px;
+    height: 250px;
+    padding: 10px;
+}
+
+#previewText {
+    font-family: cmu;
+    overflow-y: auto;
+    display: inline-block;
+}
+
+#main {
+    padding: 20px;
+}
+
+/* Media queries copied from http://goo.gl/3Ayl7Z */
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */ 
+@media only screen and (min-width : 320px) {
+    #sendButton {
+        margin-right: 30px;
+    }
+    #messagePreview {
+        display: none;
+    }
+    #messageInput {
+        height: 150px;
+    }
+}
+
+/* iPhone 6 */
+@media only screen and ( min-width : 375px ) {
+    #sendButton {
+        margin-right: 30px;
+    }
+    #messagePreview {
+        display: none;
+    }
+    #messageInput {
+        height: 150px;
+    }
+}
+
+/* iPhone 6 Plus */
+@media only screen and ( min-width : 414px ) {
+    #sendButton {
+        margin-right: 30px;
+    }
+    #messagePreview {
+        display: none;
+    }
+    #messageInput {
+        height: 150px;
+    }
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+    #sendButton {
+        margin-right: 30px;
+    }
+    #messagePreview {
+        display: none;
+    }
+    #messageInput {
+        height: 150px;
+    }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+    #sendButton {
+        margin-right: 30px;
+    }
+    #messagePreview {
+        display: none;
+    }
+    #messageInput {
+        height: 150px;
+    }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+    #sendButton {
+        margin-right: 30px;
+    }
+    #messagePreview {
+        display: none;
+    }
+    #messageInput {
+        height: 150px;
+    }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+    #sendButton {
+        margin-right: 30px;
+    }
+    #messagePreview {
+        display: block;
+    }
+    #messageInput {
+        height: 280px;
+    }
+}

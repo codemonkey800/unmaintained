@@ -6,21 +6,32 @@ html( lang="en" )
         meta( charset="utf-8" )
         meta( name="viewport", content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes" )
 
+        // Polymer stuff
         link( rel="import", href="/polymer/platform/platform.js" )
         link( rel="import", href="/polymer/roboto/roboto.html" )
+        link( rel="import", href="/polymer/core-animation/core-animation.html" )
+        link( rel="import", href="/polymer/core-animation-keyframe/core-animation-keyframe.html" )
+        link( rel="import", href="/polymer/core-toolbar/core-toolbar.html")
+        link( rel="import", href="/polymer/core-icons/core-icons.html" )
         link( rel="import", href="/polymer/paper-toast/paper-toast.html" )
+        link( rel="import", href="/polymer/paper-icon-button/paper-icon-button.html" )
 
-        link( rel="import", href="/components/login-card.html" )
+        link( rel="import", href="/components/chat-interface/chat-interface.html" )
+        link( rel="import", href="/components/login-card/login-card.html" )
         link( rel="stylesheet", href="/css/main.css" )
+        link( rel="stylesheet", href="/css/chat-room.css")
 
     body( unresolved )
 
-        #loginCard( layout, vertical, center )
-            - var isLinked = linked;
-            - var linkedMessage = message;
-            login-card( isLinked=isLinked, linkedMessage=message )
-
-        paper-toast#errorToast
+        #content
+            #loginCard
+                - var isLinked = linked;
+                - var linkedMessage = message;
+                login-card( isLinked=isLinked, linkedMessage=message )
 
         script( src="/socket.io/socket.io.js" )
+        script( type="text/javascript",
+                src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" )
+        script( src="/js/util.js" )
         script( src="/js/login.js" )
+        script( src="/js/main.js" )
