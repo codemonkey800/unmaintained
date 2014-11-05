@@ -7,6 +7,13 @@ MathChat aims to be another mathematics chatting web app while looking nice at t
 The app is hosted on [Openshift](https://www.openshift.com/) and can be used here: 
 [http://mathchat-jermsapp.rhcloud.com/](http://mathchat-jermsapp.rhcloud.com/).
 
+State
+-----
+
+The app is currently in an Alpha state. There are a lot of bugs, especially in the UI. There are also a lot of
+features that I want to add, such as being in multiple chat rooms in one page or adding more
+Material Design-ish transitions. The app definitely works, but there is more work to be done.
+
 Libraries
 ---------
 MathChat runs on Node.js, and its backend is written in JavaScript and its frontend written in Jade. The website uses 
