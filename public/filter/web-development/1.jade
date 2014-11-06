@@ -1,10 +1,10 @@
 extends ../../_layouts/default
 
 block title
-    title #javascript - Page 1
+    title #web-development - Page 1
 
 block content
-    - var postData = [{"date":"9-24-2014","title":"Why I switched to Harp","desc":"Harp.js is a static site generator that is a module of Node.js. Switching was a matter of personal preference, and here's why.","tags":{"#nodejs":"/filter/nodejs/1","#harpjs":"/filter/harpjs/1","#javascript":"/filter/javascript/1","#dev-blog":"/filter/dev-blog/1","#web-development":"/filter/web-development/1"},"banner":"http://goo.gl/iSI1zV","url":"/posts/9-24-2014-why-i-switched-to-harp/why-i-switched-to-harp"},{"date":"9-22-2014","title":"Animated Area Under the Curve in HTML","desc":"There are a lot of JavaScript libraries used for drawing mathematical curves in HTML. However, I have yet to find one that allows me to animate the area under the curve. Using MathBox.js, It's possible","tags":{"#mathematics":"/filter/mathematics/1","#calculus":"/filter/calculus/1","#javascript":"/filter/javascript/1","#mathboxjs":"/filter/mathboxjs/1"},"banner":"http://goo.gl/QVUAg0","url":"/posts/9-22-2014-animated-area-under-the-curve-in-html/animated-area-under-the-curve-in-html"}]
+    - var postData = [{"date":"11-5-2014","title":"Mathchat Dev Blog 1","desc":"I made my first real web app! Here I'll talk about Platform as a Service, Node.js, Polymer, and other cool stuff.","tags":{"#mathchat-dev-blog":"/filter/mathchat-dev-blog/1","#nodejs":"/filter/nodejs/1","#polymer":"/filter/polymer/1","#web-development":"/filter/web-development/1"},"banner":"http://goo.gl/RIS7iR","url":"/posts/11-5-2014-mathchat-dev-blog-1/mathchat-dev-blog-1"},{"date":"9-24-2014","title":"Why I switched to Harp","desc":"Harp.js is a static site generator that is a module of Node.js. Switching was a matter of personal preference, and here's why.","tags":{"#nodejs":"/filter/nodejs/1","#harpjs":"/filter/harpjs/1","#javascript":"/filter/javascript/1","#dev-blog":"/filter/dev-blog/1","#web-development":"/filter/web-development/1"},"banner":"http://goo.gl/iSI1zV","url":"/posts/9-24-2014-why-i-switched-to-harp/why-i-switched-to-harp"}]
     - for( var i = 0; i < 2; i++ ) {
         .row
             .col-md-3
@@ -34,9 +34,9 @@ block content
                 - for( var i = 0; i < 1; i++ ) {
                     - var pageLink;
                     - if( i === 0 ) {
-                        - pageLink = '/filter/javascript/1.html';
+                        - pageLink = '/filter/web-development/1.html';
                     - } else {
-                        - pageLink = '/filter/javascript/' + ( i + 1 ) + '.html';
+                        - pageLink = '/filter/web-development/' + ( i + 1 ) + '.html';
                     - }
                     - if( i === 0 ) {
                         li.active
