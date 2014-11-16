@@ -1,0 +1,737 @@
+extends ../../_layouts/default
+
+block title
+    title Object Oriented JavaScript
+
+block content
+    .container
+        img.img-responsive.center-block( src="http://goo.gl/xvWkn" )
+        h3 Object Oriented JavaScript
+        h4 11-16-2014
+        h6
+            a.hashtag( href="/filter/javascript/1.html" ) #javascript 
+            a.hashtag( href="/filter/oop/1.html" ) #oop 
+
+
+        .well.well-lg
+            h6
+                strong Introduction
+            p.
+                JavaScript is a language that I've grown very fond of in a short amount of time.
+                I was first to code expsosed at the ripe age of 14 years old. The first language I learned
+                was <a href="http://en.wikipedia.org/wiki/HTML">HTML</a>
+                ( I admit that it <em>isn't</em> really code ) in my web design class.
+                Oddly enough, the class wasn't originally a web design class, but rather a computer 
+                education class, but the original teacher left. We had a substitute teacher for 
+                two months until a real teacher came and converted it to a web design class, but
+                I digress. 
+
+            br
+
+            p.
+                Like many web design classes in high school, our tool of choise was, of course,
+                <a href="http://en.wikipedia.org/wiki/Adobe_Dreamweaver">Adobe Dreamweaver</a>,
+                a nice application written by Adobe for nice and simple drag and drop web design.
+                Now don't get me wrong, Dreamweaver is some prertty good software for beginners.
+                But it honestly didn't attract me. I wanted to be able to do more. I wanted to
+                go beyond what was required. So being the cool little geek I was, I self-learned
+                HTML, CSS, and a tad bit of JavaScript. I used Notepad++ and wrote a bunch
+                of HTML5 code when HTML5 was still in its early stages. I used &lt;video&gt;
+                tags here and there, added a single &lt;audio&gt; tag for background music, 
+                and voilà! I had a pretty crappy website, but hey it worked.
+
+            br
+
+            p.
+                I'm sorry I'm digressing a lot, but to skip ahead, I didn't touch JavaScript
+                again until I started using Node.js during my Senior year of high school for fun.
+                Admittedly, my JavaScript skills were rusty, but as I used the lanugage more and
+                more in little scripts and personal projects in the past year, I've grown more
+                fond of the language and its features. While JavaScript's features base is large,
+                I'd like to introduce one of JavaScript's more quirky features: Object Oriented 
+                Programming.
+
+            br
+
+            h6
+                strong Basic OOP Fundamentals
+
+            br
+
+            p.
+                It's no secret that the OOP has a <em>huge ass</em> list of concepts, and there's
+                no way I'll be able to write them all down, let alone if JavaScript can even
+                implement all of them. However, I will talk about the fundamentals of OOP:
+
+            ul
+                li Classes and Objects
+                li Encapsulation
+                li Abstraction and Inheritance
+                li Polymorphism
+
+            p.
+                Yes, this is no way a definitive list, but it covers the absolute essentials of OOP.
+
+            h6
+                strong Classes and Object
+
+            p.
+                Thankfully, the concepts of objects are already covered by the language itself! In 
+                JavaScript, literally <em>everything</em> is an object. The number <code>1</code>,
+                the string <code>"herp derp"</code>, and even <code>{}</code> are literally 
+                all objects. In fact, the only thing that aren't objects are the keywords,
+                <code>null</code>, and <code>undefined</code>.
+
+            br
+
+            p.
+                Classes, however, not so much. In JavaScript, there's a set of predefined core objects,
+                <code>Array</code> and <code>Object</code> to name a few. Similar to Java, all of the core
+                objects inherit <code>Object</code>. But what about custom objects or classes. Well,
+                there are actually a couple ways to define a class.
+
+            br
+
+            h6.text-center
+                strong.
+                    <code>{}</code> Method
+            br
+
+            p.
+                Remember how I mentioned that <code>{}</code> was an object? Well, it certainly is an object!
+                Here's the confusing part though: In JavaScript, we use objects to describe a class. Let that sink
+                in for a moment.
+
+            br
+
+            img.img-responsive.center-block( src="http://i.imgur.com/N7OJVxB.jpg" )
+
+            br
+
+            p.
+                As an example, let's first create a <code>person</code> class. People have various properties,
+                like name and age. So for our basic example, we'll create a class using those two properties:
+
+            br
+
+            .editor( data-language="javascript" ).
+                // We use some default values initialization
+                // values for the default person object
+                var person = {
+                    name: '',
+                    age: 0
+                };
+
+                var jeremy  = Object.create( person );
+                jeremy.name = 'Jeremy Asuncion';
+                jeremy.age  = 18;
+
+                var larry   = Object.create( person );
+                larry.name  = 'Larry Page';
+                larry.age   = 41;
+
+                console.log( jeremy );
+                // Prints {name: 'Jeremy Asuncion', age: 18}
+
+                console.log( larry );
+                // Prints {name: 'Larry Page', age: 41}
+
+            br
+
+            p.
+                Put simply, we define a class by creating a new object with properties <code>name</code>
+                and <code>age</code>. Notice that we used default values <code>''</code> and <code>0</code>. 
+                We had to do that for the properties to be properly set, otherwise the object wouldn't have been 
+                properly created. Creating an object is as simple as making a call to 
+                <code>Object.create()</code> which takes the properties in an already existing object
+                and copies them to a new one. After creating them, we simply assign them values. This functionality
+                can be wrapped into a simple construction function like so:
+
+            br
+
+            .editor( data-language="javascript" ).
+                function createPerson( name, age ) {
+                    var newPerson  = Object.create( person );
+                    newPerson.name = name;
+                    newPerson.age  = age;
+                    return newPerson;
+                }
+
+            br
+
+            p.
+                You can also add methods to the object by simply defining properties that map
+                to functions:
+
+            br
+
+            .editor( data-language="javascript" ).
+                var person = {
+                    name: '',
+                    age: 0,
+                    toString: function() {
+                        return this.name + ' - ' + this.age;
+                    },
+                    ageUp: function() {
+                        this.age++;
+                    }
+                };
+
+                var jeremy  = Object.create( person );
+                jeremy.name = 'Jeremy Asuncion';
+                jeremy.age  = 18;
+                jeremy.ageUp();
+                console.log( jeremy.toString() );
+                // Prints out Jeremy Asuncion - 19
+
+            br
+
+            h6.text-center
+                strong.
+                    Function Method
+
+            p.
+                The function method of defining classes is similar to the previous method in that
+                we use an object to define a class. However, the we use functions instead to act
+                as a class declaration. Again, we'll use a the simple person example:
+
+            br
+
+            .editor( data-language="javascript" ).
+                function Person( name, age ) {
+                    this.name = name;
+                    this.age  = age;
+
+                    this.toString = function() {
+                        return this.name + ' - ' + this.age;
+                    }
+
+                    this.ageUp = function() {
+                        this.age++;
+                    }
+                }
+
+                var jeremy = new Person( 'Jeremy Asuncion', 18 );
+
+            br
+
+            p.
+                Well, line 14 looks a bit more friendly. The advantage of using functions for 
+                defining classes that the functions themselves act as constructors for the object
+                it constructs. We can pass in arguments which act as constructor arguments.
+                And within the constructor we make the necessary cosntructions to create our object.
+                To create an object, we use the very familiar <code>new</code> keyword on a 
+                constructor function.
+
+            br
+
+            p.
+                While the <code>Person</code> class is looking great so far, we need to optimize it a bit. If you pay close 
+                attention to the code, you'll notice that everytime we create a new <code>Person</code> object,
+                it assigns <code>Person.toString</code> and <code>Person.ageUp</code> each time. This is actually 
+                very expensive, so we need a different way for defining reusable methods. Lucky us, there is a way.
+
+            br
+
+            p.
+                The solution to our problem is the <em>prototype</em>. Rather elaborate on what
+                prototype is, I'll just <a href="http://goo.gl/38qvmX">link it</a>. But at a basic level,
+                prototype is essentially an object that is a property of the class <code>Object</code>.
+                All objects in JavaScript inherit from <code>Object</code>(unless you create an
+                empty object like <code>{}</code>). When we define a class and create an object using
+                functions, the object we create inherits prototype from the <code>Function</code>
+                class which inherits it from the <code>Object</code> class. 
+
+            br
+
+            p.
+                The useful thing about prototype is that adding custom fields and methods to the prototype
+                make it exist for not just a sepcific instance of a class, but rather for all instances of 
+                the class. When we define a method for a class, it's created once and can be used by all 
+                instances of the class. Compared to our initial class definition, this is way more
+                inexpensive because we define <code>toString()</code> and <code>ageUp</code> only once rather
+                than a bunch of times. To define the two methods in prototype, we simple do:
+
+            br
+
+            .editor( data-language="javascript" ).
+                function Person( name, age ) {
+                    this.name = name;
+                    this.age  = age;
+                }
+
+                Person.prototype.toString() = function() {
+                    return this.name + ' - ' + this.age;
+                };
+
+                Person.prototype.ageUp() = function() {
+                    this.age++;
+                };
+
+            br
+
+            p.
+                You can also assign the prototype to an object containing functions
+                if you're creating a new class and not overriding any parent methods:
+
+            br
+
+            .editor( data-language="javascript" ).
+                Person.prototype = {
+                    toString: function() {
+                        ...
+                    },
+                    ageUp: function() {
+                        ...
+                    }
+                };
+
+            br
+
+            p.
+                Keep in mind that doing so will erase all of the inherited propeties from 
+                the <code>Function</code> and <code>Object</code> class.
+
+            h6
+                strong Encapsulation
+
+            p.
+                Now that we've gone over classes, it's time to discuss another important concept in OOP:
+                encapsulation. Going back to the <code>Person</code> class, notice how we assigned 
+                <code>name</code> and <code>age</code> by:
+
+            br  
+
+            .editor( data-language="javascript" ).
+                this.name = name;
+                this.age  = age;
+
+            br
+
+            p.
+                At first glance, this seems fine. But it actually isn't. In JavaScript, all properties
+                are modifiable. By assigning <code>name</code> and <code>age</code> to the prototype, we essentially make
+                the two fields public and readable and writable. As a further example, consider
+                a class representing an http authentication header:
+
+            br
+
+            .editor( data-language="javascript" ).
+                function HTTPAuthHeader( name, password ) {
+                    this.name     = name;
+                    this.password = password;
+                }
+
+                HTTPAuthHeader.prototype.constructHeader = function() {
+                    ...
+                };
+
+            br
+
+            p.
+                This is a problem because the password would be openly readable and modifiable
+                which breaks encapsulation. As a remedy, rather than assigning the varibles directly to 
+                the prototype, we can use the method <code>Object.defineProperty()</code> to define
+                getters and/or setters for a certain field:
+
+            .editor( data-language="javascript" ).
+                function Person( name, age ) {
+
+                    Object.defineProperty( this, 'name', 
+                                           {
+                                               get: function() {
+                                                   return name;
+                                               },
+
+                                               set: function( newName ) {
+                                                   name = newName;
+                                               }
+                                           } );
+
+                    Object.defineProperty( this, 'age',
+                                           {
+                                               get: function() {
+                                                   return age;
+                                               },
+                                               set: function( newAge ) {
+                                                   if( newAge &lt; 0 ) {
+                                                       throw 'Age less than 0'
+                                                   } else {
+                                                       age = newAge;
+                                                   }
+                                               }
+                                           } );
+                }
+
+            br
+
+            p.
+                The properties are then simply accessed and mutated using the regular dot notation, such
+                as <code>jeremy.name = 'Jeremy Asuncion'</code>.
+                For reference, documentation on <code>Object.defineProperty()</code> can be read 
+                <a href="http://goo.gl/L28nq">here.</a> You might be wondering where the variables
+                <code>name</code> and <code>age</code> come from. Well, they're the arguments from the constructor.
+                When we defined the getter and setter functions, we were essentially defining <em>closures</em>
+                that had access to the constructor arguments. Oddly enough, the arguments persist throughout
+                the lifetime of the object which proves to be an advantage becase we don't have to define 
+                new variables.  
+
+            br
+
+            p.
+                As a quick intro, closures are functions that have access to their outer scope. Consider the 
+                following code:
+
+            br
+
+            .editor( data-language="javascript" ).
+                function cool() {
+                    var str = 'Derp';
+                    function yo() {
+                        alert( str );
+                    }
+                    yo();
+                }
+
+                cool();
+
+            br
+
+            p.
+                In most programming languages, scopes are pretty strict when it comes to variable access.
+                Closures allow functions access to variables outside of its scope within its parent scope,
+                which help encapsulate data within a class.
+
+            h6
+                strong Abstraction and Inheritance
+
+            p.
+                Abstraction in OOP is where we take a vague and general class and create subclasses of that
+                class that implement it. Essentially we define an abstract concept that is later defined by
+                implementations. In JavaScript, abstraction, or more specifically, inheritance, is a confusing
+                topic for many new developers. 
+
+            br
+
+            p.
+                Typically, in a language that supports classes, we can abstract clases by defining interfaces
+                and implementing them. In Java, we can have abstract a <code>Shape</code> class and implement
+                it using <code>Rectangle</code>
+
+            .editor( data-language="java" ).
+                public interface Shape {
+                    public void draw( Canvas canvas );
+                    public double area();
+                    ...
+                }
+
+                public class Rectangle implements Shape {
+                    @Override
+                    public void draw( Canvas canvas ) {
+                        ... // Draws rectangle on canvas
+                    }
+
+                    @Override
+                    public double area() {
+                        ... // Returns the area, width * height
+                    }
+                }
+
+            br
+
+            p.
+                And that's pretty simple. Accomplishing the same concept in JavaScript, is not as simple.
+                First, we need to go over restrictions. JavaScript does <em>not</em> have interfaces nor
+                abstract classes. But that won't stop us. We can simply create a <code>Shape</code> class
+                with empty methods <code>Shape.prototype.draw()</code> and <code>Shape.prototype.area()</code>.
+                But the question is: how do we inherit the methods from Shape and override them?
+
+            br
+
+            p.
+                If you were thinking of prototype, then you're correct! If not, then let me explain. Earlier, I
+                described that prototype was an object that all objects inhert from the <code>Object</code>
+                class. So it's definitely true that JavaScrip supports inheritance. But the confusing part
+                for many developers is how to inhert the members of another class. Similar to defining classes,
+                there are several ways for inheriting the members of another class; however, I will only
+                show one way because I feel that it's what works best. Feel free to search up different ways.
+
+            br
+
+            p.
+                As an example, let's use the <code>Shape</code> and <code>Rectangle</code> classes again.
+                <code>Shape</code> has the two methods <code>draw()</code> and <code>area()</code>
+                implemented as stubs(Because we don't have interfaces or abstract classes). Rectangle will
+                inhert the members and override them.
+
+            .editor( data-language="javascript" ).
+                // An "interface" or "abstract class" 
+                // representing a drawable shape
+                function Shape() {
+                }
+
+                Shape.prototype = {
+                    draw: function() {},
+                    area: function() {}
+                };
+
+                function Rectangle( width, height ) {
+                    // We'll be skipping Object.defineProperty()
+                    // to simplify the code
+                    this.width  = width;
+                    this.height = height;
+                }
+
+                // Wat
+                Rectangle.prototype = Object.create( Shape.prototype );
+                // Wat 2
+                Rectangle.prototype.constructor = Rectangle;
+
+                // Implement the draw and area methods
+                Rectangle.prototype.draw = function() {
+                    ...
+                };
+
+                Rectangle.prototype.area = function() {
+                    ...
+                };
+
+            br
+
+            p.
+                We first defined the Shape class with empty stub methods to define it as a 
+                pseudo-interface/abstract class. The confusing part is the inheritance taking place
+                in lines 19 and 21. Analyzing line 19, we see we're makign a call to <code>Object.create</code>
+                and passing in the prototype of <code>Shape</code>. Logically, this makes sense. When we 
+                inherit the fields and methods of another object, we copy all of the public properties
+                from that object. By creating a duplicate of that object, we reassign the prototype of
+                <code>Rectangle</code> with a copy of the prototype of <code>Shape</code>. But when I say
+                that we copy all of the public properties, I mean <em>all</em> of them; we also
+                copy the constructor of the <code>Shape</code> prototype which overrides the original constructor
+                of <code>Rectangle</code>. To fix this, in line 21, we simply reassign the <code>constructor</code>
+                property back to the <code>Rectangle</code> function. Afterwards, we implement the methods
+                <code>draw()</code> and <code>area()</code> by reassigning them to new functions.
+
+            br
+
+            p.
+                Using interfaces is cool and all, but you might be wondering about how we would inhert from
+                a concrete class rather than an abstract one. For instance, in Android programming, it's 
+                commonplace(Well actually <em>required</em>) for a progrmmer to override the lifecylce methods
+                and, such as <code>onCreate()</code>. 
+
+            br
+
+            .editor( data-language="java" ).
+                @override
+                protected void onCreate( Bundle savedInstanceState ) {
+                    super.onCreate( savedInstanceState );
+                    setContentView( ... );
+                    ...
+                }
+
+            br
+
+            p.
+                The point I'm making is that sometimes we need to access the methos and fields of the parent
+                classes. But how the heck are we going to do that in JavaScript? The solution, once again, is 
+                the prototype.
+
+            br
+
+            p.
+                As an example, I'll write a very striped down <code>Activity</code> class similar to the one
+                used in Android and extend it, overriding the <code>onCreate()</code> method.
+
+            br
+
+            .editor( data-language="javascript" ).
+                function Activity() {
+                }
+
+                Activity.prototype = {
+                    onCreate: function( savedInstanceState ) {
+                        console.log( 'onCreate in Activity' );
+                    }
+                };
+
+                function MainActivity() {
+                }
+
+                MainActivity.prototype = Object.create( Activity.prototype );
+                MainActivity.prototype.constructor = MainActivity;
+
+                MainActivity.prototype.onCreate = function( savedInstanceState ) {
+                    Activity.prototype.onCreate.call( this, savedInstanceState );
+                    console.log( 'onCreate in MainActivity' );
+                }
+
+                var main = new MainActivity();
+                main.onCreate();
+                // Prints out:
+                // onCreate in Activity
+                // onCreate in MainActivity
+
+            br
+
+            p.
+                Notice how the call we make on line 17. Instead of calling <code>onCreate</code> directly,
+                we make a call to the <code>Function</code> method <code>Function.prototpe.call()</code>. This method
+                has the following signature: <code>Function.prototype.call( thisArg[, arg1[, arg2[, ...]]] )</code>.
+                <code>thisArg</code> is a reference to the calling object, and <code>arg1, arg2, ...</code>
+                are will be the args passed to the function. In line 17, we pass in <code>this</code>
+                and <code>savedInstanceState</code> into the function call. By passing in <code>this</code>,
+                we call the <code>onCreate()</code> method in the context of the <code>onCreate</code> method
+                in our <code>MainActivity</code> class.
+
+            br
+
+            p.
+                Now that we've handled the concept of overriding methods, we need to go over constructor
+                chaining. In a lot of class hierachies, sometimes the parent class has fields that are
+                relevant to the class that will also be relevant to subclasses. For instance, 
+                say we create a <code>Person</code> class that has a <code>name</code> and
+                <code>age</code> field, and we subclass the <code>Person</code> class with 
+                the <code>Programmer</code> class that provides a new method, <code>writeProgram()</code>.
+                Essentially, we wish to construct the parent object when constructing the sub-object.
+                It's actually quite simple: we have to make a call to the parent function's 
+                <code>Function.prototpe.call()</code> method.
+
+            br
+
+            .editor( data-language="javascript" ).
+                function Person( name, age ) {
+                    // Again we skip defining properties to save space
+                    this.name = name;
+                    this.age  = age;
+                }
+
+                Person.prototype = {
+                    // Define Person methods
+                    ...
+                };
+
+                function Programmer( name, age, languages ) {
+                    // Construct parent object using name and age args
+                    Person.call( this, name, age );
+                    this.languages = languages;
+                }
+
+                Programmer.prototype = Object.create( Person.prototype );
+                Programmer.prototype.constructor = Programmer;
+
+                Programmer.prototype.writeProgram = function() {
+                    ...
+                };
+
+            br
+
+            h6
+                strong Polymorphism
+
+            p.
+                Compared to the last section, this will be a very short one. Polymorphism is an OOP concept where
+                we use an interface or abstract class in place of a concrete class. Essentially this 
+                interface or abstract class can take the form of any of its implementing classes or subclasses.
+                As a concrete example, say we have a function called <code>makeAnimalSound()</code> that takes 
+                an <code>Animal</code> interface which contains the method <code>makeSound()</code>. We wish
+                to implement the <code>Animal</code> interface with the <code>Dog</code> and <code>Cat</code> classes.
+                In C++, we can do it like so:
+
+            br
+
+            .editor( data-language="c_cpp" ).
+                #include &lt;iostream&gt;
+
+                using namespace std;
+
+                class Animal {
+                    public:
+                        virtual void makeSound() = 0;
+                };
+
+                class Dog : public Animal {
+                    public:
+                        virtual void makeSound() {
+                            cout &lt;&lt; "Bark!" &lt;&lt; endl;
+                        }
+                };
+
+                class Cat : public Animal {
+                    public:
+                        virtual void makeSound() {
+                            cout &lt;&lt; "Meow!" &lt;&lt; endl;
+                        }
+                };
+
+                void makeAnimalSound( Animal* animal ) {
+                    animal-&gt;makeSound();
+                }
+
+                int main() {
+                    Animal* animal = new Dog;
+                    makeAnimalSound( animal ); // Prints out "Bark!"
+                    delete animal;
+                
+                    animal = new Cat;
+                    makeAnimalSound( animal ); // Prints out "Meow!"
+                    delete animal;
+                }
+
+            br
+
+            p.
+                Thankfull, polymorphism in JavaScript is way easier to do than in C++. Being a dynamic programming
+                language, we can simply call <code>makeSound()</code> pretty much on any object without 
+                a compiler to complain.
+
+            br
+
+            .editor( data-language="javascript" ).
+                function Animal() {
+                }
+
+                Animal.prototpe = {
+                    makeSound: function() {}
+                };
+
+                function Dog() {
+                }
+
+                Dog.prototype = Object.create( Animal.prototype );
+                Dog.prototype.constructor = Dog;
+
+                Dog.prototype.makeSound = function() {
+                    console.log( 'Bark!' );
+                };
+
+                function Cat() {
+                }
+
+                Cat.prototype = Object.create( Cat.prototype );
+                Cat.prototype.constructor = Cat;
+
+                Cat.prototype.makeSound = function() {
+                    console.log( 'Mewo!' );
+                }
+
+                function makeAnimalSound( animal ) {
+                    animal.makeSound();
+                }
+
+                var animal = new Dog();
+                makeAnimalSound( animal ); // Prints out Bark!
+                animal = new Cat();
+                makeAnimalSound( animal ); // Prints out Cat!
+
+            h6
+                strong Conclusions
+
+            p.
+                I know this was a pretty long post, but I hope the information here will be beneficiail to you as a 
+                JavaScript developer. Object Oriented Programming is an wonderful paradigm that makes programming
+                awesome. And hopefully you'll be able to write OOP based apps using JavaScript.
+
+
+        include ../../_includes/comments
+        include ../../_includes/editor-support
