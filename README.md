@@ -53,6 +53,13 @@ Contributing
 ------------
 If you find my code garbage or if you want to add a feature, then feel free to contribute.
 
+Roadmap
+------
+- [x] Make a cool roadmap like all the cool projects on Github
+- [ ] Allow users to join multiple rooms
+- [ ] Improve user interface
+- [ ] Improve server performance
+
 Excelcior
 --------
 ![There was an image here. It is no longer here](http://goo.gl/Tu3BUa)
