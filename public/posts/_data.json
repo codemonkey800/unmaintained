@@ -1,5 +1,16 @@
 [
     {
+        "date": "12-7-2014",
+        "title": "Sudden Realization",
+        "desc": "Reading through my old code made me realize something",
+        "tags": {
+            "#programming": "/filter/programming/1",
+            "#personal": "/filter/personal/1"
+        },
+        "banner": "http://goo.gl/fZYKBs",
+        "url": "/posts/12-7-2014-sudden-realization/sudden-realization"
+    },
+    {
         "date": "11-16-2014",
         "title": "Object Oriented JavaScript",
         "desc": "JavaScript is a really quirky language. It doesn't support the notion of classes like traditional OOP languages. But that doesn't stop it from being OOP.",

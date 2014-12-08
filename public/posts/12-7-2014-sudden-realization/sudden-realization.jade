@@ -1,0 +1,141 @@
+extends ../../_layouts/default
+
+block title
+    title Sudden Realization
+
+block content
+    .container
+        img.img-responsive.center-block( src="http://goo.gl/fZYKBs" )
+        h3 Sudden Realization
+        h4 12-7-2014
+        h6
+            a.hashtag( href="/filter/programming/1.html" ) #programming 
+            a.hashtag( href="/filter/personal/1.html" ) #personal 
+
+
+        .well.well-lg
+            h6
+                em Warning, this post contains some bad words (Well actually just two or three bad words).
+
+            h6
+                strong Introduction
+
+            p.
+                When I first wrote this blog, I was sort of in crunch mode. There was a career fair
+                at my school that was going to happen in 2 weeks, and I really needed to make a blog
+                to show companies that I can at least code myself a website. I only ever had time to code 
+                on the weekends, so I basically only had 6 days to design and develop my website.
+                To add on, I also had no idea how to write a blog. 
+
+            p.
+                A month or two later, and I've finally reviewed the code I wrote. It made me realize a lot
+                of things about myself as a programmer.
+
+            br
+
+            h6
+                strong I'm a really shitty programmer
+
+            p.
+                It's true. I looked over my code and it was shitty. So shitty that I was considering 
+                rewritting my entire blog from scratch. I even planned it for a while. I would
+                develop my own static site generator that built templated Jade files
+                and convert them into HTML files. I was also planning on using 
+                <a href="https://www.polymer-project.org/"></a> because 
+                Material Design is all the rage right now.
+
+            br
+
+            p.
+                In my code, I wrote so many little hacks in several areas that it was ridiculous.
+                I wrote the code with little modularity and thus preventing myself from making
+                changes to the user-interface. As an example, consider the <code>HashTag</code>
+                class I wrote to support post hashtag filtering:
+
+            br
+
+            .editor( data-language="javascript" ).
+                function HashTags( tags ) {
+                    if( tags instanceof Array ) {
+                        this.tags = tags;
+                    } else if( typeof tags === 'string' ) {
+                        this.tags = tags.split( ' ' );
+                    } else {
+                        throw {
+                          error: 'Invalid Tags Object',
+                          message: tags + ' is not a valid tabs object. Use a String or Array'
+                        };
+                    }
+                
+                    for( var i = 0; i &lt; this.tags.length; i++ ) {
+                        if( this.tags[ i ] === '' ) {
+                            this.tags.splice( i, 1 );
+                        }
+                    }
+                
+                    this.constructHashTags = function() {
+                        if( this.tags.length === 0 ) {
+                            return null;
+                        }
+                        var hashtags = {};
+                        for( var i = 0; i &lt; this.tags.length; i++ ) {
+                            hashtags[ this.tags[ i ] ] = '/filter/' + this.tags[ i ].slice( 1, this.tags[ i ].length ) + '/1';  
+                        }
+                        return hashtags;
+                    };
+                
+                    this.toHtmlString = function() {
+                        var htmlStr = '';
+                        var hashtags = this.constructHashTags();
+                        if( hashtags === null ) {
+                            return '';
+                        }
+                        for( var hashtag in hashtags ) {
+                            htmlStr += util.format( '            a.hashtag( href="%s" ) %s \n',
+                                                    '/filter/' + hashtag.slice( 1, hashtag.length ) + '/1.html',
+                                                    hashtag );
+                        }
+                        return htmlStr;
+                    };
+                }
+
+            br 
+
+            p.
+                Yeah. As programmers, we feel so conflicted on solving the problem that sometimes
+                we forget to solve it for all cases rather than for a specific case. From a 
+                software engieering persepctive, this code would never suffice. It only works for a
+                very specific instance, which is my blog. Reusing this code would be impossible,
+                and I should feel bad for being such a shitty programmer.   
+
+            br
+
+            h6
+                strong But It's Okay
+
+            p.
+                While I may not be the best programmer in the world, I am still learning. I'm self-taught,
+                and am still learning good software design principles and concepts. But that's not necessarily 
+                the root of the problem. Rather, it's that 
+                <em><a href="http://stilldrinking.org/programming-sucks">all code sucks</a></em>.
+
+            br
+
+            h6
+                strong Conclusion
+
+            br
+
+            p.
+                I hope this post doesn't denounce me as a developer. I'm merely pointing out my flaws
+                as a software engineer in the making. Also I felt being existential today and felt
+                this post was necessary to vent my feelings about myself as a developer.
+
+            br
+
+            p.
+                Oh and one more thing. I was serious about rewriting the source of my website. But this time,
+                I'll try to make it better.
+
+        include ../../_includes/comments
+        include ../../_includes/editor-support
