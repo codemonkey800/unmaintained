@@ -1,3 +1,5 @@
+# This is my old blog! Check out the source for my new blog [code-sucks](https://github.com/codemonkey800/code-sucks)
+
 Jerms' Blog
 ====
 The source code for Jeremy's awesome blog!
