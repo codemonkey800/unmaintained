@@ -1,0 +1,52 @@
+@import 'base';
+
+.post-content {
+
+    a {
+        text-transform: none !important;
+        margin: 0 !important;
+        color: map-get( $purple, 'base' ) !important;
+    }
+
+    a:hover {
+        color: map-get( $red, 'base' ) !important;
+    }
+
+    .tags a {
+        color: map-get( $grey, 'darken-4' ) !important;
+        margin-right: 10px;
+    }
+
+    .tags a:hover {
+        color: map-get( $red, 'base' ) !important;
+    }
+
+    #share {
+        .share-buttons{
+        	list-style: none;
+        }
+
+        .share-buttons li{
+        	display: inline;
+        }
+    }
+
+    .copyleft {
+        display: inline-block;
+    }
+
+    code {
+        color: map-get( $green, 'darken-2' );
+        padding: 5px;
+    }
+
+    img, .CodeMirror {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .edited-date {
+        margin-left: 10px;
+    }
+
+}

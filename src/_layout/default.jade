@@ -1,0 +1,21 @@
+include ../_include/util
+
+doctype html
+
+block pageData
+
+html( lang="en" )
+    include ../_include/head
+    
+    body.grey.lighten-4
+
+        include ../_include/nav
+        main
+            block content
+        include ../_include/footer
+
+        include ../_include/default-scripts
+        
+        include ../_include/analytics.html
+
+        block scripts

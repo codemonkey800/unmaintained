@@ -1,0 +1,56 @@
+extends _layout/post
+
+block pageData
+    - var pageData = data[ 1 ];
+    
+block postContent
+    :markdown
+        #### What is Banger!?
+        
+        No, I'm not yelling a question at you. Banger! is really a thing. An awesome thing that I have
+        the privilege to be a part of. For the uninitiated, Banger! is a skateboarding oriented mobile applicaiton
+        packing both great functionality and design. Right now, it's a small company (Literally, only 4 people),
+        but we're hoping to get big. 
+        
+        #### What can it do?
+        
+        At the time of this writing, Banger! isn't even in beta. It's still being written. All of the UI mockups
+        have been created so far, and all that remains is frontend and backend implementation. 
+        
+        Functionality wise, it can do some cool things. It has skate dice, games of skate, and tournament brackets.
+        It also keeps in check with all of your stats. 
+        
+        #### Who's the team behind the app
+        
+        There are four awesome people (Including myself!) working on this app: 
+        
+        1. ~ Our CEO, [Jason Safaiyeh](http://www.linkedin.com/in/jasonsafaiyeh)
+        2. ~ Our CDO, [Keshav Narula](http://www.linkedin.com/in/narulakeshav)
+        3. ~ Our media guy, [Brian Aguilar](http://goo.gl/ml8wpJ)
+        4. ~ And me, the CTO, [Jeremy Asuncion](https://www.linkedin.com/in/jeremyasuncion)
+        
+        #### What's your role in the app
+        
+        I write code and shit. I also make technical choices and work on both the backend and frontend
+        of the app. I also set up the Git repo that hosts our app and I implemented the navigation drawer
+        based off of our CDO's mockups. I'm essentially that guy who knows his programming and technical stuff.
+        
+        #### When can we expect a release
+        
+        We're releasing the app on March 23, but we're already taking Beta testers! 
+        
+        *&#42;Obligatory Banger Social Media Links*
+        
+        [Facebook](https://www.facebook.com/pages/Banger/1991183874355888?ref=br_tf)
+        
+        [Twitter](https://twitter.com/banger_app)
+        
+        [YouTube](http://goo.gl/0zrHmr)
+        
+        [Instagram](http://goo.gl/dFqFJr)
+    
+
+append scripts
+    script
+        :coffee
+            $( '#nav-mobile > li:nth-child(3)' ).addClass 'active'

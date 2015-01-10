@@ -1,0 +1,14 @@
+extends ../../../../../../_layout/post
+
+block pageData
+    - var pageData = posts.data[ %s ]
+
+//- Add styles here
+prepend styles
+
+block postContent
+    :markdown
+        //- Your content here
+
+//- Add scripts here
+prepend scripts

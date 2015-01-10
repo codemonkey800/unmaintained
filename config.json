@@ -1,0 +1,14 @@
+{
+    "lint": {
+        "arrow_spacing": true,
+        "camel_case_classes": true,
+        "ensure_comprehensions": true,
+        "indentation": false,
+        "no_empty_functions": true,
+        "no_empty_param_list": true,
+        "no_implicit_braces": true,
+        "no_interpolation_in_single_quotes": true
+    },
+
+    "port": 8080
+}

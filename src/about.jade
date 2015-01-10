@@ -1,0 +1,74 @@
+extends _layout/post
+
+block pageData
+    - var pageData = postData = data[ 2 ];
+    
+    
+block postContent
+    :markdown
+        #### About Me
+        
+        My name is Jeremy Asuncion. I'm a programmer and a student. I currently go to San Jose State for 
+        Computer Science. I'm also a freshmen, and a cool one I might add.
+        
+        I've been programming since high school. I love working on projects, and I have *a lot*
+        of them. Some of them useful, some are not (Okay, *most* of my projects are useless). 
+        Sometimes I write shitty code, and that's okay. But there are also times where I write good code,
+        and that makes my day (Unintentional rhyme). For the most part, I love to code. But like most programmers,
+        I have a love-hate relationship for it. I love how through code, we can accomplish amazing things. 
+        It can be something as amazing as an [driverless car](http://goo.gl/UItJw), to
+        something as silly as [FuckIt.js](https://github.com/mattdiamond/fuckitjs). The sky is 
+        the limit. 
+    
+    .equation.
+        \[ \lim_{x \to \infty} \text{Sky}\left( x \right) \]
+    
+    :markdown
+        Oh yeah. I also like maths. So expect some maths related posts every now and then.
+    
+        #### About code-sucks
+        
+        I made code-sucks because my original blog had code that sucks, hence the name.
+        I wanted to improve it by making it more modular and maintainable. Also, it seemed like
+        an appropriate name in recognition of all the wonderful articles that criticize 
+        code ([Programming Sucks](http://goo.gl/0qSctm), 
+        [The Best Code is No Code At All](http://goo.gl/LAi4pv)). Despite
+        the improvements I've made and the effort I've put into making this site's codebase better than
+        its predecessor, I *still* feel my actions have been in vain.
+        
+        
+        Really. A lot of the code is *still* pretty damn shitty. *But...* It's less shitty than my
+        last site. It also looks nice too! 
+    
+        Now, you're here to my website for a reason. You're either a:
+        1. 1) Recruiter wanting to hire me. In that case, hello! :)
+        2. 2) A programmer who thinks I'm cool and wants to learn things from me
+        3. 3) One of my friends
+        4. 4) A cat
+        
+        If you're any of those. Welcome aboard. If not, then welcome aboard. This is my blog. code-sucks.
+        I like to learn things about code and maths. Even better, I like to teach people things I learn because
+        not only does another person get to learn, but also because I get to build a stronger foundation
+        in my knowledge of the topic. I'm quite informal on my blog, and I hope that doesn't scare you away,
+        especially if you're one of the first in the list above. 
+        
+        If you're willing to tag along, be ready to expect *a lot* of programming, computer science, and 
+        maths related posts. Every now and then I may post something personal or a rant or something. 
+        Code sucks, and I'm here to endure with you.
+        
+        *&#42;Obligatory Contact Information*
+        
+        Email: [jeremyasuncion808@gmail.com](mailto:jeremyasuncion808@gmail.com)
+        
+        School Email: [jeremy.asuncion@sjsu.edu](mailto:jeremy.asuncion@sjsu.edu)
+        
+        LinkedIn: [https://www.linkedin.com/in/jeremyasuncion](https://www.linkedin.com/in/jeremyasuncion)
+        
+        You can also see my shitty open source projects here:
+        
+        GitHub: [https://github.com/codemonkey800/](https://github.com/codemonkey800/)
+
+append scripts
+    script
+        :coffee
+            $( '#nav-mobile > li:nth-child(4)' ).addClass 'active'

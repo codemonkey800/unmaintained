@@ -1,0 +1,15 @@
+header
+    nav.grey.darken-3#top-nav
+        .nav-wrapper
+            a.brand-logo.white-text
+                = pageData.pageTitle
+            a.button-collapse( data-activates="nav-mobile" )
+                i.mdi-navigation-menu
+    ul.side-nav.fixed#nav-mobile
+        li.drawer-nav
+            nav.grey.darken-3
+                .nav-wrapper
+                    a.brand-logo.code-sucks code-sucks$: |
+        each page in data
+            li.waves-effect.side-nav-item( data-url=page.url )
+                = page.pageTitle

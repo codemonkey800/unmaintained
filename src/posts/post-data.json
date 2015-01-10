@@ -1,0 +1,19 @@
+[
+    {
+        "title": "JavaScript Sucks",
+        "date": {
+            "minute": 31,
+            "hour": 18,
+            "day": 9,
+            "month": 0,
+            "year": 2015
+        },
+        "url": "/posts/2015/0/9/18/31/javascript-sucks.html",
+        "banner": "http://goo.gl/5k9sVA",
+        "tags": [
+            "#programming",
+            "#javascript"
+        ],
+        "summary": "To start off my new blog, code-sucks, let's start off with some code that sucks! JavaScript is a quirky languaget that has a lot suck-ish aspects. Here I'll explore some of the bad parts of JavaScript."
+    }
+]
