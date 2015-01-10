@@ -1,6 +1,6 @@
 code-sucks
 =========
-My awesome blog about code, computer science, maths, and othr cool stuff.
+My awesome blog about code, computer science, maths, and other cool stuff.
 
 This be the source code of said blog. It uses a lot of gulp-plugins, including my own plugin, [gulp-site-config](https://www.npmjs.com/package/gulp-site-config). 
 
