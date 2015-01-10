@@ -36,14 +36,14 @@ block postContent
         ```
         
         That's right. According to JavaScript, adding to arrays results in an empty string. After doing some tests,
-        apparently adding *any* array results in a empty string:
+        apparently adding *any* array results in a string:
         
         ```js
         > [ 1, 2, 3, 4, 5 ] + [ 6, 7, 8, 9, 10 ]
         "1,2,3,4,56,7,8,9,10"
         ```
         
-        So apparently the plus operator converts its operands into `String`'s and concatenates them into a single string.
+        The plus operator casts its `Array` operands into `String`'s and concatenates them into a single string.
         **W. T. F**. 
         
         Now if we add two empty objects together, we should get a `TypeError`:
