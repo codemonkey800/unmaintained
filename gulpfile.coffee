@@ -10,8 +10,15 @@ sass       = require 'gulp-sass'
 
 del     = require 'del'
 express = require 'express'
+path    = require 'path'
 
 app = express()
+app.use ( req, res, next ) ->
+    ext = path.extname req.url
+    if ext is ''
+        req.url += '.html'
+    next()
+    return
 app.use( express.static "#{__dirname}/site" )
 
 projectConfig = require './config'

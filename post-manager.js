@@ -7,8 +7,8 @@ var fs       = require( 'fs.extra' ),
     postData = require( './src/posts/post-data.json' ),
     archive  = require( './src/posts/post-archive.json' );
 
-// Format goes like this: /year/month/day/hour/minute/title.html
-const URL_FORMAT = '/posts/%s/%s/%s/%s/%s/%s.html'
+// Format goes like this: /year/month/day/hour/minute/title
+const URL_FORMAT = '/posts/%s/%s/%s/%s/%s/%s'
 
 function getPostTemplate() {
     return fs.readFileSync( './src/_layout/post-template.jade' ).toString();

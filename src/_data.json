@@ -2,14 +2,14 @@
     {
         "title": "code-sucks",
         "pageTitle": "Home",
-        "url": "/index.html",
+        "url": "/index",
         "postsPerPage": 2
     },
     {
         "title": "code-sucks · Banger!",
         "pageTitle": "Banger!",
         "postTitle": "Banger!",
-        "url": "/banger.html",
+        "url": "/banger",
         "banner": "/images/banger.png",
         "date": {
             "minute": 37,
@@ -23,7 +23,7 @@
         "title": "code-sucks · About",
         "pageTitle": "About",
         "postTitle": "Hello, World!",
-        "url": "/about.html",
+        "url": "/about",
         "banner": "http://goo.gl/vO09F9",
         "date": {
             "minute": 37,
@@ -35,6 +35,6 @@
     },
     {
         "title": "code-sucks · 404",
-        "url": "/404.html"
+        "url": "/404"
     }
 ]

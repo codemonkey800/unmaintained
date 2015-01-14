@@ -76,7 +76,7 @@ codesucks.makePost = ( post ) ->
 
     $cardTags = $ '<small class="tags">'
     for tag in post.tags
-        $tag = $ "<a href='/index.html#{tag}'>#{tag}</a>"
+        $tag = $ "<a href='/index#{tag}'>#{tag}</a>"
         $tag.click ->
             document.location.href = $tag.attr( 'href' )
             document.location.reload()
