@@ -93,9 +93,11 @@ codesucks.makePost = ( post ) ->
 
     $openButton = $ "<a class='waves-effect waves-light btn-large'>Open</a>"
     $shareButton = $ "<a class='waves-effect waves-light btn-large'>Share</a>"
+    $commentButton = $ "<a class='waves-effect waves-light btn-large' href='#{post.url}#disqus_thread'>Add a Comment</a>"
 
     $cardReveal.append $openButton
     $cardReveal.append $shareButton
+    $cardReveal.append $commentButton
 
     $openButton.click ->
         codesucks.util.openLink post.url
