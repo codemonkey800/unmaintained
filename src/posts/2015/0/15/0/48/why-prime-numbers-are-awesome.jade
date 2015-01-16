@@ -86,7 +86,7 @@ block postContent
             
             The AKS test for primacy is a bit more complicated. So complicated I won't provide a formal proof for it
             (You can read the paper [here](http://www.cse.iitk.ac.in/users/manindra/algebra/primality_v6.pdf/)). 
-            The test is simple in nature. Consider a binomial 
+            Even though it's more complicated than the naive method, it's simple to explain. Consider a binomial 
             \\[ \left( x + a \right)^n \\]
             for some constant \\( a \in \mathbb{Z} \\). We have the following modulo congruence:
             \\[ \left( x + a \right)^n \equiv x^n + a \bmod{n}. \\] 
@@ -117,11 +117,10 @@ block postContent
         :markdown
             #### Generating Primes
             On the other side of the spectrum, we can also generate primes. Generating primes are typically done
-            using prime number sieves. The sieve we'll be discussing is probably the simplest to implement and is known
-            as the [Sieve of Eratosthenes](http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes). The algorithm is 
-            actually quite simple:
+            using prime number sieves. The [Sieve of Eratosthenes](http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes)
+            is the easiest to implement. The algorithm is goes as follows:
             
-            - 1) Initalize a list of numbers \\( 2 \leq i \leq n \\)
+            - 1) Initalize a list of numbers \\( \left\\{ i : 2 \leq i \leq n \right\\} \\)
             - 2) Let \\( p = 2 \\), the first prime
             - 3) Mark each multiple of \\( p \\) less than \\( n \\)
             - 4) Let \\( p \\) be the first number not marked by the last iteration. This new number will be a prime number. Repeat steps 2-4
