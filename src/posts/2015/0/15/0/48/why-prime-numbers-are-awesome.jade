@@ -1,0 +1,282 @@
+extends ../../../../../../_layout/post
+
+block pageData
+    - var pageData = posts.data[ 1 ]
+
+//- Add styles here
+prepend styles
+
+block postContent
+    div
+        :markdown
+            #### Introduction
+            We all know from elementary school that prime numbers are special from their basic property that
+            they're only divisible by themselves and \\(1\\). More formally, a prime number \\(p\\) is prime
+            iff \\( p \bmod{n} = 0 \\) for some \\( n = 1 \vee n = p \\). Because of that shitty little fact,
+            prime numbers have been extensively studied in both mathematics and computer science. 
+            
+            #### Why It Matters In Mathematics
+            > Prime numbers are the basic building blocks of mathematics.
+            > - ~ Charlie Eppes from Numb3rs
+            
+            Before we go into the fun involving prime numbers and computer science, we need to discuss its importance
+            in mathematics (Especially since the fun in computer science *requires* the mathematical theory).
+            
+            To begin, we need to recognize that a lot of branches of mathematics actually don't give a shit about
+            prime numbers. To most branches, it's simply just another number. However, in the branch of Number Theory,
+            numbers, especially primes, are the core focus.
+            
+            #### There Are Infinite Primes I Tell Ya!
+            
+            In mathematics, there are two core numbers: composites and primes. Primes are, well, primes, and composites
+            are numbers that are *composed of primes*. The interesting property of primacy has raised a whole lot of 
+            questions and proofs in the mathematical community. For instance, an interesting question is whether the
+            set of prime numbers is infinite, or \\( \left|\mathbb{P}\right| = \aleph_0 \\)( \\( \aleph_0 \\) 
+            means *infinite set* ). The proof is simple:
+            
+            > **Theorem** *There are infinite prime numbers*
+            >
+            > **Proof** Assume that the set of prime numbers are finite and are defined to be the
+            > set \\( \mathbb{P} = \left\\{ p : p \text{ is prime} \\right\\} \\). Let 
+            > \\( p\_n \\) be the \\( n \\)-th prime number in \\( \mathbb{P} \\). Let the number
+            > \\[ \displaystyle P = \prod\_{i=1}^n p\_i + 1 = p\_1 p\_2 p\_3 \cdots p\_n + 1. \\] 
+            > Obviously, \\( P \not\in \mathbb{P} \\), so it's composite. It follows that for
+            > any \\( p \in \mathbb{P} \\), \\( P \not\mid p \\) since \\( P \bmod{p} = 1 \\),
+            > contradicting the assumption that the set of primes is finite.
+            
+            Another interesting tidbit of mathematical history is this proof by Euclid was one of the first instances
+            of using proofs by contradiction. Here's a nice [Numberphile](https://www.youtube.com/user/numberphile)
+            video for the proof above:
+        
+    
+    .video-container
+        iframe( width="560", height="315", src="//www.youtube.com/embed/ctC33JAV4FI", frameborder="0", allowfullscreen )
+    
+    div
+        :markdown
+            After it was established there were infinite primes, mathematicians embarked on a more ambitious journey:
+            finding prime numbers.
+            
+            #### The Search For Primes
+            
+            The search for prime numbers is a search that has been going on for hundreds of years. In the era of 
+            computers, the search has been sped up immensely (As we'll see in the next section). To see why the search
+            is important, take a look at this TED talk:
+            
+    .video-container
+        iframe(width='560', height='315', src='//www.youtube.com/embed/B4xOFsygwr4', frameborder='0', allowfullscreen )
+        
+    div
+        :markdown
+            The search for prime numbers consists primarily on two key features: tests for primacy and prime number 
+            generators. While I won't go over every test for primacy nor prime generator, I will go over tests and
+            generators that are significant and easy to understand.
+            
+            #### Tests For Primacy
+            Testing for primacy is actually quite easy (Well at least for computers. There are two main tests I'd like to go
+            over: [The naive method](http://en.wikipedia.org/wiki/Primality_test#Naive_methods) 
+            and the [AKS test](http://en.wikipedia.org/wiki/AKS_primality_test).
+            
+            The Naive method is actually quite simple. So simple that I won't provide a formal proof for it. Given a number
+            \\( n \\), we test for primacy by iterating the first numbers \\( i \leq \sqrt{n} \\). You may be wondering
+            why we only check up to \\( \sqrt{n} \\). The reasoning is that assuming \\( n \\) wasn't prime, it'd have
+            two factors \\( a \\) and \\( b \\). If \\( a > \sqrt{n} \\) or \\( b > \sqrt{n} \\), we'd have a product 
+            \\( a \cdot b > n \\). This proves to be advantageous because we reduce the time complexity from
+            \\( O\left( n \right) \\) to \\( O\left( \sqrt{n} \right) \\).
+            
+            The AKS test for primacy is a bit more complicated. So complicated I won't provide a formal proof for it
+            (You can read the paper [here](http://www.cse.iitk.ac.in/users/manindra/algebra/primality_v6.pdf/)). 
+            The test is simple in nature. Consider a binomial 
+            \\[ \left( x + a \right)^n \\]
+            for some constant \\( a \in \mathbb{Z} \\). We have the following modulo congruence:
+            \\[ \left( x + a \right)^n \equiv x^n + a \bmod{n}. \\] 
+            For the uninitiated, a modulo congruence of the form \\( a \equiv b \bmod{n} \\) is true
+            iff \\( a - b \mid n \\) or \\( a - b \bmod{n} = 0 \\).
+            
+            So by this defintion, it follows that \\( n \\) is prime iff the coffecients of the binomial
+            \\( \left( x + a \right)^n \\) are also divisible by \\( n \\). For instance, consider 
+            \\( n = 5, a = 1 \\). We have 
+            \\[ 
+                \begin{matrix}
+                    \left( x + 1 \right)^5 - x^5 - 1 & = & x^5 + 5x^4 + 10x^3 + 10x^2 + 5x + 1 - x^5 - 1 \\\
+                                                     & = & 5x^4 + 10x^3 + 10x^2 + 5x.
+                \end{matrix}
+            \\]
+            Notice that all the coffecients of the result are divisible by \\( 5 \\), implying that \\( n = 5 \\)
+            is prime. The great thing about the AKS primaility test is that *it works every time.* The problem?
+            **It's fucking slow.** The running time of this particular algorithm was determined to be
+            \\[ f\left( n \right) = O\left( \log^6 n \log^k \left( \log^6 n \right) \right). \\] 
+            But from a theoretical standpoint, it's great that AKS can test for primacy with 100% accuracy. 
+            As an added bonus, Numberphile also did a video for the AKS test:
+            
+    .video-container
+        iframe(width='560', height='315', src='//www.youtube.com/embed/HvMSRWTE2mI', frameborder='0', allowfullscreen )
+
+        
+    div            
+        :markdown
+            #### Generating Primes
+            On the other side of the spectrum, we can also generate primes. Generating primes are typically done
+            using prime number sieves. The sieve we'll be discussing is probably the simplest to implement and is known
+            as the [Sieve of Eratosthenes](http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes). The algorithm is 
+            actually quite simple:
+            
+            - 1) Initalize a list of numbers \\( 2 \leq i \leq n \\)
+            - 2) Let \\( p = 2 \\), the first prime
+            - 3) Mark each multiple of \\( p \\) less than \\( n \\)
+            - 4) Let \\( p \\) be the first number not marked by the last iteration. This new number will be a prime number. Repeat steps 2-4
+            
+            To understand how the sieve works, take a look at this video by Ron Barrow:
+            
+    .video-container
+        iframe(width='420', height='315', src='//www.youtube.com/embed/9m2cdWorIq8', frameborder='0', allowfullscreen )
+
+            
+    div
+        :markdown
+            If you remember, the banner of this post has a bunch of arcs on the number line. 
+            This is also based off of the Sieve of Eratosthenes, where each arc begins at their 
+            corresponding prime multiple. Here's a video by Brent Yorgey displaying the same effect:
+    
+    .video-container
+        iframe(width='560', height='315', src='//www.youtube.com/embed/R8zqqLlrnQM', frameborder='0', allowfullscreen)
+    
+    div
+        :markdown
+            The time complexity of the Sieve is
+            \\[
+                f\left( n \right ) = O\left( n\ln\left( \ln n \right) \right).
+            \\]
+            
+            The analysis for the time complexity is a bit difficult, but the general idea is quite simple. Consider
+            the set \\( P = \left\\{ p \in \mathbb{P} : p \leq n \right\\} \\). Informally, the sieve makes at most
+            \\[
+                \begin{matrix}
+                    \sum\_{p \in P} \frac{n}{p} & = &\frac{n}{2} + \frac{n}{3} + \frac{n}{5} + \cdots + \frac{n}{p'} \\\
+                                                & = & n\left(\frac{1}{2} + \frac{1}{3} + \frac{1}{5} + \cdots + \frac{1}{p'} \right) \\\
+                                                & = & n\ln\left( \ln n \right)
+                \end{matrix}
+            \\]
+            iterations. The sum of reciprocal prime numbers is
+            \\[
+                \sum\_{p \in \mathbb{P}} = \ln\left( \ln n \right)
+            \\]
+            which was proved by Euler (Euler's proof is summarized [here](http://www.math.uga.edu/~pollack/eulerprime.pdf)).
+            The sieve makes \\( \frac{n}{p} \\) iterations for some \\( p \in P \\) because for each iteration of the algorithm,
+            we mark the multiples of \\( p \\) less than \\( n \\) and assign \\( p \\) to the next unmarked number.
+            
+            #### Why It's Important In Computer Science
+            Now that we're done with the mathematics portion of prime numbers, we can now explore its importance in computer science.
+            Sadly, we'll only go over a subset of algorithms involving prime numbers. Particuarly, we'll explore implementations
+            of the naive primacy test and Sieve of Eratosthenes. Finally, we'll explore an application of prime numbers in 
+            RSA encryption.
+            
+            #### Naive Primacy Test 
+            We've pretty much described the algorithm for determining the primacy of numbers using the naive approach. Now it's time
+            to implement it. I'll have implementations for Python; however, the basic algorithm should be applicable to any
+            language.
+            
+            ```py
+            import math
+            
+            def is_prime( n ):
+                if n <= 1:
+                    return False
+                for i in range( 2, math.floor( math.sqrt( n ) ) ):
+                    if n % i == 0:
+                        return False
+                return True
+                
+            def main():
+                print( is_prime( 2 ) ) # True
+                print( is_prime( 3 ) ) # True
+                print( is_prime( 4 ) ) # False
+            
+            if __name__ == '__main__':
+                main()
+            ```
+            
+            #### Sieve of Eratosthenes
+            The Sieve of Eratosthenes is simple to implement as well. We start by initializing a list of numbers
+            \\( \text{list} = \left\\{ i: 2 \leq i \leq n \right\\} \\), setting \\( p = \text{list}[ 0 ] \\) for each iteration.
+            For each iteration, \\( \text{list}[ 0 ] \\) will always be a prime number because we'll remove each multiple of
+            \\( p \\) from the list of numbers if it still exists, leaving the next prime number as the first number in the list.
+            
+            ```py
+            def generate_primes( n ):
+                primes = set()
+                numbers = set( range( 2, n + 1 ) )
+            
+                while len( numbers ) > 0:
+                    p = numbers.pop()
+                    primes.add( p )
+            
+                    multiple = p
+                    while multiple <= n:
+                        multiple += p
+                        if multiple in numbers:
+                            numbers.remove( multiple )
+            
+            
+            
+                return primes
+            
+            def main():
+                primes = generate_primes( 50 )
+                print( primes )
+                # {2, 3, 5, 37, 7, 41, 11, 43, 13, 47, 17, 19, 23, 29, 31} 
+            
+            if __name__ == '__main__':
+                main()
+            ```
+            
+            Using `set` in Python has its advantages. For one, the `in`, `add()` method, `pop()` method, and `remove()` method 
+            have an average running time of \\( O\left( 1 \right) \\). The worst case running time is \\( O\left( n \right) \\),
+            but it rarely happens assuming the set object has a robust hashing function. Since we use numbers, it's safe to assume
+            that the hashing function is robust enough to give constant time.
+            
+            #### RSA Encryption
+            Prime numbers shine when it comes to cryptography and computer security. The 
+            [RSA](http://goo.gl/mPvP4F) encryption system is a 
+            gleaming example of why prime numbers are awesome. It's a public-key cryptographic system developed by
+            Ron Rivest, Adi Shamir, and Leonard Adleman, hence RSA. Public-key systems depend on the distribution of
+            public keys served to users to encrypt their messages to be decrypted by a server. 
+            
+            The basis of the RSA encryption system relies primarily on
+            the nature of prime numbers and composite numbers. Specifically, factoring large composite numbers.
+            As of right now, there are currently *no* efficient algorithms for large integer factorization. This is perfect for
+            encryption systems due to impracticality of current integer factorization algorithms. In fact, the best
+            algorithm for factoring large integers 
+            (According to [Wikipedia](http://en.wikipedia.org/wiki/Integer_factorization#Current_state_of_the_art) :])
+            has a time complexity of
+            \\[
+                O\left( \text{exp}\left( \left( \frac{64}{9}b \right)^\frac{1}{3} \log^\frac{2}{3} b \right)  \right).
+            \\]
+            
+            The RSA encryption system has three main processes: Key Generation, Encryption, and Decryption. Key Generation
+            is the process of generating public and secret keys. The public key is essentially the product of two
+            large prime numbers. These numbers are kept secret while the public key is public. Users requesting the public
+            key can use it to encrypt their information, otherwise known as *plaintext*. They then use the public key
+            along with the RSA cipher to produce ciphertext. The *cipher* is an algorithm for encrypting the plaintext
+            into *ciphertext*, or the encrypted information. The secret key is another unknown number that is used in
+            the decryption stage.
+            
+            I won't go into much detail about how the whole process works, but the basics of it goes as follows:
+            
+            - 1) Server generates public and private keys
+            - 2) A person requests the public key, uses it to encrypt their plaintext and sends it to the server
+            - 3) The server uses the private key to decrypt the information
+            
+            You can read about how the RSA three processes works [here](http://goo.gl/eFHkG4). One piece of advice I can recommend
+            is to *never implement the protocol yourself*. This is probably one of the golden rules of crytography. Never 
+            roll out your own implementation because more often than not, it'll have bugs that may compromise your 
+            security. People have worked on RSA, as well as many other crytographic systems, for many, many years. You're 
+            better off using something that has been thoroughly tested.
+            
+            #### Conclusion
+            Prime numbers are truely awesome. We've looked over merely a subset of what we can accomplish with prime numbers 
+            in mathematics and computer science. While you may never have to do deal with prime numbers in your line of work,
+            just know that they have a huge influence on our daily lives more than what you think.
+
+//- Add scripts here
+prepend scripts

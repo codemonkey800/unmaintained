@@ -15,5 +15,22 @@
             "#javascript"
         ],
         "summary": "To start off my new blog, code-sucks, let's start off with some code that sucks! JavaScript is a quirky languaget that has a lot suck-ish aspects. Here I'll explore some of the bad parts of JavaScript."
+    },
+    {
+        "title": "Why Prime Numbers Are Awesome",
+        "date": {
+            "minute": 15,
+            "hour": 14,
+            "day": 15,
+            "month": 0,
+            "year": 2015
+        },
+        "url": "/posts/2015/0/15/0/48/why-prime-numbers-are-awesome",
+        "banner": "http://goo.gl/X0YzFJ",
+        "tags": [
+            "#mathematics",
+            "#computer-science"
+        ],
+        "summary": "Prime numbers are very special numbers in both mathematics and computer science, both in theory and in application. Here I'll go over a subset of the awesome aspects of prime numbers."
     }
 ]

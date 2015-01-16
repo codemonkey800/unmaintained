@@ -41,7 +41,8 @@ block content
                                     each tag in pageData.tags
                                         a( href="#" )
                                             = tag
-                            block postContent
+                            .post-body
+                                block postContent
                                 
                 .card-action#share.valign-wrapper
                     include ../_include/social.html

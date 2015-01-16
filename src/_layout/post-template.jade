@@ -7,8 +7,15 @@ block pageData
 prepend styles
 
 block postContent
-    :markdown
-        //- Your content here
+    div
+        :markdown
+            //- Your content here
+        
+    //- Other non-Markdown content
+        
+    div
+        :markdown
+            // Other content
 
 //- Add scripts here
 prepend scripts
