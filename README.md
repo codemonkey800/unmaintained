@@ -37,12 +37,17 @@ The site will be built and an [Express](http://expressjs.com/) will be run in th
 
 Committing
 =========
-To commit the source and compiled site in one command, run
+To commit the source and compiled site in one command, use
 ```
     gulp commit [-h] --ssh|--https --msg <Commit Message>
 ```
 
 Only use `ssh` if you have the repo ssh keys installed on your system.
+
+Here's an exmaple:
+```
+    gulp commit --https --msg 'Whoa a commit'
+```
 
 Excelsior!
 ==========
