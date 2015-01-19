@@ -39,7 +39,7 @@ Committing
 =========
 To commit the source and compiled site in one command, run
 ```
-    node commit-site <ssh|https> <Commit Message>
+    node commit-site --ssh|--https --msg <Commit Message>
 ```
 
 Only use `ssh` if you have the repo ssh keys installed on your system.
