@@ -142,13 +142,13 @@ gulp.task 'commit', ->
     console.log 'Compiling site'
     if debug
         projectConfig.debug = false
-        fs.writeFileSync '../config.json', JSON.stringify( projectConfig, null, '    ' )
+        fs.writeFileSync '../config.json', JSON.stringify( projectConfig, null, '    ' ) + '\n'
 
     run 'gulp'
 
     if debug
         projectConfig.debug = true
-        fs.writeFileSync '../config.json', JSON.stringify( projectConfig, null, '    ' )
+        fs.writeFileSync '../config.json', JSON.stringify( projectConfig, null, '    ' ) + '\n'
 
     status = git 'status'
     if status.indexOf( 'nothing to commit, working directory clean' ) is -1
