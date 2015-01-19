@@ -102,8 +102,9 @@ gulp.task 'commit', ->
         catch e
             if debug then console.log e
 
+
     if args.h
-        console.log 'Usage: gulp commit [-h] --ssh|--https --msg <Commit Message>'
+        console.log 'Usage: gulp commit [-h] --ssh|--https -m|--msg <Commit Message>'
         return
 
     url = ''
@@ -115,18 +116,18 @@ gulp.task 'commit', ->
         console.log 'No valid protocol specified. Using HTTPS by default'
         url = projectConfig.repo.httpsUrl
 
-    if not args.msg or typeof args.msg isnt 'string'
-        console.log 'No commit message specified'
-        return
+    if ( not args.m or typeof args.m isnt 'string' ) and ( not args.msg or typeof args.msg isnt 'string' )
+       console.log 'No commit message specified'
+       return
 
     status = git 'status'
     if status.indexOf( 'nothing to commit, working directory clean' ) isnt -1
         console.log 'Nothing to commit!'
         return
 
-    console.log 'Committing source'
+    # console.log 'Committing source'
     git 'add .'
-    git "commit -m \"#{args.msg}\""
+    git "commit -m \"#{args.m || args.msg}\""
     git 'push'
 
     console.log 'Cleaning compiled site'
@@ -135,25 +136,25 @@ gulp.task 'commit', ->
     fs.mkdirSync 'site'
     cd 'site'
 
-    console.log 'Initializing site repo'
+    # console.log 'Initializing site repo'
     git "clone -b #{projectConfig.repo.branch.site} #{url} ."
 
     console.log 'Compiling site'
     if debug
         projectConfig.debug = false
-        fs.writeFileSync './config.json', JSON.stringify( projectConfig )
+        fs.writeFileSync '../config.json', JSON.stringify( projectConfig, null, '    ' )
 
     run 'gulp'
-    
+
     if debug
-        projectConfig.debug = debug
-        fs.writeFileSync './config.json', JSON.stringify( projectConfig )
+        projectConfig.debug = true
+        fs.writeFileSync '../config.json', JSON.stringify( projectConfig, null, '    ' )
 
     status = git 'status'
     if status.indexOf( 'nothing to commit, working directory clean' ) is -1
         console.log 'Comitting site'
         git 'add .'
-        git "commit -m \"#{args.msg}\""
+        git "commit -m \"#{args.m || args.msg}\""
         git 'push -f'
     else
         console.log 'Nothing to commit for site!'

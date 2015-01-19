@@ -45,14 +45,14 @@ Committing
 =========
 To commit the source and compiled site in one command, use
 ```
-    gulp commit [-h] --ssh|--https --msg <Commit Message>
+    gulp commit [-h] --ssh|--https -m|--msg <Commit Message>
 ```
 
 Only use `ssh` if you have the repo ssh keys installed on your system.
 
 Here's an exmaple:
 ```
-    gulp commit --https --msg 'Whoa a commit'
+    gulp commit --https -m 'Whoa a commit'
 ```
 
 Debug mode is automaticall disabled when committing and then enabled after.

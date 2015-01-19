@@ -1,17 +1,13 @@
 {
     "debug": true,
-
     "server": {
         "port": 8080
     },
-
     "srcDir": "src",
     "destDir": "site",
-
     "repo": {
         "sshUrl": "git@github.com:codemonkey800/BangerSite.git",
         "httpsUrl": "https://github.com/codemonkey800/BangerSite.git",
-
         "branch": {
             "source": "master",
             "site": "gh-pages"
