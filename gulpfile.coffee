@@ -122,13 +122,12 @@ gulp.task 'commit', ->
 
     status = git 'status'
     if status.indexOf( 'nothing to commit, working directory clean' ) isnt -1
-        console.log 'Nothing to commit!'
-        return
-
-    # console.log 'Committing source'
-    git 'add .'
-    git "commit -m \"#{args.m || args.msg}\""
-    git 'push'
+        console.log 'Nothing to commit from source'
+    else
+        console.log 'Committing source'
+        git 'add .'
+        git "commit -m \"#{args.m || args.msg}\""
+        git 'push'
 
     console.log 'Cleaning compiled site'
     if fs.existsSync 'site'
@@ -136,7 +135,7 @@ gulp.task 'commit', ->
     fs.mkdirSync 'site'
     cd 'site'
 
-    # console.log 'Initializing site repo'
+    console.log 'Initializing site repo'
     git "clone -b #{projectConfig.repo.branch.site} #{url} ."
 
     console.log 'Compiling site'
@@ -157,7 +156,7 @@ gulp.task 'commit', ->
         git "commit -m \"#{args.m || args.msg}\""
         git 'push -f'
     else
-        console.log 'Nothing to commit for site!'
+        console.log 'Nothing to commit from site'
 
     console.log 'Commit done!'
 
