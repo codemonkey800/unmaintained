@@ -103,7 +103,7 @@ gulp.task 'commit', ->
             if debug then console.log e
 
     if args.h
-        console.log 'Usage: gulp commit [-h] --ssh|--https --msg <Commit Message> '
+        console.log 'Usage: gulp commit [-h] --ssh|--https --msg <Commit Message>'
         return
 
     url = ''
