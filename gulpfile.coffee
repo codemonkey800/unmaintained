@@ -129,7 +129,7 @@ gulp.task 'commit', ->
     git "commit -m \"#{args.msg}\""
     git 'push'
 
-    console.log 'Cleaning compiled site'
+    console.log 'Cleaning compiled site' 
     if fs.existsSync 'site'
         fs.rmrfSync 'site'
     fs.mkdirSync 'site'
