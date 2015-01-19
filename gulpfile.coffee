@@ -130,28 +130,27 @@ gulp.task 'commit', ->
         git 'push'
 
     console.log 'Cleaning compiled site'
-    if fs.existsSync 'site'
-        fs.rmrfSync 'site'
-    fs.mkdirSync 'site'
-    cd 'site'
+    if fs.existsSync dest
+        fs.rmrfSync dest
 
     console.log 'Initializing site repo'
-    git "clone -b #{projectConfig.repo.branch.site} #{url} ."
+    git "clone -b #{projectConfig.repo.branch.site} #{url} #{dest}"
 
     console.log 'Compiling site'
     if debug
         projectConfig.debug = false
-        fs.writeFileSync '../config.json', JSON.stringify( projectConfig, null, '    ' ) + '\n'
+        fs.writeFileSync './config.json', JSON.stringify( projectConfig, null, '    ' ) + '\n'
 
     run 'gulp'
 
     if debug
         projectConfig.debug = true
-        fs.writeFileSync '../config.json', JSON.stringify( projectConfig, null, '    ' ) + '\n'
+        fs.writeFileSync './config.json', JSON.stringify( projectConfig, null, '    ' ) + '\n'
 
     status = git 'status'
     if status.indexOf( 'nothing to commit, working directory clean' ) is -1
         console.log 'Comitting site'
+        cd 'site'
         git 'add .'
         git "commit -m \"#{args.m || args.msg}\""
         git 'push -f'
