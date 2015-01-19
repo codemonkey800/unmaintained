@@ -4,6 +4,7 @@ The source code for the Banger Site yo!
 
 Getting Set Up
 ==============
+## Installation
 You need to install [Node.js](nodejs.org) to have everything working.
 
 Once installed, run
@@ -15,6 +16,11 @@ After, install [Gulp.js](http://gulpjs.com/):
 ```
     npm install -g gulp
 ```
+
+## Debug Mode
+Debug mode disables JavaScript variable mangling and pretty prints Jade output. To enable or disable
+Debug mode, simply open up `config.json` and set `debug` to false or true. When comitting to both sites,
+use the `commit` so that `debug` is automatically disabled in the build stage and reenabled afterwards.
 
 Gulp Tasks
 =========
@@ -48,6 +54,8 @@ Here's an exmaple:
 ```
     gulp commit --https --msg 'Whoa a commit'
 ```
+
+Debug mode is automaticall disabled when committing and then enabled after.
 
 Excelsior!
 ==========

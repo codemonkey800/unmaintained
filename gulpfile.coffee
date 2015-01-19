@@ -44,7 +44,7 @@ gulp.task 'scripts', ->
 
 gulp.task 'jade', ->
     gulp.src "./#{src}/*.jade"
-        .pipe jade()
+        .pipe jade { pretty: debug }
         .pipe gulp.dest( dest )
     return
 
@@ -139,7 +139,15 @@ gulp.task 'commit', ->
     git "clone -b #{projectConfig.repo.branch.site} #{url} ."
 
     console.log 'Compiling site'
+    if debug
+        projectConfig.debug = false
+        fs.writeFileSync './config.json', JSON.stringify( projectConfig )
+
     run 'gulp'
+    
+    if debug
+        projectConfig.debug = debug
+        fs.writeFileSync './config.json', JSON.stringify( projectConfig )
 
     status = git 'status'
     if status.indexOf( 'nothing to commit, working directory clean' ) is -1
