@@ -44,7 +44,7 @@ gulp.task 'scripts', ->
 
 gulp.task 'jade', ->
     gulp.src "./#{src}/*.jade"
-        .pipe jade { pretty: debug }
+        .pipe jade { pretty: debug, locals: { require: require } }
         .pipe gulp.dest( dest )
     return
 
