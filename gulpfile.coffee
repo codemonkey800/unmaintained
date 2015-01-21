@@ -62,12 +62,24 @@ gulp.task 'clean', ->
 
 gulp.task 'server', [ 'default' ], ->
     scriptWatcher = gulp.watch "./#{src}/js/*.js", [ 'scripts' ]
+    scriptWatcher.on 'change', ( e ) ->
+        console.log "#{e.path} changed, running 'scripts' task"
+        return
 
     styleWatcher = gulp.watch "./#{src}/css/*.css", [ 'styles' ]
+    styleWatcher.on 'change', ( e ) ->
+        console.log "#{e.path} changed, running 'styles' task"
+        return
 
-    jadeWatcher = gulp.watch "./#{src}/*.jade", [ 'jade' ]
+    jadeWatcher = gulp.watch "./#{src}/**/*.jade", [ 'jade' ]
+    jadeWatcher.on 'change', ( e ) ->
+        console.log "#{e.path} changed, running 'jade' task"
+        return
 
     projectWatcher = gulp.watch projectFiles, [ 'project' ]
+    projectWatcher.on 'change', ( e ) ->
+        console.log "#{e.path} changed, running 'project' task"
+        return
 
     server = app.listen projectConfig.server.port || 8080, ->
         port = server.address().port

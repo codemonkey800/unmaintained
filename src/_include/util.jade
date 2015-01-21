@@ -3,7 +3,7 @@ mixin style( href )
 
 mixin script( src, async )
     - if( async ) {
-        script( type="text/javascript", src="src", async )
+        script( type="text/javascript", src=src, async )
     - } else {
-        script( type="text/javascript", src="src" )
+        script( type="text/javascript", src=src )
     - }
