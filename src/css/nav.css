@@ -1,9 +1,20 @@
 .navbar-default {
-	background-color: #17212B
+	background-color: #565D64;
+	margin-bottom: 10%;
 }
 
 .navbar-default img{
 	margin-left: 48%;
-	margin-top: 1%;
+	margin-top: .65%;
 	position: fixed;
+	float: left;
+}
+
+body {
+  padding-top: 60px;
+}
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+  }
 }

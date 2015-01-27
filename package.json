@@ -11,8 +11,8 @@
   ],
   "authors": [
     "Jeremy Asuncion <jeremyasuncion808@gmail.com> (http://codemonkey800.github.io/)",
-    "Jason Safaiyeh",
-    "Keshav Narula"
+    "Keshav Narula <narulakeshav13@gmail.com> (http://narulakeshav.github.io",
+    "Jason Safaiyeh <jsafaiyeh@gmail.com> (http://jsafaiyeh.github.io)"
   ],
   "dependencies": {
     "coffee-script": "^1.8.0",
