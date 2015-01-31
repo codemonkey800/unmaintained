@@ -81,7 +81,7 @@ block postContent
             \\]
             is because \\( \left\lfloor \pi \right\rfloor = 3 \\), so it would make sense to only check
             the denominators where the division results in at least \\( 3 \\). Checking for all
-            \\( d \leq denominators - 1 \\) would be slightly more inefficient. And although the division 
+            \\( d \leq \text{denominators} - 1 \\) would be slightly more inefficient. And although the division 
             doesn't affect the running time, it's nice to have small optimizations.
 
             #### Implementing the Algorithm
@@ -123,7 +123,7 @@ block postContent
 
             For each iteration of the while loop, we set `numerator = 1` and then check up to
             `numerator // 3` denominators. Within the  `for` loop, we check if 
-            \\( \left| pi - \frac{d}{n} \right| \leq \text{gap} \\), and print the formatted string if so. 
+            \\( \left| \pi - \frac{d}{n} \right| \leq \text{gap} \\), and print the formatted string otherwise. 
             We return the function to it's caller as well. Otherwise, we increment `denominator` by 
             \\( 1 \\). Exiting the for loop, we increment `numerator` by \\( 1 \\) and restart the process.
 
