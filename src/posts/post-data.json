@@ -47,6 +47,29 @@
         "tags": [
             "#rant"
         ],
-        "summary": "This isn't a problem inherent to all freshmen in Computer Science. Rather, it's a problem inherent to students like me, who seek it upon themselves to learn themselves and find internships at the same time. It sucks being a Freshmen."
+        "summary": "This isn't a problem inherent to all freshmen in Computer Science. Rather, it's a problem inherent to students like me, who seek it upon themselves to learn themselves and find internships at the same time. It sucks being a Freshmen.",
+        "editedDate": {
+            "minute": 1,
+            "hour": 11,
+            "day": 30,
+            "month": 0,
+            "year": 2015
+        }
+    },
+    {
+        "title": "An Interesting CS Problem Regarding Fractions and Pi",
+        "date": {
+            "minute": 6,
+            "hour": 11,
+            "day": 30,
+            "month": 0,
+            "year": 2015
+        },
+        "url": "/posts/2015/0/30/11/6/an-interesting-cs-problem-regarding-fractions-and-pi",
+        "banner": "http://goo.gl/cuAvlG",
+        "tags": [
+            "#computer-science"
+        ],
+        "summary": "Yesterday, my friend from Berkeley came to me for help with an interesting CS problem. This is how I solved it using some pretty shitty code."
     }
 ]
