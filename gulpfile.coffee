@@ -26,9 +26,7 @@ app.use express.static( "#{__dirname}/#{dest}" )
 
 gulp.task 'styles', ->
     gulp.src "./#{src}/css/*.css"
-        .pipe sourcemaps.init()
-            .pipe concat( 'site.min.css' )
-        .pipe sourcemaps.write()
+        .pipe concat( 'site.min.css' )
         .pipe gulpif( !debug, minifyCSS() )
         .pipe gulp.dest( dest )
     return
