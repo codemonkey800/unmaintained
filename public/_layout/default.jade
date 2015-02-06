@@ -6,6 +6,11 @@ html( lang="en" )
     include ../_include/head
 
     body
-        block content
+        include ../_include/nav
+
+        .main-content
+            block content
+
+        include ../_include/footer
 
         include ../_include/scripts
