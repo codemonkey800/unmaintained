@@ -1,6 +1,8 @@
 .navbar-default {
 	background-color: #565D64;
 	margin-bottom: 10%;
+	background: transparent;
+	border: none;
 }
 
 .navbar-default img{
