@@ -12,11 +12,6 @@ Once installed, run
     npm install
 ```
 
-After, install [Gulp.js](http://gulpjs.com/):
-```
-    npm install -g gulp
-```
-
 Afterwards, run
 
 ```
