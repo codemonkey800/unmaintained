@@ -1,22 +1,27 @@
 .navbar-default {
-	background-color: #565D64;
-	margin-bottom: 10%;
-	background: transparent;
+	background: #565D64;
 	border: none;
+	padding-bottom: 10px;
+	transition: transform 0.4s ease-in-out;
 }
 
 .navbar-default img{
-	margin-left: 48%;
-	margin-top: .65%;
 	position: fixed;
-	float: left;
 }
 
-body {
-  padding-top: 60px;
+.navbar-brand > span {
+	display: block;
+	color: white;
+	transform: translate(40px, 5px);
 }
-@media (max-width: 979px) {
-  body {
-    padding-top: 0px;
-  }
+
+.navbar li > a {
+	color: white !important;
+	transform: translateY(5px);
+}
+
+.navbar li > a:hover {
+	/* Placeholder color until designer changes it */
+	color: red !important;
+	transition: color 0.1s ease-in-out;
 }

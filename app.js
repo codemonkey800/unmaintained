@@ -1,9 +1,20 @@
 var args   = require( 'yargs' ).argv,
-    Server = require( './lib/server' ),
-    config = require( './config' );
+    Server = require( './lib/server' );
 
 function main( args ) {
-    var s = new Server( config.server.port, config.server.debug );
+    var port = 8080;
+    var debug = false;
+
+    if( args.port && typeof args.port === 'number' ) {
+        port = args.port;
+    }
+
+    if( args.debug && typeof args.debug === 'boolean' ) {
+        debu
+         = args.debug;
+    }
+
+    var s = new Server( port, debug );
     s.start( function( serverDetails ) {
         console.log( 'Started server at http://localhost:%s', serverDetails.port );
         console.log( 'Type "stop" to stop the server' );

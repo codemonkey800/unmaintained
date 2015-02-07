@@ -1,3 +1,5 @@
 $( window ).on( 'load', function() {
-    console.log( 'yo waddup' );
+    $( document.body ).animate( {
+        opacity: 1
+    }, 200 );
 } );
