@@ -1,7 +1,38 @@
-footer {
-	background: #565D64;
+
+footer{
+	background: #2B363E;
 	bottom: 0px;
-	color: #eee;
+	color: #E1E1DF;
 	font-size: 11px;
+	width: 100%;
+}
+
+.container.row {
+	width: 100%;
+}
+
+.container.row.main {
 	padding: 20px;
+}
+.container.row.sub {
+	background: #1F2326;
+}
+
+.title {
+	color: #7AA8C8;
+}
+
+img {
+	height: 80%;
+	width: 80%;
+}
+
+.col-sm-4 {
+	padding-top: 3%;
+}
+
+//Overrides Bootstraps Default margins
+.row {
+	margin-right: 0px;
+	margin-left: 0px;
 }
