@@ -1,9 +1,10 @@
 extends _layout/default
 
 block content
-	img.cover.img-responsive( src="/assets/images/background.png" )
-	include ../public/_include/nav
+	.fullscreen.background( src="assets/images/background.png", data-img-width='1600', data-img-height='1064')
+			.content-a
+					.content-b
+						h1 Centered content
 	img.cover.img-responsive( src="/assets/images/sign_up.png" )
-	include ../public/_include/footer
 
 	
