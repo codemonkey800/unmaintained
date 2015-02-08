@@ -1,5 +1,5 @@
 $( window ).on( 'load', function() {
-    if( location.pathname !== '/' && location.pathname !== '/' ) {
+    if( location.pathname !== '/' && location.pathname !== '/index' ) {
         return;
     }
 
