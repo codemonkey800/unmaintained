@@ -3,10 +3,10 @@ footer {
 	background: #2B363E;
 	bottom: 0px;
 	color: #E1E1DF;
-	font-size: 11px;
 	width: 100%;
-	position: fixed;
+	font-size: 5vm;
 }
+
 
 footer .row {
 	margin-left: 0px;
@@ -26,18 +26,16 @@ footer > .container.row {
 }
 
 footer img{
-	padding-top: 5%;
-	padding-bottom: 5%;
+	margin-top: 3%;
+	width: 40%;
+	top: 50%
 }
 
-.footer .col-sm-3{
-	padding-left: 5%;
-}
-
-.footer .col-sm-4 {
-	padding-top: 3%;
+.footer .col-xs-4 {
+	padding-top: 2%;
 }
 
 .subfooter {
 	background: #1F2326;
+	padding-bottom: 0.5%;
 }

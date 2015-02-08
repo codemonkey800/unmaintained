@@ -1,12 +1,12 @@
 .navbar-default {
-	background: #565D64;
+	background: transparent;
 	border: none;
-	padding-bottom: 10px;
 	transition: transform 0.4s ease-in-out;
 }
 
 .navbar-default img{
-	position: fixed;
+	width: 25px;
+	height: 25px;
 }
 
 .navbar-brand > span {
@@ -17,11 +17,16 @@
 
 .navbar li > a {
 	color: white !important;
+	font-size: 20px;
 	transform: translateY(5px);
 }
 
 .navbar li > a:hover {
 	/* Placeholder color until designer changes it */
-	color: red !important;
+	color: #7AA8C8 !important;
 	transition: color 0.1s ease-in-out;
+}
+
+.navbar {
+	margin-bottom: 0px;
 }
