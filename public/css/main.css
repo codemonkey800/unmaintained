@@ -19,31 +19,8 @@ body {
   margin-bottom: -100px;
 }
 
-/* fullscreen setup */
-html, body {
-    /* give this to all tags from html to .fullscreen */
-    height:100%;
-}
-.fullscreen,
-.content-a {
-    width:100%;
-    min-height:100%;
-}
-.not-fullscreen,
-.not-fullscreen .content-a,
-.fullscreen.not-overflow,
-.fullscreen.not-overflow .content-a {
-    height:100%;
-    overflow:hidden;
-}
-
-/* content centering styles */
-.content-a {
-    display:table;
-}
-.content-b {
-    display:table-cell;
-    position:relative;
-    vertical-align:middle;
-    text-align:center;
+.navbar {
+    background: #0069AA;
+    margin-bottom: 0;
+    border: 0;
 }
