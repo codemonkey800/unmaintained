@@ -1,7 +1,3 @@
-.cover {
-  width: 100%;
-  height: 69.5em;
-  margin: 0 auto;
-  overflow: hidden;
-  position: relative;
+.section .img-responsive{
+  height: 100%;
 }

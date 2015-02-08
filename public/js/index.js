@@ -22,3 +22,7 @@ Banger.navbar = {
         $( '.navbar-default' ).css( 'transform', 'translateY(-100%)' );
     }
 };
+
+$(document).ready(function() {
+    $('#fullpage').fullpage();
+});
