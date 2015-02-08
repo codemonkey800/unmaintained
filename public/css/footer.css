@@ -1,38 +1,43 @@
 
-footer{
+footer {
 	background: #2B363E;
 	bottom: 0px;
 	color: #E1E1DF;
 	font-size: 11px;
 	width: 100%;
+	position: fixed;
 }
 
-.container.row {
+footer .row {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+footer > .container.row {
 	width: 100%;
 }
 
-.container.row.main {
+.container.row > .footer{
 	padding: 20px;
 }
-.container.row.sub {
-	background: #1F2326;
-}
 
-.title {
+.footer .title {
 	color: #7AA8C8;
 }
 
-img {
-	height: 80%;
-	width: 80%;
+footer img{
+	padding-top: 5%;
+	padding-bottom: 5%;
 }
 
-.col-sm-4 {
+.footer .col-sm-3{
+	padding-left: 5%;
+}
+
+.footer .col-sm-4 {
 	padding-top: 3%;
 }
 
-//Overrides Bootstraps Default margins
-.row {
-	margin-right: 0px;
-	margin-left: 0px;
+.subfooter {
+	background: #1F2326;
 }
