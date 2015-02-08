@@ -1,11 +1,24 @@
-.section .one{
+#fullpage .section .one{
   height: 100%;
   width: 100%;
   background-image: url("/assets/images/background.png")
 }
 
-.section .two{
+#fullpage .section .two{
   height: 100%;
   width: 100%;
   background-image: url("/assets/images/sign_up.png")
+}
+
+#fullpage img{
+  padding-top: 10%;
+  height: 30%;
+  width: 30%;
+  margin: 0 auto;
+
+}
+
+#fullpage h1{
+  color: white;
+  padding-top: 1%;
 }
