@@ -88,6 +88,10 @@ footer ul > li > a {
     header, main, footer {
         padding-left: 0;
     }
+
+    #top-nav a.brand-logo {
+        margin-left: 0;
+    }
 }
 
 ::-webkit-scrollbar {

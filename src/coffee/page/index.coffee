@@ -143,9 +143,10 @@ codesucks.loadArchive = ->
                 posts = data[ year ][ month ]
 
                 for post in posts
-                    $postLink = $ "<li class='waves-effect'><a>#{post.title}</a></li>"
+                    $postLink = $ "<li class='waves-effect'><a data-url='#{post.url}'>#{post.title}</a></li>"
                     $postLink.click ->
-                        codesucks.util.openLink post.url
+                        link = $( this ).find( 'a' ).data 'url'
+                        codesucks.util.openLink link
                         return
                     $postList.append $postLink
 
