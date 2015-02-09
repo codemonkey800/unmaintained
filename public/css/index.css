@@ -7,17 +7,70 @@
 #fullpage .section .two{
   height: 100%;
   width: 100%;
-  background-image: url("/assets/images/sign_up.png")
+  background-image: url("/assets/images/sign_up_pic.png")
 }
 
-#fullpage img{
+#fullpage .one > center > img{
   padding-top: 225px;
-  height: 30%;
-  width: 30%;
+  padding-bottom: 20px;
+  height: 25%;
+  width: 25%;
   margin: 0 auto;
 }
-
 #fullpage h1{
-  color: white;
-  padding-top: 1%;
+  color: #E1E1DF;
+  padding: 0;
+  margin: 0;
+}
+
+#fullpage .two > center > img {
+  width: 10%;
+  height: auto;
+  margin: 0 auto;
+  padding-top: 2%;
+}
+
+#fullpage .description {
+  text-align: center;
+  font-size: 25px;
+  color: #354552;
+  padding-top: 2%;
+}
+
+#fullpage form {
+  padding-top: 2%;
+  margin: 0% 40%;
+}
+#fullpage label {
+  font-size: 25px;
+  color: black;
+}
+
+#fullpage .form-inline {
+  width: 60%;
+  margin: 0;
+}
+
+#fullpage .form-group {
+  padding-right: 2%;
+}
+
+#fullpage .form-control {
+  height: 40px;
+  width: 275px;
+}
+#fullpage .sign-up {
+  font-size: 70px;
+  color: #354552;
+  text-align: center;
+  padding-top: 2%;
+}
+
+#fullpage input {
+  background: transparent;
+  border: 2px dotted;
+}
+
+#fullpage button {
+  height: 40px;
 }

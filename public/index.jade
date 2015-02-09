@@ -2,10 +2,24 @@ extends _layout/default
 
 block content
 	#fullpage
-		.section
+		.section(href="#")
 			.one
 				center
 					img.img-responsive( src="../assets/logos/logo.png" )
 					h1 BANGER!
 		.section
 			.two
+				center
+					h1.sign-up SIGN UP
+					img.img-responsive(src="../assets/logos/logo.png")
+					p.description Sign up for Beta testing and future updates for Banger!
+					form.form-inline
+						.form-group
+								label(for='inputFullName')  
+								input#inputFullName.form-control(type='text', placeholder='Full Name') 
+						.form-group
+								label(for='inputEmail') 
+								input#inputEmail.form-control(type='email', placeholder='Enter E-Mail') 
+							button.btn.btn-primary(type='submit') 
+								span.glyphicon.glyphicon-chevron-right
+					include ../public/_include/footer

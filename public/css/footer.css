@@ -5,8 +5,12 @@ footer {
 	color: #E1E1DF;
 	width: 100%;
 	font-size: 5vm;
+	margin-top: 16%;
 }
 
+footer a {
+	color: #E1E1DF;
+}
 
 footer .row {
 	margin-left: 0px;
