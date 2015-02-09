@@ -23,6 +23,17 @@ Banger.navbar = {
     }
 };
 
-$(document).ready(function() {
-    $('#fullpage').fullpage();
-});
+$( document ).ready( function() {
+    $( '#fullpage' ).fullpage( {
+         afterLoad: function( anchorLink, index ) {
+            if( index == 2 ) {
+                Banger.navbar.show();
+            }
+         },
+         onLeave: function( index ) {
+            if( index == 2 ) {
+                Banger.navbar.hide();
+            }
+         }
+    } );
+} );
