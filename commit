@@ -11,7 +11,6 @@ git push origin master
 
 rm -rf site
 git clone git@github.com:codemonkey800/codemonkey800.github.io.git site
-cd site
 gulp
 
 cd site
