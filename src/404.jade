@@ -10,9 +10,9 @@ html( lang="en" )
     
     body.grey.lighten-4
         
-        #404.flow-text.valign-wrapper
+        #404.flow-text
             a( href="/index", data-position="top", data-tooltip="Triangulation equation :) Use this to triangulate my blog!" )
-                h1.
+                h2.
                     \[ 
                         d = \ell \frac{\sin\alpha \sin\beta}{\sin\left( \alpha + \beta \right)}
                     \]
@@ -26,14 +26,15 @@ html( lang="en" )
                 position404Message = ->
                     $window = $ window
                     $404 = $ '#404'
+                    $tooltip = $ '.material-tooltip'
                     
                     $404.css 'margin-top', $window.height() // 2 - $404.height() // 2 - 40
+                    $tooltip.css 'transform', "translateX(#{$window.width() // 2}px)"
                     return
                 
-                $( window ).ready ->
-                    position404Message()
-                        
+                $( window ).load ->
                     $( '#404 > a' ).tooltip { delay: 50 }
+                    position404Message()
                     return
                 
                 $( window ).resize ->
