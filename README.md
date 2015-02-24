@@ -44,3 +44,7 @@ Used to update the date of a page or post. Use `--page` to update a page specifi
 
 ##list
 Lists all posts created. Use `--year` and `--month` to filter posts. You can use either or both at the same time.
+
+Excelsior! 
+==========
+![](http://goo.gl/S6qY2O)
