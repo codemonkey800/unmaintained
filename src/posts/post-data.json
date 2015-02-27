@@ -71,5 +71,22 @@
             "#computer-science"
         ],
         "summary": "Yesterday, my friend from Berkeley came to me for help with an interesting CS problem. This is how I solved it using some pretty shitty code."
+    },
+    {
+        "title": "Implementing Strassen's algorithm",
+        "date": {
+            "minute": 55,
+            "hour": 14,
+            "day": 26,
+            "month": 1,
+            "year": 2015
+        },
+        "url": "/posts/2015/1/26/14/55/implementing-strassens-algorithm",
+        "banner": "http://goo.gl/MVDlXj",
+        "tags": [
+            "#computer-science",
+            "#mathematics"
+        ],
+        "summary": "Matrices are important mathematical objects used in many applications of Computer Science. Multiplying matrices are also very important, so a good algorithm for doing so would come in handy. Here's an overview of Strassen's algorithm and how to implement it."
     }
 ]
