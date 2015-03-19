@@ -8,14 +8,7 @@ prepend styles
 
 block postContent
     div
-        :markdown
-            //- Your content here
-        
-    //- Other non-Markdown content
-        
-    div
-        :markdown
-            // Other content
+        include:md content.md
 
 //- Add scripts here
 prepend scripts

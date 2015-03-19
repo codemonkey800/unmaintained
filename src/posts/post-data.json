@@ -87,6 +87,13 @@
             "#computer-science",
             "#mathematics"
         ],
-        "summary": "Matrices are important mathematical objects used in many applications of Computer Science. Multiplying matrices are also very important, so a good algorithm for doing so would come in handy. Here's an overview of Strassen's algorithm and how to implement it."
+        "summary": "Matrices are important mathematical objects used in many applications of Computer Science. Multiplying matrices are also very important, so a good algorithm for doing so would come in handy. Here's an overview of Strassen's algorithm and how to implement it.",
+        "editedDate": {
+            "minute": 24,
+            "hour": 15,
+            "day": 19,
+            "month": 2,
+            "year": 2015
+        }
     }
 ]

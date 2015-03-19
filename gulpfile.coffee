@@ -87,8 +87,8 @@ gulp.task 'jade', [ 'site-config', 'post-data' ], ->
     return
 
 projectFiles = [
-    './src/!(_*).!(coffee|jade)',
-    './src/!(_**|_*.*|coffee|scss)/**/!(_*).!(coffee|jade)'
+    './src/!(_*).!(coffee|jade|md)',
+    './src/!(_**|_*.*|coffee|scss)/**/!(_*).!(coffee|jade|md)'
 ]
 
 gulp.task 'project', ->
@@ -118,7 +118,7 @@ gulp.task 'server', [ 'default' ], ->
         console.log "#{e.path} changed, re-compiling Jade"
         return
 
-    jadeWatcher = gulp.watch './src/**/*.jade', [ 'jade' ]
+    jadeWatcher = gulp.watch [ './src/**/*.jade', './src/**/*.md' ], [ 'jade' ]
     jadeWatcher.on 'change', ( e ) ->
         console.log "#{e.path} changed, re-compiling Jade"
         return
