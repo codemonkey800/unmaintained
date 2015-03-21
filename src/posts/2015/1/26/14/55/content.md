@@ -193,21 +193,21 @@ Since we're working with a recursive algorithm, the base case occurs when the ma
 \\]
 where \\(\mathbf{C}\\) in the base case is a \\(1 \times 1\\) matrix.
 
-This takes \\(\theta\left(1\right)\\) time. The largest running time other than the main algorithm itself
-is \\(\theta\left(n^2\right)\\) (From splitting, adding, and subtracting our matrices). And our algorithm 
+This takes \\(\Theta\left(1\right)\\) time. The largest running time other than the main algorithm itself
+is \\(\Theta\left(n^2\right)\\) (From splitting, adding, and subtracting our matrices). And our algorithm 
 splits itself into 7 main problem. Thus, we have the following recurrence:
 \\[
     T\left(n\right) =
     \begin{cases}
-        \theta\left(1\right)                        & \text{if } n = 1 \\\
-        7T\left(n/2\right) + \theta\left(n^2\right) & \text{if } n > 1
+        \Theta\left(1\right)                        & \text{if } n = 1 \\\
+        7T\left(n/2\right) + \Theta\left(n^2\right) & \text{if } n > 1
     \end{cases}
 \\]
 
 From the master method, the recurrence has the following solution:
 \\[
-    f\left(n\right) = \theta\left(n^{\log\_2 7}\right) = \theta\left(n^{\lg 7}\right)
-    \approx \theta\left(n^{2.80736}\right).
+    f\left(n\right) = \Theta\left(n^{\log\_2 7}\right) = \Theta\left(n^{\lg 7}\right)
+    \approx \Theta\left(n^{2.80736}\right).
 \\]
 
 #### Implementation
