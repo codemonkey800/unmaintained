@@ -58,7 +58,7 @@ window.codesucks =
         getPosts: ->
             codesucks.data.postCache
 
-($) ->
+(($) ->
 
     $.fn.materialResponse = (duration = 200, change = 1) ->
         $this = $(this)

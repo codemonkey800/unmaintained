@@ -159,8 +159,8 @@ codesucks.loadArchive = ->
             $archive.append $yearBody
 
         $('.collapse').collapsible('default-open', {
-            contentOpen: 1;
-       });
+            contentOpen: 1
+        })
         $('.archive  h5').click()
 
         # We make it seem like the archive is loading when it really isn't

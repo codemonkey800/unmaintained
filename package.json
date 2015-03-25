@@ -1,11 +1,6 @@
 {
   "name": "code-sucks",
-  "version": "1.0.0",
   "description": "My blog, code-sucks",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Jeremy Asuncion <jeremyasuncion808@gmail.com> (http://codemonkey800.github.io/)",
   "license": "MIT",
   "dependencies": {

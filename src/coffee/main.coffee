@@ -31,4 +31,4 @@ $ ->
     , 800
 
     $footer = $('footer')
-    $footer.offset { top: $(document).height() }
+    $footer.offset {top: $(document).height()}

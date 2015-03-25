@@ -1,13 +1,30 @@
 {
     "lint": {
-        "arrow_spacing": true,
-        "camel_case_classes": true,
-        "ensure_comprehensions": true,
-        "indentation": false,
-        "no_empty_functions": true,
-        "no_empty_param_list": true,
-        "no_implicit_braces": true,
-        "no_interpolation_in_single_quotes": true
+        "arrow_spacing": {
+            "level": "error"
+        },
+
+        "braces_spacing": {
+            "level": "error",
+            "value": 0
+        },
+
+        "indentation": {
+            "level": "error",
+            "value": 4
+        },
+
+        "max_line_length": {
+            "level": "ignore"
+        },
+
+        "no_empty_param_list": {
+            "level": "error"
+        },
+
+        "no_unnecessary_double_quotes": {
+            "level": "error"
+        }   
     },
 
     "port": 8080

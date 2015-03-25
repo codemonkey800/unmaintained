@@ -41,4 +41,4 @@ codesucks.modeMap = {
     py: 'python',
     xml: 'xml',
     html: 'xml'
-};
+}
