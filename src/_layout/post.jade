@@ -1,21 +1,21 @@
 extends default
 
 block styles
-    +style( "https://cdnjs.cloudflare.com/ajax/libs/codemirror/4.10.0/codemirror.min.css" )
-    +style( "https://cdnjs.cloudflare.com/ajax/libs/codemirror/4.10.0/theme/monokai.min.css" )
+    +style("https://cdnjs.cloudflare.com/ajax/libs/codemirror/4.10.0/codemirror.min.css")
+    +style("https://cdnjs.cloudflare.com/ajax/libs/codemirror/4.10.0/theme/monokai.min.css")
 
 block content
-    - var moment = require( 'moment' );
-    - var date = moment( pageData.date ).format( 'hh:mm a - MMMM Do, YYYY' );
+    - var moment = require('moment');
+    - var date = moment(pageData.date).format('hh:mm a - MMMM Do, YYYY');
     - var editedDate = null;
-    - if( pageData.editedDate ) {
-        - editedDate = moment( pageData.editedDate ).format( 'hh:mm a - MMMM Do, YYYY' );
+    - if(pageData.editedDate) {
+        - editedDate = moment(pageData.editedDate).format('hh:mm a - MMMM Do, YYYY');
     - }
     .row
         .col.s12.m10.l10.offset-m1.offset-l1
             .card.white.post-content.flow-text
                 .card-image
-                    img( src=pageData.banner )
+                    img(src=pageData.banner)
                 .card-content
                     .row
                         .col.s12.m10.l10.offset-m1.offset-l1
@@ -39,7 +39,7 @@ block content
                             if pageData.tags
                                 small.tags
                                     each tag in pageData.tags
-                                        a( href="#" )
+                                        a(href="#")
                                             = tag
                             .post-body
                                 block postContent
@@ -55,9 +55,9 @@ block content
 block scripts
     include ../_include/codemirror-scripts
     include ../_include/mathjax
-    script( src="/js/page/post.js" )
+    script(src="/js/page/post.js")
         
     - var title = pageData.pageTitle ? pageData.pageTitle : pageData.title;
     script
         :coffee
-            $( '#top-nav > div > a.brand-logo.white-text' ).text '!{title}'
+            $('#top-nav > div > a.brand-logo.white-text').text '!{title}'

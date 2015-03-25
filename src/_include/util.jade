@@ -1,16 +1,16 @@
-mixin style( href )
-    link( rel="stylesheet", href=href )
+mixin style(href)
+    link(rel="stylesheet", href=href)
         
-mixin gifv( href )
-    - href = href.replace( '.gifv', '' );
+mixin gifv(href)
+    - href = href.replace('.gifv', '');
     - webmHref = href + '.webm'
     - mp4Href = href + '.mp4'
-    video( autoplay, loop, muted )
-        source( type="video/webm", src=webmHref )
-        source( type="video/mp4", src=mp4Href )
+    video(autoplay, loop, muted)
+        source(type="video/webm", src=webmHref)
+        source(type="video/mp4", src=mp4Href)
         
-mixin addPreloader( id )
-    .preloader-wrapper.big.active.valign-wrapper( id=id )
+mixin addPreloader(id)
+    .preloader-wrapper.big.active.valign-wrapper(id=id)
             .spinner-layer.spinner-blue
                 .circle-clipper.left
                     .circle

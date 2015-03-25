@@ -24,40 +24,40 @@
 
 .back-btn {
     margin-right: 10px;
-    @include transition( transform 0.4s ease-in-out );
+    @include transition(transform 0.4s ease-in-out);
 
 }
 .back-btn:hover {
-    @include transform( scale( 1.2 ) );
+    @include transform(scale(1.2));
 
 }
 .back-btn i {
     display: inline-block;
-    @include transform( rotate( 0 ) );
-    @include transition( transform 0.4s ease-in-out );
+    @include transform(rotate(0));
+    @include transition(transform 0.4s ease-in-out);
 
 }
 .back-btn:hover i {
-    @include transform( rotate( -360deg ) );
+    @include transform(rotate(-360deg));
 
 }
 .forward-btn {
     margin-left: 10px;
-    @include transition( transform 0.4s ease-in-out );
+    @include transition(transform 0.4s ease-in-out);
 
 }
 .forward-btn:hover {
-    @include transform( scale( 1.2 ) );
+    @include transform(scale(1.2));
 
 }
 .forward-btn i {
     display: inline-block;
-    @include transform( rotate( 0 ) );
-    @include transition( transform 0.4s ease-in-out );
+    @include transform(rotate(0));
+    @include transition(transform 0.4s ease-in-out);
 
 }
 .forward-btn:hover i {
-    @include transform( rotate( 360deg ) );
+    @include transform(rotate(360deg));
 }
 
 .card-reveal {

@@ -1,9 +1,9 @@
-$( window ).load ->
+$(window).load ->
 
     $postList = $ '.post-list'
     $backButton = $ '.back-btn'
     $forwardButton = $ '.forward-btn'
-    manager = new codesucks.PostManager( 5  , '/posts/post-data.json' )
+    manager = new codesucks.PostManager(5  , '/posts/post-data.json')
 
     if document.location.hash
         manager.hashtag = document.location.hash
@@ -16,7 +16,7 @@ $( window ).load ->
         $backButton.css 'display', 'none'
         if !manager.canGoForward()
             $forwardButton.css 'display', 'none'
-        $( '.nav-btns' ).css 'opacity', 1
+        $('.nav-btns').css 'opacity', 1
 
         return
 
@@ -39,11 +39,11 @@ $( window ).load ->
 
     return
 
-codesucks.setPosts = ( posts ) ->
-    $( 'html, body' ).animate {
+codesucks.setPosts = (posts) ->
+    $('html, body').animate {
         scrollTop: '0'
-    }
-    $( '.post-list > .card' ).remove()
+   }
+    $('.post-list > .card').remove()
     $postList = $ '.post-list'
     for post in posts
         $post = codesucks.makePost post
@@ -52,7 +52,7 @@ codesucks.setPosts = ( posts ) ->
     Waves.displayEffect()
     return
 
-codesucks.makePost = ( post ) ->
+codesucks.makePost = (post) ->
     $card = $ '<div class="card z-depth-2 white">'
     $cardImage = $ '<div class="card-image waves-effect waves-block">'
     $cardContent = $ '<div class="card-content white">'
@@ -70,7 +70,7 @@ codesucks.makePost = ( post ) ->
     $cardTitle.append $ '<i class="mdi-navigation-more-vert waves-effect right">'
     $cardContent.append $cardTitle
 
-    date = moment( post.date ).format( 'MMMM Do, YYYY' )
+    date = moment(post.date).format('MMMM Do, YYYY')
     $cardDate = $ "<p>#{date}</p>"
     $cardContent.append $cardDate
 
@@ -78,7 +78,7 @@ codesucks.makePost = ( post ) ->
     for tag in post.tags
         $tag = $ "<a href='/index#{tag}'>#{tag}</a>"
         $tag.click ->
-            document.location.href = $tag.attr( 'href' )
+            document.location.href = $tag.attr('href')
             document.location.reload()
             return
         $cardTags.append $tag
@@ -111,33 +111,33 @@ codesucks.makePost = ( post ) ->
 
 codesucks.loadArchive = ->
 
-    $.get '/posts/post-archive.json', ( data ) ->
+    $.get '/posts/post-archive.json', (data) ->
         $archive = $ '.archive'
-        years = $.keys( data ).map( ( val ) -> parseInt val ).sort ( a, b ) -> b - a
+        years = $.keys(data).map((val) -> parseInt val).sort (a, b) -> b - a
 
         for year in years
             $yearHeader = $ "<h5 class='waves-effect open'><i class='mdi-navigation-arrow-drop-down'></i>#{year}</h5>"
             $yearBody = $ '<div class="collapse">'
 
             $yearHeader.click ->
-                if $( this ).hasClass 'open'
-                    $( this ).removeClass 'open'
+                if $(this).hasClass 'open'
+                    $(this).removeClass 'open'
                 else
-                    $( this ).addClass 'open'
+                    $(this).addClass 'open'
                 return
 
-            months = $.keys( data[ year ] ).map( ( val ) -> parseInt val ).sort ( a, b ) -> b - a
+            months = $.keys(data[ year ]).map((val) -> parseInt val).sort (a, b) -> b - a
             for month in months
-                monthName = moment( { month: month } ).format( 'MMMM' )
+                monthName = moment({month: month}).format('MMMM')
                 $monthHeader = $ "<h5 class='waves-effect open'><i class='mdi-navigation-arrow-drop-down'></i>#{monthName}</h5>"
                 $monthBody = $ '<div class="collapse">'
                 $postList = $ '<ul>'
 
                 $monthHeader.click ->
-                    if $( this ).hasClass 'open'
-                        $( this ).removeClass 'open'
+                    if $(this).hasClass 'open'
+                        $(this).removeClass 'open'
                     else
-                        $( this ).addClass 'open'
+                        $(this).addClass 'open'
                     return
 
                 posts = data[ year ][ month ]
@@ -145,7 +145,7 @@ codesucks.loadArchive = ->
                 for post in posts
                     $postLink = $ "<li class='waves-effect'><a data-url='#{post.url}'>#{post.title}</a></li>"
                     $postLink.click ->
-                        link = $( this ).find( 'a' ).data 'url'
+                        link = $(this).find('a').data 'url'
                         codesucks.util.openLink link
                         return
                     $postList.append $postLink
@@ -158,16 +158,16 @@ codesucks.loadArchive = ->
             $archive.append $yearHeader
             $archive.append $yearBody
 
-        $( '.collapse' ).collapsible( 'default-open', {
+        $('.collapse').collapsible('default-open', {
             contentOpen: 1;
-        } );
-        $( '.archive  h5' ).click()
+       });
+        $('.archive  h5').click()
 
         # We make it seem like the archive is loading when it really isn't
         # I don't know how to have the archive be closed initially
         # #HackerLyfe
         setTimeout ->
-            $( '#archive-preloader' ).remove()
+            $('#archive-preloader').remove()
             $archive.addClass 'loaded'
             Waves.displayEffect()
             return

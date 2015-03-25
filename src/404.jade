@@ -3,7 +3,7 @@ include _include/util
 doctype html
 
 block pageData
-    - var pageData = data[ 3 ];
+    - var pageData = data[3];
 
 html( lang="en" )
     include _include/head
@@ -32,12 +32,12 @@ html( lang="en" )
                     $tooltip.css 'transform', "translateX(#{$window.width() // 2}px)"
                     return
                 
-                $( window ).load ->
-                    $( '#404 > a' ).tooltip { delay: 50 }
+                $(window).load ->
+                    $('#404 > a').tooltip {delay: 50}
                     position404Message()
                     return
                 
-                $( window ).resize ->
+                $(window).resize ->
                     position404Message()
                     return
                     

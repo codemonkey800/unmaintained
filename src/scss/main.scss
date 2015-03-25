@@ -1,14 +1,14 @@
 @import 'base';
 
 // * {
-//     color: map-get( $grey, 'darken-4' ) !important;
+//     color: map-get($grey, 'darken-4') !important;
 // }
 
 body {
     opacity: 0;
     height: 100%;
     width: 100%;
-    @include transition( opacity 0.5s ease-in-out );
+    @include transition(opacity 0.5s ease-in-out);
 }
 
 body.loaded {
@@ -33,11 +33,11 @@ main {
 }
 
 footer {
-    background-color: map-get( $grey, 'darken-3' ) !important;
+    background-color: map-get($grey, 'darken-3') !important;
 }
 
 footer .footer-copyright {
-    background-color: map-get( $grey, 'darken-4' ) !important;
+    background-color: map-get($grey, 'darken-4') !important;
 }
 
 footer * {
@@ -49,11 +49,11 @@ footer a {
 }
 
 a {
-    color: map-get( $grey, 'darken-4' ) !important;
+    color: map-get($grey, 'darken-4') !important;
 }
 
 a:hover {
-    color: map-get( $red, 'base' ) !important;
+    color: map-get($red, 'base') !important;
 }
 
 footer ul > li > a {
@@ -69,7 +69,7 @@ footer ul > li > a {
 }
 
 .animated-shadow {
-    @include transition( all 0.2s ease-in-out );
+    @include transition(all 0.2s ease-in-out);
 }
 
 .archive .card-title {
@@ -104,7 +104,7 @@ footer ul > li > a {
 
 ::-webkit-scrollbar-thumb {
      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
-     background: map-get( $grey, 'darken-3' );
+     background: map-get($grey, 'darken-3');
 }
 
 @media #{$medium-and-down} {

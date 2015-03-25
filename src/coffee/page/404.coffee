@@ -1,4 +1,4 @@
-$( window ).load ->
+$(window).load ->
 
     $tooltip = $ '.material-tooltip'
 

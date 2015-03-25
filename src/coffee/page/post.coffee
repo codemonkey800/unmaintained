@@ -1,20 +1,20 @@
-$( window ).load ->
+$(window).load ->
 
-    $( '.tags a' ).click ->
-        document.location.href = "/index.html#{$( this ).text()}"
+    $('.tags a').click ->
+        document.location.href = "/index.html#{$(this).text()}"
         return
 
-    editors = $( 'pre > code' )
+    editors = $('pre > code')
 
     for editor in editors
         $editor = $ editor
-        mode = codesucks.modeMap[ $editor.attr( 'class' ).replace( 'lang-', '' ) ]
+        mode = codesucks.modeMap[ $editor.attr('class').replace('lang-', '') ]
         if mode
             code = $editor.text()
-            CodeMirror ( elt ) ->
+            CodeMirror (elt) ->
                 $editor.parent().after elt
                 $editor.parent().remove()
-                $( elt ).css 'height', 'auto'
+                $(elt).css 'height', 'auto'
                 return
             , {
                 value: code,

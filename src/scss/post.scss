@@ -5,20 +5,20 @@
     a {
         text-transform: none !important;
         margin: 0 !important;
-        color: map-get( $purple, 'base' ) !important;
+        color: map-get($purple, 'base') !important;
     }
 
     a:hover {
-        color: map-get( $red, 'base' ) !important;
+        color: map-get($red, 'base') !important;
     }
 
     .tags a {
-        color: map-get( $grey, 'darken-4' ) !important;
+        color: map-get($grey, 'darken-4') !important;
         margin-right: 10px;
     }
 
     .tags a:hover {
-        color: map-get( $red, 'base' ) !important;
+        color: map-get($red, 'base') !important;
     }
 
     #share {
@@ -36,8 +36,8 @@
     }
 
     code {
-        background: map-get( $grey, 'darken-4' );
-        color: map-get( $light-green, 'accent-3' );
+        background: map-get($grey, 'darken-4');
+        color: map-get($light-green, 'accent-3');
         padding: 5px;
     }
 

@@ -1,7 +1,7 @@
 extends _layout/post
 
 block pageData
-    - var pageData = data[ 1 ];
+    - var pageData = data[1];
     
 block postContent
     :markdown
@@ -48,4 +48,4 @@ block postContent
 append scripts
     script
         :coffee
-            $( '#nav-mobile > li:nth-child(3)' ).addClass 'active'
+            $('#nav-mobile > li:nth-child(3)').addClass 'active'
