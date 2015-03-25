@@ -8,7 +8,7 @@ $(window).load ->
 
     for editor in editors
         $editor = $ editor
-        mode = codesucks.modeMap[ $editor.attr('class').replace('lang-', '') ]
+        mode = codesucks.modeMap[$editor.attr('class').replace('lang-', '')]
         if mode
             code = $editor.text()
             CodeMirror (elt) ->
@@ -23,7 +23,7 @@ $(window).load ->
                 lineNumbers: true,
                 readOnly: true,
                 viewportMargin: Infinity
-            }
+}
 
     return
 

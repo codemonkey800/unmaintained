@@ -42,7 +42,7 @@ $(window).load ->
 codesucks.setPosts = (posts) ->
     $('html, body').animate {
         scrollTop: '0'
-   }
+}
     $('.post-list > .card').remove()
     $postList = $ '.post-list'
     for post in posts
@@ -126,7 +126,7 @@ codesucks.loadArchive = ->
                     $(this).addClass 'open'
                 return
 
-            months = $.keys(data[ year ]).map((val) -> parseInt val).sort (a, b) -> b - a
+            months = $.keys(data[year]).map((val) -> parseInt val).sort (a, b) -> b - a
             for month in months
                 monthName = moment({month: month}).format('MMMM')
                 $monthHeader = $ "<h5 class='waves-effect open'><i class='mdi-navigation-arrow-drop-down'></i>#{monthName}</h5>"
@@ -140,7 +140,7 @@ codesucks.loadArchive = ->
                         $(this).addClass 'open'
                     return
 
-                posts = data[ year ][ month ]
+                posts = data[year][month]
 
                 for post in posts
                     $postLink = $ "<li class='waves-effect'><a data-url='#{post.url}'>#{post.title}</a></li>"

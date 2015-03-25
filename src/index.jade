@@ -1,7 +1,7 @@
 extends _layout/default
 
 block pageData
-    - var pageData = data[0];
+    - var pageData = data[ 0 ];
 
 block content
     .row
@@ -17,10 +17,10 @@ block content
                 .card-content
                     span.card-title.valign-wrapper Archive
                     .archive.collapse
-                    +addPreloader("archive-preloader")
+                    +addPreloader( "archive-preloader" )
 block scripts
-    script(src="/lib/jquery.collapsible.min.js")
-    script(src="/js/page/index.js")
+    script( src="/lib/jquery.collapsible.min.js" )
+    script( src="/js/page/index.js" )
     script
         :coffee
-            $('#nav-mobile > li:nth-child(2)').addClass 'active'
+            $( '#nav-mobile > li:nth-child(2)' ).addClass 'active'

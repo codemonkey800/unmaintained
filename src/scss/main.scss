@@ -2,7 +2,7 @@
 
 // * {
 //     color: map-get($grey, 'darken-4') !important;
-// }
+//}
 
 body {
     opacity: 0;
@@ -87,11 +87,11 @@ footer ul > li > a {
 @media #{$medium-and-down} {
     header, main, footer {
         padding-left: 0;
-    }
+}
 
     #top-nav a.brand-logo {
         margin-left: 0;
-    }
+}
 }
 
 ::-webkit-scrollbar {
@@ -110,5 +110,5 @@ footer ul > li > a {
 @media #{$medium-and-down} {
     ::-webkit-scrollbar {
         display: none;
-    }
+}
 }

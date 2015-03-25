@@ -4,27 +4,27 @@
             "level": "error"
         },
 
-        "braces_spacing": {
-            "level": "error",
-            "value": 0
-        },
-
         "indentation": {
             "level": "error",
             "value": 4
-        },
-
-        "max_line_length": {
-            "level": "ignore"
         },
 
         "no_empty_param_list": {
             "level": "error"
         },
 
-        "no_unnecessary_double_quotes": {
+        "no_interpolation_in_single_quotes": {
             "level": "error"
-        }   
+        },
+
+        "braces_spacing": {
+            "level": "error",
+            "value": "0"
+        },
+
+        "max_line_length": {
+            "level": "ignore"
+        }
     },
 
     "port": 8080

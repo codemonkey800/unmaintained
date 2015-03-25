@@ -35,7 +35,7 @@ window.codesucks =
 
                 callback()
                 return
-           )
+            )
             return
 
 
@@ -63,7 +63,7 @@ window.codesucks =
     $.fn.materialResponse = (duration = 200, change = 1) ->
         $this = $(this)
         shadowDepth = -1
-        for i in [ 0..5 ]
+        for i in [0..5]
             if $this.hasClass "z-depth-#{i}"
                 shadowDepth = i
                 break
