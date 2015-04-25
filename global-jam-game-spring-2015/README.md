@@ -6,7 +6,3 @@ The idea was to be a really meta game where the game was a gameified version of 
 
 # Setting Up
 If you want to--for some reason--contribute to the project, you can. The project requires Gradle. You can either open the project up in your favorite IDE (It better be Intellij) or build it from command line.
-
-## Excelsior!
-
-![There was an image here. It's not here now.](http://goo.gl/74J7Qc)
