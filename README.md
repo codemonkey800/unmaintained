@@ -62,4 +62,4 @@ Roadmap
 
 Excelcior
 --------
-![There was an image here. It is no longer here](http://goo.gl/Tu3BUa)
+![There was an image here. It is no longer here](http://i.imgur.com/wT4KmJp.gif)
