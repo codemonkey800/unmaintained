@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+    <head>
+
+        <title>Online C++ Compiler</title>
+
+        <style>
+            body {
+                background: black;
+                color: white;
+            }
+        </style>
+
+        <link rel="stylesheet" href="css/codemirror.css" />
+        <link rel="stylesheet" href="css/midnight.css" />
+
+    </head>
+
+    <body>
+
+        <textarea id="text_editor"></textarea>
+
+        <br />
+
+        <button id="compile">Compile and Run!</button>
+        
+        <br />
+        
+        <textarea id="output"></textarea>
+
+        <script src="js/jquery-2.0.3.min.js"></script>
+
+        <script src="js/codemirror.min.js"></script>
+        <script src="js/clike.js"></script>
+
+        <script>
+
+            var textArea = $( '#text_editor' )[0];
+            
+            var outputArea = $( '#output' )[0];
+
+            var textEditor = CodeMirror.fromTextArea( textArea , {
+                mode: 'clike' ,
+                theme: 'midnight' ,
+                lineNumbers: true
+            } );
+            
+            $.get('code/Maths.cpp', function(data){
+            
+                if(data){
+                    textEditor.setValue(data);
+                }
+            });
+            
+            var outEditor = CodeMirror.fromTextArea( outputArea, {
+                mode: 'clike',
+                theme: 'midnight',
+                lineNumbers: true,
+                readOnly: true
+            });
+
+            $( '#compile' ).click( function(){
+                var codeStr = textEditor.getValue();
+
+                if( !codeStr ){
+                    alert( 'Text editor is empty!' );
+                    return;
+                }
+
+                $.post( 'compile.php' , {code: codeStr} , function( data ){
+
+                    var outputLines = $.parseJSON( data );
+                    
+                    console.log(outputLines);
+                    
+                    console.log(outputLines.length);
+
+                    if( outputLines.length == 0 ){
+                        alert( 'No output!' );
+                        return;
+                    }
+                    
+                    if( outputLines.length == 1 && typeof(outputLines[0]) == 'number' && outputLines[0] != 0){
+                        alert("An Error in compilation has occured!");
+                        return;
+                    }
+                    
+                    var outStr = '';
+                    
+                    for( var i = 0; i < outputLines.length; i++ ){
+                        outStr += outputLines[i] + '\n';
+                    }
+                    
+                    console.log(outStr);
+                    
+                    outEditor.setValue(outStr);
+                } );
+            } );
+
+        </script>
+
+    </body>
+
+</html>
