@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Enter an integer value"
+        android:id="@+id/edit_box"
+        android:singleLine="true"
+        />
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Clear"
+            android:id="@+id/clear_edit_box"
+            />
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Decimal to Hexadecimal"
+            android:id="@+id/dec_to_hex"/>
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Decimal to Binary"
+        android:id="@+id/dec_to_bin"
+            />
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Hexadecimal to Decimal"
+            android:id="@+id/hex_to_dec"
+            />
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Hexadecimal to Binary"
+            android:id="@+id/hex_to_bin"
+            />
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Binary to Decimal"
+            android:id="@+id/bin_to_dec"
+            />
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Binary to Hexadecimal"
+            android:id="@+id/bin_to_hex"
+            />
+
+
+</LinearLayout>

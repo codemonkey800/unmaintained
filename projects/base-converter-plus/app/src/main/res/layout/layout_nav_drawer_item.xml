@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.balysv.materialripple.MaterialRippleLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        fab:rippleOverlay="true"
+        fab:rippleHover="true"
+        fab:rippleInAdapter="true"
+        fab:rippleDuration="2000"
+        fab:rippleDelayClick="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/drawer_item_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:paddingLeft="16dp"
+                android:src="@drawable/ic_launcher"/>
+
+            <TextView
+                android:id="@+id/drawer_item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/drawer_item_icon"
+                android:paddingLeft="16dp"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                android:textColor="@color/nav_drawer_title_color"
+                android:text="Swag"/>
+
+        </RelativeLayout>
+
+    </com.balysv.materialripple.MaterialRippleLayout>
+
+</RelativeLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="drawer_item_titles">
+        <item>@string/decimal_title</item>
+        <item>@string/binary_title</item>
+        <item>@string/hexadecimal_title</item>
+        <item>@string/n_base_title</item>
+    </string-array>
+
+    <array name="drawer_item_icons">
+        <item>@drawable/ic_decimal</item>
+        <item>@drawable/ic_binary</item>
+        <item>@drawable/ic_hex</item>
+        <item>@drawable/ic_n_base</item>
+    </array>
+
+</resources>

@@ -1,0 +1,14 @@
+{
+  "name": "remote-computer-server",
+  "version": "1.0.0",
+  "description": "A nodejs server for controlling remote computers",
+  "main": "server.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "author": "Jeremy Asuncion <jeremyasuncion808@gmail.com> (http://codemonkey800.github.io/)",
+  "license": "MIT",
+  "dependencies": {
+    "clear": "0.0.1"
+  }
+}

@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <RelativeLayout
+        android:id="@+id/result_window"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/in_base"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="@android:color/transparent"
+            android:textColor="@android:color/black"
+            android:text="10"
+            android:inputType="numberDecimal"
+            android:maxLength="2"
+            android:singleLine="true"/>
+
+        <TextView
+            android:id="@+id/base_conversion_arrow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/black"
+            android:layout_alignLeft="@+id/in_base"
+            android:layout_alignStart="@+id/in_base"
+            android:layout_marginLeft="26dp"
+            android:textSize="22sp"
+            android:text="->"/>
+
+        <EditText
+            android:id="@+id/out_base"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="@android:color/transparent"
+            android:textColor="@android:color/black"
+            android:layout_alignLeft="@id/base_conversion_arrow"
+            android:layout_alignStart="@id/base_conversion_arrow"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:text="36"
+            android:inputType="numberDecimal"
+            android:maxLength="2"
+            android:singleLine="true"/>
+
+        <EditText
+            android:id="@+id/result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/black"
+            android:background="@android:color/transparent"
+            android:gravity="end"
+            android:singleLine="true"
+            android:layout_alignLeft="@id/base_mode"
+            android:layout_marginTop="26dp"
+            android:layout_marginRight="36dp"
+            android:text="69 = 0x45"/>
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="25dp"
+            fab:rippleOverlay="true"
+            fab:rippleHover="true"
+            fab:rippleDuration="2000"
+            >
+
+            <ImageButton
+                android:id="@+id/clear_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_delete"
+                android:padding="8dp"/>
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/numpad_first_row"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/result_window"
+        android:paddingTop="16dp">
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:rippleOverlay="true"
+            fab:rippleHover="true"
+            fab:rippleDuration="2000"
+            >
+
+            <Button
+                android:id="@+id/seven_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/black"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="7"/>
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            fab:rippleOverlay="true"
+            fab:rippleHover="true"
+            fab:rippleDuration="2000"
+            >
+
+            <Button
+                android:id="@+id/eight_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/black"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="8"/>
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:rippleOverlay="true"
+            fab:rippleHover="true"
+            fab:rippleDuration="2000"
+            >
+
+            <Button
+                android:id="@+id/nine_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/black"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="9"/>
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/numpad_second_row"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/numpad_first_row"
+        android:paddingTop="32dp">
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:rippleOverlay="true"
+            fab:rippleHover="true"
+            fab:rippleDuration="2000"
+            >
+
+            <Button
+                android:id="@+id/four_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/black"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="4"/>
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            fab:rippleOverlay="true"
+            fab:rippleHover="true"
+            fab:rippleDuration="2000"
+            >
+
+            <Button
+                android:id="@+id/five_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/black"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="5"/>
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:rippleOverlay="true"
+            fab:rippleHover="true"
+            fab:rippleDuration="2000"
+            >
+
+            <Button
+                android:id="@+id/six_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/black"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="6"/>
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/numpad_third_row"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/numpad_second_row"
+        android:paddingTop="32dp">
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:rippleOverlay="true"
+            fab:rippleHover="true"
+            fab:rippleDuration="2000"
+            >
+
+            <Button
+                android:id="@+id/one_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/black"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="1"/>
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            fab:rippleOverlay="true"
+            fab:rippleHover="true"
+            fab:rippleDuration="2000"
+            >
+
+            <Button
+                android:id="@+id/two_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/black"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="2"/>
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:rippleOverlay="true"
+            fab:rippleHover="true"
+            fab:rippleDuration="2000"
+            >
+
+            <Button
+                android:id="@+id/three_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/black"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="3"/>
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+    </LinearLayout>
+
+    <com.balysv.materialripple.MaterialRippleLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/numpad_third_row"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        fab:rippleOverlay="true"
+        fab:rippleHover="true"
+        fab:rippleDuration="2000"
+        >
+
+        <Button
+            android:id="@+id/zero_key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:textColor="@android:color/black"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="0"/>
+
+    </com.balysv.materialripple.MaterialRippleLayout>
+
+
+    <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/execute_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_equals"
+        fab:fab_colorNormal="@color/colorPrimary"
+        fab:fab_colorPressed="@color/colorPrimaryDark"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/result_window"
+        android:layout_alignEnd="@+id/result_window"/>
+
+</RelativeLayout>

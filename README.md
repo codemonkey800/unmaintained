@@ -1,9 +1,6 @@
 # Useless Projects
 Here's a big repo of a bunch of the projects I've worked on over the years, starting from my junior year of high school up to now.
 
-# Checking out my projects
-To check out certain projects, all you have to do is pull the corresponding branch.
-
 # License of all projects
 All of the projects are under the MIT license, which is restated below.
 

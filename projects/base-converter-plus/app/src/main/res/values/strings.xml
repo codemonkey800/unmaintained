@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="app_name">Base Converter+</string>
+    <string name="decimal_title">Decimal Converter</string>
+    <string name="binary_title">Binary Converter</string>
+    <string name="hexadecimal_title">Hexadecimal Converter</string>
+    <string name="n_base_title">Arbitrary Base Converter</string>
+
+</resources>
