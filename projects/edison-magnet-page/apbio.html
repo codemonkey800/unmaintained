@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AP Biology</title>
+        <meta charset="utf-8">
+        <meta name="description" content="The AP Calculus description page">
+        <meta name="author" content="Jeremy Asuncion">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <link rel="stylesheet" href="css/html5css/zocial/zocial.css">
+        <link rel="stylesheet" href="css/html5css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/html5css/calculus.css">
+        <link rel="stylesheet" href="css/html5css/custom_navbar.css">
+        <link rel="stylesheet" href="css/html5css/custom_carousel.css">
+
+        <script src="js/jquery-1.9.1.min.js"></script>
+    </head>
+
+    <!--Handles internet explorer browsers lower than 9-->
+    <!--[if lte IE 8]>
+    <body id="ie">
+        <h1>It appears that you have Internet Explorer 8 or less</h1>
+        <script type="text/javascript">
+            var body = document.getElementById( '#non-ie' );
+            body.innerHtml = '';
+        </script>
+    </body>
+    <![endif]-->
+
+    <body id="non-ie">
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+            <!--Some code I copied and pasted. To be honest, I have no idea what this does.-->
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target=".navbar-ex1-collapse">
+
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+
+                </button>
+                <a class="navbar-brand" href="index.html">Edison STEM Magnet</a>
+
+            </div>
+
+            <!--Beginning of navigation bar-->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+                <ul class="nav navbar-nav">
+
+                    <li><a id="magnet_selected" href="index.html">Home</a></li>
+
+                    <li class="dropdown active">
+                        <a id="subjects_toggle" href="#" class="dropdown-toggle " data-toggle="dropdown">Magnet Courses
+                            <b class="caret"></b></a>
+
+                        <!--Dropdown of Magnet courses-->
+                        <ul class="dropdown-menu">
+
+                            <li role="presentation" class="dropdown-header">Mathematics</li>
+                            <li><a href="#">AP Statistics</a></li>
+                            <li><a href="calculus.html">AP Calculus AB and BC</a></li>
+
+                            <li role="presentation" class="dropdown-header">Environmental Sciences</li>
+                            <li class="active"><a href="apbio.html">AP Biology</a></li>
+                            <li><a href="#">Earth System Science 1-2 Honors</a></li>
+                            <li><a href="#">Forest Ecology 1</a></li>
+                            <li><a href="#">Marine Ecology 1</a></li>
+                            <li><a href="#">Geology</a></li>
+                            <li><a href="#">Astronomy and Space Science</a></li>
+                            <li><a href="#">Anthropology</a></li>
+
+                            <li role="presentation" class="dropdown-header">Engineering/Technology</li>
+                            <li><a href="#">Introduction to Engineering 1-2</a></li>
+                            <li><a href="#">Problem Solving with a Computer</a></li>
+                            <li><a href="#">Research and Field Problems in Science</a></li>
+
+                            <li role="presentation" class="dropdown-header">Medical Science</li>
+                            <li><a href="#">Biotechnology</a></li>
+                            <li><a href="#">Forensic Science</a></li>
+
+                        </ul>
+                    </li>
+
+                    <!--Dropdown of Magnet teachers-->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle " data-toggle="dropdown">Teachers <b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Alicia Taylor</a></li>
+                            <li><a href="#">Kamran H. Sedighi</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">MESA</a></li>
+
+                    <li><a href="#">STEM</a></li>
+
+                </ul>
+
+                <button id="admin" class="btn btn-default navbar-btn pull-right" data-toggle="modal" data-target="#signin-modal">Admin Login</button>
+
+            </div>
+
+        </div>
+
+        <!--Main page content-->
+        <!--Admin login modal-->
+        <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Login using Persona<img src="images/persona-logo.png" width="48px"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <button id="login-btn" class="btn btn-lg btn-primary">Login</button>
+                        <button id="logout-btn" class="btn btn-lg btn-primary" style="display: none;">Logout</button>
+                        <a id="register-btn" class="btn btn-lg btn-primary pull-right" href="register.html">Register for Admin</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+        </div>
+
+        <div id="calculus_carousel" class="carousel slide">
+            <ol class="carousel-indicators">
+                <li data-target="#calculus_carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#calculus_carousel" data-slide-to="1"></li>
+                <li data-target="#calculus_carousel" data-slide-to="2"></li>
+            </ol>
+
+            <div class="carousel-inner">
+                <div class="item active carousel_image">
+                    <img src="images/carousel_placeholder.png">
+
+                    <div class="carousel-caption">
+                        <h3>A placeholder image</h3>
+                    </div>
+                </div>
+                <div class="item carousel_image">
+                    <img src="images/carousel_placeholder.png">
+
+                    <div class="carousel-caption">
+                        <h3>A placeholder image</h3>
+                    </div>
+                </div>
+                <div class="item carousel_image">
+                    <img src="images/carousel_placeholder.png">
+
+                    <div class="carousel-caption">
+                        <h3>A placeholder image</h3>
+                    </div>
+                </div>
+
+            </div>
+
+            <a class="left carousel-control" href="#calculus_carousel" data-slide="prev">
+                <span class="icon-prev"></span>
+            </a>
+
+            <a class="right carousel-control" href="#calculus_carousel" data-slide="next">
+                <span class="icon-next"></span>
+            </a>
+        </div>
+
+        <div class="jumbotron">
+            <div class="container">
+
+                <h1>AP Biology</h1>
+                <i>Course Syllabus</i>
+
+                <p>
+                    Advanced Placement Biology curriculum reflects a college introductory
+                    biology course taken by biology majors. After demonstrating proficiency
+                    on the AP Biology Exam, some college freshman may earn college credit or
+                    can enroll in upper-level courses in biology.  AP Biology will include
+                    topics regularly covered in a required college introductory biology course.
+                    Primary emphasis will be on developing an understanding of biological concepts;
+                    a grasp of science as a process rather than as an accumulation of facts; personal
+                    experience in scientific inquiry; recognition of unifying themes that integrate the major
+                    topics of biology; and the application of biological knowledge and critical thinking
+                    to environmental and social concerns. At Edison High School, AP Biology is an elective
+                    science course for students who are highly motivated and have a strong interest in science.
+                    Major topics of study include biochemistry, cells, cellular metabolism, genetics, evolution,
+                    classification, organism structure/function, and ecology. As in a college biology course,
+                    AP Biology is designed to have both a lecture and a laboratory component.
+                    Labs conducted by AP Biology students are the equivalent of those experienced by college
+                    biology students.  At the completion of this course, students are expected to take the
+                    College Board’s scheduled AP Biology exam in May.  To assist students in their preparation
+                    for this test, the format of the assessments used throughout this course are similar to
+                    the AP Biology exam.  This course is fast-paced, rigorous, and demands more at-home study
+                    time than the standard college-prep courses at Edison High School.   The College Board
+                    determines AP course content and pacing.  For sample questions and a detailed course
+                    outline see the
+                    <a href="http://apcentral.collegeboard.com/apc/public/courses/teachers_corner/2117.html">College Board’s AP Biology website</a>.
+                </p>
+
+            </div>
+        </div>
+
+        <script src="js/bootstrap.js"></script>
+        <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!--Mozilla Persona for Administrator login-->
+        <script src="https://login.persona.org/include.js"></script>
+
+        <!--Handles admin button popover and tooltip-->
+        <script>
+            $('#admin' ).tooltip({placement: 'left', title: 'Admin login to post content on site.'});
+
+        </script>
+
+        <!--Handles Persona logins-->
+        <script>
+            navigator.id.watch( {
+                onlogin: function( assertion ){
+                    $.post( 'php/admin_login.php', {assertion: assertion} ).done( function( data ){
+                        if( data === 'failure' ){
+                            navigator.id.logout();
+                        }else{
+                            $( '#post-form' ).css( 'display', '' );
+                            $( '#logout-btn' ).css( 'display', '' );
+                            $( '#login-btn' ).css( 'display', 'none' );
+                            $( '#register-btn' ).css( 'display', 'none' );
+                            $( '#admin' ).text( data );
+                            $( '#signin-modal' ).modal( 'hide' );
+                        }
+
+                    } );
+                },
+                onlogout: function( assertion ){
+                    $( '#post-form' ).css( 'display', 'none' );
+                    $( '#logout-btn' ).css( 'display', 'none' );
+                    $( '#login-btn' ).css( 'display', '' );
+                    $( '#register-btn' ).css( 'display', '' );
+                    $( '#admin' ).text( 'Admin Login' );
+                    $( '#signin-modal' ).modal( 'hide' );
+                }
+            } );
+
+            var signInButton = $( '#login-btn' )[0];
+
+            if( signInButton ){
+                signInButton.onclick = function(){
+                    navigator.id.request();
+                };
+            }
+
+            var signOutButton = $( '#logout-btn' )[0];
+            if( signOutButton ){
+                signOutButton.onclick = function(){
+                    navigator.id.logout();
+                };
+            }
+
+
+        </script>
+
+    </body>
+</html>

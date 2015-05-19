@@ -1,0 +1,38 @@
+
+/* TEAM */
+
+/* Main Developer /*
+
+Your title: Jeremy Asuncion
+
+
+Site: jeremyasuncion808@gmail.com
+
+
+Twitter: @codemonkey800
+
+
+Location: Stockon, CA
+
+
+
+/* THANKS */
+
+
+Name:
+
+Ms. G
+
+
+
+/* SITE */
+
+
+Last update: 2013/09/16
+
+
+Standards: HTML5, CSS3
+
+
+Components: Modernizr, jQuery, etc.
+

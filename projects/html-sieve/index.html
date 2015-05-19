@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="author" content="Jeremy Asuncion">
+        <meta name="description" content="A simple visualization of how the Sieve of Eratosthenes works.">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/jquery-2.1.1.min.js"></script>
+
+    </head>
+
+    <body >
+
+        <table>
+            <tbody id="numbers">
+            </tbody>
+        </table>
+
+        <form>
+            <input id="rows-input" name="rows" placeholder="Number of Rows">
+            <input id="columns-input" name="columns" placeholder="Number of Columns">
+            <input id="generate-table-btn" type="button" value="Generate Table">
+            <input id="find-primes-btn" type="button" value="Find Primes">
+        </form>
+
+        <table>
+            <thead id="legend">
+            </thead>
+        </table>
+
+        <script src="js/main.js"></script>
+        <script>
+            var rows, cols;
+
+            $( '#generate-table-btn' ).click( function() {
+                cols = $( '#columns-input' ).val();
+                rows = $( '#rows-input' ).val();
+
+                if( !rows || !cols ) {
+                    alert( 'You need to enter a number of columns and rows' );
+                    return;
+                }
+
+                generateTable( cols, rows );s
+            } );
+
+            $( '#find-primes-btn' ).click( function() {
+                if( !rows || !cols ) {
+                    alert( 'You need to generate a table first' );
+                    return;
+                }
+                colorSieve( cols * rows );
+            } );
+        </script>
+
+    </body>
+
+</html>

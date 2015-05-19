@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AP Calculus AB and BC</title>
+        <meta charset="utf-8">
+        <meta name="description" content="The AP Calculus description page">
+        <meta name="author" content="Jeremy Asuncion">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <link rel="stylesheet" href="css/html5css/zocial/zocial.css">
+        <link rel="stylesheet" href="css/html5css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/html5css/calculus.css">
+        <link rel="stylesheet" href="css/html5css/custom_navbar.css">
+        <link rel="stylesheet" href="css/html5css/custom_carousel.css">
+
+        <script src="js/jquery-1.9.1.min.js"></script>
+    </head>
+
+    <!--Handles internet explorer browsers lower than 9-->
+    <!--[if lte IE 8]>
+    <body id="ie">
+        <h1>It appears that you have Internet Explorer 8 or less</h1>
+        <script type="text/javascript">
+            var body = document.getElementById( '#non-ie' );
+            body.innerHtml = '';
+        </script>
+    </body>
+    <![endif]-->
+
+    <body id="non-ie">
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+            <!--Some code I copied and pasted. To be honest, I have no idea what this does.-->
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target=".navbar-ex1-collapse">
+
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+
+                </button>
+                <a class="navbar-brand" href="index.html">Edison STEM Magnet</a>
+
+            </div>
+
+            <!--Beginning of navigation bar-->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+                <ul class="nav navbar-nav">
+
+                    <li><a id="magnet_selected" href="index.html">Home</a></li>
+
+                    <li class="dropdown active">
+                        <a id="subjects_toggle" href="#" class="dropdown-toggle " data-toggle="dropdown">Magnet Courses
+                            <b class="caret"></b></a>
+
+                        <!--Dropdown of Magnet courses-->
+                        <ul class="dropdown-menu">
+
+                            <li role="presentation" class="dropdown-header">Mathematics</li>
+                            <li><a href="#">AP Statistics</a></li>
+                            <li class="active"><a href="calculus.html">AP Calculus AB and BC</a></li>
+
+                            <li role="presentation" class="dropdown-header">Environmental Sciences</li>
+                            <li><a href="apbio.html">AP Biology</a></li>
+                            <li><a href="#">Earth System Science 1-2 Honors</a></li>
+                            <li><a href="#">Forest Ecology 1</a></li>
+                            <li><a href="#">Marine Ecology 1</a></li>
+                            <li><a href="#">Geology</a></li>
+                            <li><a href="#">Astronomy and Space Science</a></li>
+                            <li><a href="#">Anthropology</a></li>
+
+                            <li role="presentation" class="dropdown-header">Engineering/Technology</li>
+                            <li><a href="#">Introduction to Engineering 1-2</a></li>
+                            <li><a href="#">Problem Solving with a Computer</a></li>
+                            <li><a href="#">Research and Field Problems in Science</a></li>
+
+                            <li role="presentation" class="dropdown-header">Medical Science</li>
+                            <li><a href="#">Biotechnology</a></li>
+                            <li><a href="#">Forensic Science</a></li>
+
+                        </ul>
+                    </li>
+
+                    <!--Dropdown of Magnet teachers-->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle " data-toggle="dropdown">Teachers <b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Alicia Taylor</a></li>
+                            <li><a href="#">Kamran H. Sedighi</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">MESA</a></li>
+
+                    <li><a href="#">STEM</a></li>
+
+                </ul>
+
+                <button id="admin" class="btn btn-default navbar-btn pull-right" data-toggle="modal" data-target="#signin-modal">Admin Login</button>
+
+            </div>
+
+        </div>
+
+        <!--Main page content-->
+        <!--Admin login modal-->
+        <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Login using Persona<img src="images/persona-logo.png" width="48px"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <button id="login-btn" class="btn btn-lg btn-primary">Login</button>
+                        <button id="logout-btn" class="btn btn-lg btn-primary" style="display: none;">Logout</button>
+                        <a id="register-btn" class="btn btn-lg btn-primary pull-right" href="register.html">Register for Admin</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+        </div>
+
+        <div id="calculus_carousel" class="carousel slide">
+            <ol class="carousel-indicators">
+                <li data-target="#calculus_carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#calculus_carousel" data-slide-to="1"></li>
+                <li data-target="#calculus_carousel" data-slide-to="2"></li>
+            </ol>
+
+            <div class="carousel-inner">
+                <div class="item active carousel_image">
+                    <img src="images/carousel_placeholder.png">
+
+                    <div class="carousel-caption">
+                        <h3>A placeholder image</h3>
+                    </div>
+                </div>
+                <div class="item carousel_image">
+                    <img src="images/carousel_placeholder.png">
+
+                    <div class="carousel-caption">
+                        <h3>A placeholder image</h3>
+                    </div>
+                </div>
+                <div class="item carousel_image">
+                    <img src="images/carousel_placeholder.png">
+
+                    <div class="carousel-caption">
+                        <h3>A placeholder image</h3>
+                    </div>
+                </div>
+
+            </div>
+
+            <a class="left carousel-control" href="#calculus_carousel" data-slide="prev">
+                <span class="icon-prev"></span>
+            </a>
+
+            <a class="right carousel-control" href="#calculus_carousel" data-slide="next">
+                <span class="icon-next"></span>
+            </a>
+        </div>
+
+        <div class="jumbotron">
+            <div class="container">
+
+
+                <h1>AP Calculus AB and BC</h1>
+                <i>Course Syllabus</i>
+
+                <p>
+                    This course is the first year course in the study of Calculus.
+                    This course is equivalent to a college level course.
+                    Students in this course are expected to have a solid background in
+                    mathematics. Some of the topics covered in this course are limit,
+                    continuity, curve sketching, derivatives and their applications,
+                    integrals and their applications, differential equations, and more.
+                    This course will prepare students for a future course in Calculus as
+                    well as the Advanced Placement Examination given each May.
+                    Students who pass the AP exam can receive college credit.
+                    A graphing calculator is strongly recommended for this course.
+                    There are some problems which cannot be done without the use of a
+                    graphing calculator.
+                </p>
+
+                <div id="random-calc-equ">
+                    <div id="calc-equation"></div>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/bootstrap.js"></script>
+        <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!--Mozilla Persona for Administrator login-->
+        <script src="https://login.persona.org/include.js"></script>
+
+        <!--Handles admin button popover and tooltip-->
+        <script>
+            $('#admin' ).tooltip({placement: 'left', title: 'Admin login to post content on site.'});
+
+            $('#random-calc-equ' ).tooltip({placement: 'left', title: 'Refresh if not typeset correctly.'});
+        </script>
+
+        <!--Handles Persona logins-->
+        <script>
+            navigator.id.watch( {
+                onlogin: function( assertion ){
+                    $.post( 'php/admin_login.php', {assertion: assertion} ).done( function( data ){
+                        if( data === 'failure' ){
+                            navigator.id.logout();
+                        }else{
+                            $( '#logout-btn' ).css( 'display', '' );
+                            $( '#login-btn' ).css( 'display', 'none' );
+                            $( '#register-btn' ).css( 'display', 'none' );
+                            $( '#admin' ).text( data );
+                            $( '#signin-modal' ).modal( 'hide' );
+                        }
+
+                    } );
+                },
+                onlogout: function( assertion ){
+                    $( '#logout-btn' ).css( 'display', 'none' );
+                    $( '#login-btn' ).css( 'display', '' );
+                    $( '#register-btn' ).css( 'display', '' );
+                    $( '#admin' ).text( 'Admin Login' );
+                    $( '#signin-modal' ).modal( 'hide' );
+                }
+            } );
+
+            var signInButton = $( '#login-btn' )[0];
+
+            if( signInButton ){
+                signInButton.onclick = function(){
+                    navigator.id.request();
+                };
+            }
+
+            var signOutButton = $( '#logout-btn' )[0];
+            if( signOutButton ){
+                signOutButton.onclick = function(){
+                    navigator.id.logout();
+                };
+            }
+
+
+        </script>
+
+        <!--Sets a random Calculus equation on page reload-->
+        <script>
+            function getRandomInt(min, max){
+                return Math.floor(Math.random() * (max - min + 1) + min);
+            }
+
+            $.get('equations.txt', function(data){
+                var equations = data.split('\n');
+                var index = getRandomInt(0, equations.length - 1);
+
+                var equationData = equations[index];
+                var title = equationData.split(';')[0];
+                var equation = equationData.split(';')[1];
+
+                //Sets equation and title on page
+                $('#calc-equation' ).html(
+                        "<h2 style='text-align: center'>Random Calculus Equation</h2>" +
+                        "<h3 style='text-align: center'>" + title + "</h3>" +
+                        "<h2 style='text-align: center'>" + equation + "</h2>"
+                );
+
+                //Typeset page manually just in case
+                MathJax.Hub.Queue(["Typeset",MathJax.Hub, $('#calc-equation')[0]]);
+            });
+        </script>
+
+    </body>
+</html>

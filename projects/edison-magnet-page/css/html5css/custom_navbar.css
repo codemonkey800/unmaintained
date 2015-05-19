@@ -1,0 +1,131 @@
+/* Font Size */
+html {
+    font-size: 14px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* Main Navbar color */
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    background: maroon;
+    border-color: maroon;
+}
+
+/* Begin Navbar Brand */
+.navbar-default {
+    background-color: maroon;
+    border-color: maroon;
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: gold;
+    background-color: transparent;
+}
+
+/* End Navbar Brand*/
+
+/* Begin Navbar Active*/
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+    color: black;
+    background-color: #c6c6c6;
+    font-weight: bold;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: white;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+    color: white;
+    background: #490000;
+}
+
+/* Begin Navbar Active*/
+
+/* Begin Navbar Dropdown*/
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+    background-color: #c6c6c6;
+    color: #555555;
+}
+
+.navbar-default .navbar-nav>.open>a .caret, .navbar-default .navbar-nav>.open>a:hover .caret, .navbar-default .navbar-nav>.open>a:focus .caret {
+    border-top-color: #555555;
+    border-bottom-color: #555555;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    font-size: 14px;
+    background-color: #c6c6c6;
+    border: 1px solid #cccccc;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    background-clip: padding-box;
+}
+
+.dropdown-menu.pull-right {
+    right: 0;
+    left: auto;
+}
+
+.dropdown-header {
+    display: block;
+    padding: 3px 20px;
+    font-size: 12px;
+    line-height: 1.428571429;
+    color: black;
+    font-weight: bold;
+}
+
+/* End Navbar Dropdown*/
+
+/* Begin Navbar Active Sublink */
+
+.dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus {
+    color: gold;
+    text-decoration: none;
+    outline: 0;
+    background-color: #490000;
+    font-weight: bold;
+}
+
+/* End Navbar Active Sublink */
+
+/* Begin Navbar-Text Color */
+.navbar-default .navbar-text {
+    color: white;
+}
+
+/* End Navbar-Text Color */
+
+/* Begin Navbar Text Sign in Button */
+
+.navbar-text {
+    float: left;
+    margin-top: 10px;
+    margin-bottom:0px;
+}
+
+@media (min-width:768px) {
+    .navbar-text {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+}
+
+/* end Navbar Text Sign in Button */

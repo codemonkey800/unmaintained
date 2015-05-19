@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Edison STEM Magnet</title>
+        <meta charset="utf-8">
+        <meta name="description" content="The Edison High School Magnet Webpage">
+        <meta name="author" content="Jeremy Asuncion">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+        <link rel="stylesheet" href="css/html5css/zocial/zocial.css">
+        <link rel="stylesheet" href="css/html5css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/html5css/custom_navbar.css">
+        <link rel="stylesheet" href="css/html5css/index.css">
+
+        <script src="js/jquery-1.9.1.min.js"></script>
+
+    </head>
+
+    <!--Informs older ie user to either use an new browser or to download use the compatible website-->
+    <!--[if lte IE 8]>
+    <body id="ie">
+        <h1>It appears that you have Internet Explorer 8 or less.</h1>
+
+        <p>
+            Please consider downloading a <a href="http://browsehappy.com/">better browser,</a>
+            or you may go the <a href="ie/index.html">Internet Explorer version of the website.</a>
+        </p>
+
+    </body>
+    <![endif]-->
+
+
+    <body id="non-ie">
+
+        <script type="text/javascript">
+            var body = document.getElementById( 'non-ie' );
+            body.innerHTML = '';
+        </script>
+
+        <div class="navbar navbar-default navbar-fixed-top">
+
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target=".navbar-ex1-collapse">
+
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+
+                </button>
+                <!--Link to index.html page-->
+                <a class="navbar-brand" href="index.html">Edison STEM Magnet</a>
+
+            </div>
+
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+                <ul class="nav navbar-nav">
+
+                    <!--Link to index.html page-->
+                    <li class="active"><a id="magnet_selected" href="index.html">Home</a></li>
+
+                    <!--List of magnet courses-->
+                    <li class="dropdown">
+                        <a id="subjects_toggle" href="#" class="dropdown-toggle " data-toggle="dropdown">Magnet
+                                                                                                         Courses
+                            <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+
+                            <li class="dropdown-header">Mathematics</li>
+                            <li><a href="#">AP Statistics</a></li>
+                            <li><a href="calculus.html">AP Calculus AB and BC</a></li>
+
+                            <li class="dropdown-header">Environmental Sciences</li>
+                            <li><a href="apbio.html">AP Biology</a></li>
+                            <li><a href="#">Earth System Science 1-2 Honors</a></li>
+                            <li><a href="#">Forest Ecology 1</a></li>
+                            <li><a href="#">Marine Ecology 1</a></li>
+                            <li><a href="#">Geology</a></li>
+                            <li><a href="#">Astronomy and Space Science</a></li>
+                            <li><a href="#">Anthropology</a></li>
+
+                            <li class="dropdown-header">Engineering/Technology</li>
+                            <li><a href="#">Introduction to Engineering 1-2</a></li>
+                            <li><a href="#">Problem Solving with a Computer</a></li>
+                            <li><a href="#">Research and Field Problems in Science</a></li>
+
+                            <li class="dropdown-header">Medical Science</li>
+                            <li><a href="#">Biotechnology</a></li>
+                            <li><a href="#">Forensic Science</a></li>
+
+                        </ul>
+                    </li>
+                    <!--End Magnet course list-->
+
+                    <!--List of magnet teacher-->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle " data-toggle="dropdown">Teachers <b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Alicia Taylor</a></li>
+                            <li><a href="#">Kamran H. Sedighi</a></li>
+                        </ul>
+                    </li>
+                    <!--End of Magnet course list-->
+
+                    <li><a href="#">MESA</a></li>
+
+                    <li><a href="#">STEM</a></li>
+
+                </ul>
+
+
+                <button id="admin" class="btn btn-default navbar-btn pull-right" data-toggle="modal"
+                        data-target="#signin-modal">Admin Login
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="container">
+
+            <div class="content"></div>
+
+            <div class="well" method="post" action="admin_register.php" autocomplete="on">
+
+                <form id="register-form">
+
+                    <div class="form-group">
+                        <label for="first-name">First Name</label>
+                        <input type="text" class="form-control" id="first-name" name="first_name" placeholder="Niko" value="Jeremy">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" class="form-control" id="last-name" name="last_name" placeholder="Bellic" value="Asuncion">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email-addr">Email Address</label>
+                        <input type="email" class="form-control" id="email-addr" name="email_addr"
+                               placeholder="NikoBellic@ArbitraryMailHandler.com" value="jeremyasuncion808@gmail.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone-number">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone-number" name="phone_number"
+                               placeholder="1-209-555-5555" value="1-209-298-0420">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="magnet-role">Role in Magnet Program</label>
+                        <input type="tel" class="form-control" id="magnet-role" name="magnet_role" value="Student">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                        <label for="retype-password">Retype Password</label>
+                        <input type="password" class="form-control" id="retype-password">
+                    </div>
+
+                    <button class="btn btn-lg btn-primary" type="submit" id="register-btn" style="width: 100%">
+                        Register
+                    </button>
+
+
+                </form>
+
+            </div>
+
+            <!--Alerts if the user forgets something in the registration fields-->
+            <div class="modal fade" tabindex="2" id="alert-modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Error in Registration</h4>
+                        </div>
+                        <div class="modal-body">
+                            <h3 style="text-align: center">You forgot something in the Registration form</h3>
+                            <button class="btn btn-lg btn-danger" data-dismiss="modal" style="width: 100%">Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Admin login modal-->
+            <div class="modal fade" id="signin-modal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Login using Persona<img
+                                    src="images/persona-logo.png" width="48px"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <button id="login-btn" class="btn btn-lg btn-primary">Login</button>
+                            <button id="logout-btn" class="btn btn-lg btn-primary" style="display: none;">Logout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <script src="js/bootstrap.min.js"></script>
+
+        <!--Mozilla Persona for Administrator login-->
+        <script src="https://login.persona.org/include.js"></script>
+
+        <!--Handles admin login modal and tooltip-->
+        <script>
+            $( '#admin' ).tooltip( {placement: 'left', title: 'Admin login to post content on site.'} );
+        </script>
+
+        <!--Handles Persona logins-->
+        <script>
+            navigator.id.watch( {
+                onlogin: function( assertion ){
+                    $.post( 'php/admin_login.php', {assertion: assertion} ).done( function( data ){
+                        if( data === 'failure' ){
+                            navigator.id.logout();
+                        }else{
+                            $( '#post-form' ).css( 'display', '' );
+                            $( '#logout-btn' ).css( 'display', '' );
+                            $( '#login-btn' ).css( 'display', 'none' );
+                            $( '#register-btn' ).css( 'display', 'none' );
+                            $( '#admin' ).text( data );
+                            $( '#signin-modal' ).modal( 'hide' );
+                        }
+
+                    } );
+                },
+                onlogout: function( assertion ){
+                    $( '#post-form' ).css( 'display', 'none' );
+                    $( '#logout-btn' ).css( 'display', 'none' );
+                    $( '#login-btn' ).css( 'display', '' );
+                    $( '#register-btn' ).css( 'display', '' );
+                    $( '#admin' ).text( 'Admin Login' );
+                    $( '#signin-modal' ).modal( 'hide' );
+                }
+            } );
+
+            var signInButton = $( '#login-btn' )[0];
+
+            if( signInButton ){
+                signInButton.onclick = function(){
+                    navigator.id.request();
+                };
+            }
+
+            var signOutButton = $( '#logout-btn' )[0];
+            if( signOutButton ){
+                signOutButton.onclick = function(){
+                    navigator.id.logout();
+                };
+            }
+
+
+        </script>
+
+        <script>
+            $( '#retype-password' ).keyup( function(){
+                var password = $( '#password' ).val();
+
+                if( password != $( this ).val() ){
+                    $( this ).tooltip( {placement: 'left', title: 'Passwords do not match.'} );
+                    $( this ).tooltip( 'show' );
+                    $( this ).parent().addClass( 'has-error' );
+                }else{
+                    $( this ).tooltip( 'destroy' );
+                    $( '#password' ).tooltip( 'destroy' );
+                    $( this ).parent().removeClass( 'has-error' );
+                    $( this ).parent().addClass( 'has-success' );
+                }
+            } );
+
+            $( '#password' ).keyup( function(){
+                var password = $( '#retype-password' ).val();
+
+                if( password != $( this ).val() ){
+                    $( this ).tooltip( {placement: 'left', title: 'Passwords do not match.'} );
+                    $( this ).tooltip( 'show' );
+                    $( this ).parent().removeClass( 'has-success' );
+                    $( this ).parent().addClass( 'has-error' );
+                }else{
+                    $( this ).tooltip( 'destroy' );
+                    $( '#retype-password' ).tooltip( 'destroy' );
+                    $( this ).parent().removeClass( 'has-error' );
+                    $( this ).parent().addClass( 'has-success' );
+                }
+            } );
+
+            //Validates registration form and checks if everything is there
+            $( '#register-form' ).submit( function( event ){
+
+                function raiseError(){
+                    event.preventDefault();
+                    $( '#alert-modal' ).modal( 'show' );
+                }
+
+                if( !$( '#first-name' ).val() ){
+                    raiseError();
+                    return;
+                }
+
+                if( !$( '#last-name' ).val() ){
+                    raiseError();
+                    return;
+                }
+
+                if( !$( '#phone-number' ).val() ){
+                    raiseError();
+                    return;
+                }
+
+                if( !$( '#magnet-role' ).val() ){
+                    raiseError();
+                    return;
+                }
+
+                var password = $( '#password' ).val();
+                var retyped = $( '#retype-password' ).val();
+
+                if( password != retyped ){
+                    raiseError();
+                    return;
+                }
+
+                event.preventDefault();
+
+                $.post('php/admin_register.php', $(this ).serialize() ).done(function(data){
+                    $('body' ).html(data);
+                });
+            } );
+        </script>
+
+    </body>
+
+</html>

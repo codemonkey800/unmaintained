@@ -1,0 +1,15 @@
+@media screen{
+    header {
+        background: maroon;
+        color: white;
+        padding: 1.5em;
+    }
+    header h1 a{
+        color: white;
+    }
+
+    header h1 a:hover{
+        color: gold;
+        background: transparent;
+    }
+}
