@@ -5,21 +5,39 @@ block content
 		.section(href="#")
 			.one
 				center
-					img.img-responsive( src="../assets/logos/logo.png" )
+					img.img-responsive( src="/assets/logos/white_logo.png" )
 					h1 BANGER!
 		.section
 			.two
 				center
 					h1.sign-up SIGN UP
-					img.img-responsive(src="../assets/logos/logo.png")
+					img.img-responsive(src="/assets/logos/inverted_logo.png")
 					p.description Sign up for Beta testing and future updates for Banger!
 					form.form-inline
-						.form-group
-								label(for='inputFullName')  
-								input#inputFullName.form-control(type='text', placeholder='Full Name') 
-						.form-group
-								label(for='inputEmail') 
-								input#inputEmail.form-control(type='email', placeholder='Enter E-Mail') 
+							.form-group
+								label(for='input-full-name')  
+								input#input-full-name.form-control(type='text', placeholder='Full Name') 
+							.form-group
+								label(for='input-email') 
+								input#input-email.form-control(type='email', placeholder='Enter E-Mail') 
 							button.btn.btn-primary(type='submit') 
 								span.glyphicon.glyphicon-chevron-right
-					include ../public/_include/footer
+					div.alert.alert-success.alert-hidden
+					.social
+						.col-xs-2.5
+						.col-xs-1.6
+							a(href='https://facebook.com/pages/Banger/1991183874355888' target="_blank")
+								img.facebook(src='/assets/social/facebook12.png')
+						.col-xs-1.6
+							a(href='https://twitter.com/banger_app' target="_blank")
+								img.twitter(src='/assets/social/twitter13.png')
+						.col-xs-1.6
+							a(href='https://instagram.com/bangerapp/' target="_blank")
+								img.instagram(src='/assets/social/instagram.png')
+						.col-xs-1.6
+							a(href='https://www.youtube.com/channel/UC_zWU7DdyLEcVcRqVDzekqw' target="_blank")
+								img.youtube(src='/assets/social/youtube10.png')
+						.col-xs-1.6
+							a(href='https://www.linkedin.com/company/4846534?trk=prof-exp-company-name' target="_blank")
+								img.linkedin(src='/assets/social/socialnetwork21.png')
+						.col-xs-1.5

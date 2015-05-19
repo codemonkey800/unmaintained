@@ -15,6 +15,7 @@
     "Jason Safaiyeh <jsafaiyeh@gmail.com> (http://jsafaiyeh.github.io)"
   ],
   "dependencies": {
+    "body-parser": "^1.11.0",
     "emailjs": "^0.3.12",
     "express": "^4.11.0",
     "gulp": "^3.8.10",

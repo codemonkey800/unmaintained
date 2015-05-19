@@ -2,7 +2,7 @@ var args   = require( 'yargs' ).argv,
     Server = require( './lib/server' );
 
 function main( args ) {
-    var port = 8080;
+    var port = process.env.PORT || 8080;
     var debug = false;
 
     if( args.port && typeof args.port === 'number' ) {
@@ -10,8 +10,7 @@ function main( args ) {
     }
 
     if( args.debug && typeof args.debug === 'boolean' ) {
-        debu
-         = args.debug;
+        debug = args.debug;
     }
 
     var s = new Server( port, debug );
