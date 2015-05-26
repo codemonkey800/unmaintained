@@ -32,4 +32,4 @@ The site is hosted on [Heroku](https://dashboard.heroku.com/). Herp Derp.
 
 Excelsior!
 ==========
-![](http://goo.gl/S6qY2O)
+![There was an image here. It's not here now.](http://goo.gl/74J7Qc)
