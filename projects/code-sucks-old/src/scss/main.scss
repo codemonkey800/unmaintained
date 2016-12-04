@@ -1,0 +1,114 @@
+@import 'base';
+
+// * {
+//     color: map-get($grey, 'darken-4') !important;
+//}
+
+body {
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    @include transition(opacity 0.5s ease-in-out);
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+li.drawer-nav {
+    padding: 0 !important;
+}
+
+a.brand-logo.code-sucks,
+a.button-collapse > i {
+    color: white !important;
+}
+
+header, main, footer {
+    padding-left: 240px;
+}
+
+main {
+    min-height: 100%;
+}
+
+footer {
+    background-color: map-get($grey, 'darken-3') !important;
+}
+
+footer .footer-copyright {
+    background-color: map-get($grey, 'darken-4') !important;
+}
+
+footer * {
+    color: white !important;
+}
+
+footer a {
+    color: white !important;
+}
+
+a {
+    color: map-get($grey, 'darken-4') !important;
+}
+
+a:hover {
+    color: map-get($red, 'base') !important;
+}
+
+footer ul > li > a {
+    color: white !important;
+}
+
+#top-nav a.brand-logo {
+    margin-left: 20px;
+}
+
+#top-nav a.brand-logo:hover {
+    color: white !important;
+}
+
+.animated-shadow {
+    @include transition(all 0.2s ease-in-out);
+}
+
+.archive .card-title {
+    text-align: center;
+}
+
+.card-image > img {
+    z-index: 2;
+}
+
+.card {
+    z-index: 0;
+}
+
+@media #{$medium-and-down} {
+    header, main, footer {
+        padding-left: 0;
+}
+
+    #top-nav a.brand-logo {
+        margin-left: 0;
+}
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+::-webkit-scrollbar-thumb {
+     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+     background: map-get($grey, 'darken-3');
+}
+
+@media #{$medium-and-down} {
+    ::-webkit-scrollbar {
+        display: none;
+}
+}

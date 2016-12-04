@@ -1,0 +1,99 @@
+[
+    {
+        "title": "JavaScript Sucks",
+        "date": {
+            "minute": 31,
+            "hour": 18,
+            "day": 9,
+            "month": 0,
+            "year": 2015
+        },
+        "url": "/posts/2015/0/9/18/31/javascript-sucks",
+        "banner": "http://goo.gl/5k9sVA",
+        "tags": [
+            "#programming",
+            "#javascript"
+        ],
+        "summary": "To start off my new blog, code-sucks, let's start off with some code that sucks! JavaScript is a quirky languaget that has a lot suck-ish aspects. Here I'll explore some of the bad parts of JavaScript."
+    },
+    {
+        "title": "Why Prime Numbers Are Awesome",
+        "date": {
+            "minute": 15,
+            "hour": 14,
+            "day": 15,
+            "month": 0,
+            "year": 2015
+        },
+        "url": "/posts/2015/0/15/0/48/why-prime-numbers-are-awesome",
+        "banner": "http://goo.gl/X0YzFJ",
+        "tags": [
+            "#mathematics",
+            "#computer-science"
+        ],
+        "summary": "Prime numbers are very special numbers in both mathematics and computer science, both in theory and in application. Here I'll go over a subset of the awesome aspects of prime numbers."
+    },
+    {
+        "title": "Why Being a Freshmen Computer Scientist Sucks",
+        "date": {
+            "minute": 32,
+            "hour": 0,
+            "day": 28,
+            "month": 0,
+            "year": 2015
+        },
+        "url": "/posts/2015/0/28/0/32/why-being-a-freshmen-computer-scientist-sucks",
+        "banner": "http://i.imgur.com/RNmaXP9.png",
+        "tags": [
+            "#rant"
+        ],
+        "summary": "This isn't a problem inherent to all freshmen in Computer Science. Rather, it's a problem inherent to students like me, who seek it upon themselves to learn themselves and find internships at the same time. It sucks being a Freshmen.",
+        "editedDate": {
+            "minute": 1,
+            "hour": 11,
+            "day": 30,
+            "month": 0,
+            "year": 2015
+        }
+    },
+    {
+        "title": "An Interesting CS Problem Regarding Fractions and Pi",
+        "date": {
+            "minute": 6,
+            "hour": 11,
+            "day": 30,
+            "month": 0,
+            "year": 2015
+        },
+        "url": "/posts/2015/0/30/11/6/an-interesting-cs-problem-regarding-fractions-and-pi",
+        "banner": "http://goo.gl/cuAvlG",
+        "tags": [
+            "#computer-science"
+        ],
+        "summary": "Yesterday, my friend from Berkeley came to me for help with an interesting CS problem. This is how I solved it using some pretty shitty code."
+    },
+    {
+        "title": "Implementing Strassen's algorithm",
+        "date": {
+            "minute": 55,
+            "hour": 14,
+            "day": 26,
+            "month": 1,
+            "year": 2015
+        },
+        "url": "/posts/2015/1/26/14/55/implementing-strassens-algorithm",
+        "banner": "http://goo.gl/MVDlXj",
+        "tags": [
+            "#computer-science",
+            "#mathematics"
+        ],
+        "summary": "Matrices are important mathematical objects used in many applications of Computer Science. Multiplying matrices are also very important, so a good algorithm for doing so would come in handy. Here's an overview of Strassen's algorithm and how to implement it.",
+        "editedDate": {
+            "minute": 24,
+            "hour": 15,
+            "day": 19,
+            "month": 2,
+            "year": 2015
+        }
+    }
+]

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo 'You forgot your commit message'
+    exit
+fi
+
+git add .
+git commit -m "$1"
+git push origin master
+
+rm -rf site
+git clone git@github.com:codemonkey800/codemonkey800.github.io.git site
+gulp
+
+cd site
+git add .
+git commit -m "$1"
+git push origin master
+cd .. 
+rm -rf site

@@ -1,0 +1,51 @@
+extends _layout/post
+
+block pageData
+    - var pageData = data[ 1 ];
+    
+block postContent
+    :markdown
+        #### What is Banger!?
+        
+        No I'm not yelling at you. It's really a thing. It's a skateboarding app that does cool shit,
+        and I'm one of the core developers for the app. 
+        
+        #### What can it do?
+        
+        Right now it can do some awesome shit like allow users to play games of skate, play with skate dice,
+        and play some game of skate tournaments. Unless you skate, it might be completely foreign to you. But that's
+        okay. There's always time to learn how to skate.
+        
+        #### Who's the team behind the app
+        
+        There are three awesome people (Including myself!) working on this app: 
+        
+        1. ~ Our CEO, [Jason Safaiyeh](http://www.linkedin.com/in/jasonsafaiyeh)
+        3. ~ Our media guy, [Brian Aguilar](http://goo.gl/ml8wpJ)
+        4. ~ And me, the "CTO", [Jeremy Asuncion](https://www.linkedin.com/in/jeremyasuncion)
+        
+        #### What's your role in the app
+        
+        I write code and shit. Specifically I'm developing the Android version of the app. I also set up the projects
+        for the others, helped develop the website and deployed it on Heroku, and other cool shit.
+        
+        #### When can we expect a release
+        
+        If you saw this page before the update, you'll know I said March 23 was the release date. I'm sorry. With school
+        and midterms, we had to delay the app until further notice. Hopefully we'll release the app as soon as possible.
+        
+        *&#42;Obligatory Banger Social Media Links*
+        
+        [Facebook](https://www.facebook.com/pages/Banger/1991183874355888?ref=br_tf)
+        
+        [Twitter](https://twitter.com/banger_app)
+        
+        [YouTube](http://goo.gl/0zrHmr)
+        
+        [Instagram](http://goo.gl/dFqFJr)
+    
+
+append scripts
+    script
+        :coffee
+            $( '#nav-mobile > li:nth-child(3)' ).addClass 'active'

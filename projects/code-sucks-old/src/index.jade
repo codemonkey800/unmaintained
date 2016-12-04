@@ -1,0 +1,26 @@
+extends _layout/default
+
+block pageData
+    - var pageData = data[ 0 ];
+
+block content
+    .row
+        .col.s12.m7.offset-l1.l6.post-list
+            .valign-wrapper
+                .nav-btns
+                    a.btn-floating.btn-large.waves-effect.waves-light.blue.back-btn
+                        i.mdi-navigation-arrow-back.white-text
+                    a.btn-floating.btn-large.waves-effect.waves-light.blue.forward-btn
+                        i.mdi-navigation-arrow-forward.white-text
+        .col.m5.l4.hide-on-small-and-down
+            .card.white.z-depth-2
+                .card-content
+                    span.card-title.valign-wrapper Archive
+                    .archive.collapse
+                    +addPreloader( "archive-preloader" )
+block scripts
+    script( src="/lib/jquery.collapsible.min.js" )
+    script( src="/js/page/index.js" )
+    script
+        :coffee
+            $( '#nav-mobile > li:nth-child(2)' ).addClass 'active'

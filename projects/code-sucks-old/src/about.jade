@@ -1,0 +1,44 @@
+extends _layout/post
+
+block pageData
+    - var pageData = data[ 2 ];
+    
+    
+block postContent
+    :markdown
+        #### About Me
+        My name is Jeremy Asuncion. I'm a computer programmer, a hobbyist mathematician,
+        and a heavy gamer when time permits. I'm also currently a freshmen majoring in
+        Computer Science, minoring in Mathematics at a cool state school called 
+        **San Jose State University**. I've been programming for a while, since high school 
+        actually. I love to learn new things and technologies and I'm still learning a lot of shit.
+
+        I've written a lot of code over the years, some turned into useful projects, others not so useful,
+        and some so shitty that I never uploaded it. These days I love to work on web and mobile shit.
+        However, I do love to dab a bit in C++ and Assembly when I'm hacking games.
+
+        #### About code-sucks
+        My blog's called code-sucks because programming sucks. It's fun, but it sucks. So I wanted
+        to emphasize that idea. However, my blog is not all about code. I also have computer science,
+        maths, and rant related shit on here. But above all, I'll talk about code *a lot* (Biggest
+        understatement I'll ever make). 
+
+        I'm pretty darn awesome so you should definitely follow along. Let's see what kind of 
+        garbage code I can come up with that works. It might be of use to you one day.
+        
+        *&#42;Obligatory Contact Information*
+        
+        Email: [jeremyasuncion808@gmail.com](mailto:jeremyasuncion808@gmail.com)
+        
+        School Email: [jeremy.asuncion@sjsu.edu](mailto:jeremy.asuncion@sjsu.edu)
+        
+        LinkedIn: [https://www.linkedin.com/in/jeremyasuncion](https://www.linkedin.com/in/jeremyasuncion)
+        
+        You can also see my shitty open source projects here:
+        
+        GitHub: [https://github.com/codemonkey800/](https://github.com/codemonkey800/)
+
+append scripts
+    script
+        :coffee
+            $( '#nav-mobile > li:nth-child(4)' ).addClass 'active'

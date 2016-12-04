@@ -1,0 +1,44 @@
+include _include/util
+
+doctype html
+
+block pageData
+    - var pageData = data[ 3 ];
+
+html( lang="en" )
+    include _include/head
+    
+    body.grey.lighten-4
+        
+        #404.flow-text
+            a( href="/index", data-position="top", data-tooltip="Triangulation equation :) Use this to triangulate my blog!" )
+                h2.
+                    \[ 
+                        d = \ell \frac{\sin\alpha \sin\beta}{\sin\left( \alpha + \beta \right)}
+                    \]
+        
+        include _include/default-scripts
+        include _include/mathjax
+        include _include/analytics.html
+        
+        script
+            :coffee
+                position404Message = ->
+                    $window = $ window
+                    $404 = $ '#404'
+                    $tooltip = $ '.material-tooltip'
+                    
+                    $404.css 'margin-top', $window.height() // 2 - $404.height() // 2 - 40
+                    $tooltip.css 'transform', "translateX(#{$window.width() // 2}px)"
+                    return
+                
+                $( window ).load ->
+                    $( '#404 > a' ).tooltip { delay: 50 }
+                    position404Message()
+                    return
+                
+                $( window ).resize ->
+                    position404Message()
+                    return
+                    
+        

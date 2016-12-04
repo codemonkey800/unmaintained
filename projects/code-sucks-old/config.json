@@ -1,0 +1,31 @@
+{
+    "lint": {
+        "arrow_spacing": {
+            "level": "error"
+        },
+
+        "indentation": {
+            "level": "error",
+            "value": 4
+        },
+
+        "no_empty_param_list": {
+            "level": "error"
+        },
+
+        "no_interpolation_in_single_quotes": {
+            "level": "error"
+        },
+
+        "braces_spacing": {
+            "level": "error",
+            "value": "0"
+        },
+
+        "max_line_length": {
+            "level": "ignore"
+        }
+    },
+
+    "port": 8080
+}

@@ -1,0 +1,16 @@
+extends ../../../../../../_layout/post
+
+block pageData
+    - var pageData = posts.data[4]
+
+//- Add styles here
+prepend styles
+
+block postContent
+    div
+        include:md content.md
+
+
+
+//- Add scripts here
+prepend scripts
