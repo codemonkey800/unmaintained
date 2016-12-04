@@ -1,0 +1,27 @@
+.navbar-default {
+	width: 100%;
+	position: absolute;
+	background: transparent;
+	border: none;
+	transition: transform 0.4s ease-in-out;
+}
+
+.navbar-default img{
+	width: 25px;
+	height: 25px;
+}
+
+.navbar li > a {
+	color: white !important;
+	font-size: 20px;
+}
+
+.navbar li > a:hover {
+	/* Placeholder color until designer changes it */
+	color: #7AA8C8 !important;
+	transition: color 0.1s ease-in-out;
+}
+
+.navbar {
+	margin-bottom: 0px;
+}

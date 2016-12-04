@@ -1,0 +1,20 @@
+
+include util
+
+nav.navbar.navbar-default.navbar-static-top
+	.container
+		div.navbar-header
+			button.navbar-toggle.collapsed( type='button', data-toggle='collapse', data-target='#nav-items' )
+				span.icon-bar
+				span.icon-bar
+				span.icon-bar
+
+			a.navbar-brand
+				img.img-responsive(src='/assets/logos/logo.png')
+		
+		#nav-items.collapse.navbar-collapse
+			ul.nav.navbar-nav.navbar-right
+				li
+					a( href='#' ) HOME 
+				li
+					a( href='#' ) SIGN UP
