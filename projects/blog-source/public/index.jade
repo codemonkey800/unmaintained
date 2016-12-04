@@ -1,0 +1,62 @@
+extends _layouts/default
+
+block title
+    title Home
+
+block content
+    - var postData = [{"date":"12-7-2014","title":"Sudden Realization","desc":"Reading through my old code made me realize something","tags":{"#programming":"/filter/programming/1","#personal":"/filter/personal/1"},"banner":"http://goo.gl/fZYKBs","url":"/posts/12-7-2014-sudden-realization/sudden-realization"},{"date":"11-16-2014","title":"Object Oriented JavaScript","desc":"JavaScript is a really quirky language. It doesn't support the notion of classes like traditional OOP languages. But that doesn't stop it from being OOP.","tags":{"#javascript":"/filter/javascript/1","#oop":"/filter/oop/1"},"banner":"http://goo.gl/xvWkn","url":"/posts/11-16-2014-object-oriented-javascript/object-oriented-javascript"},{"date":"11-5-2014","title":"Mathchat Dev Blog 1","desc":"I made my first real web app! Here I'll talk about Platform as a Service, Node.js, Polymer, and other cool stuff.","tags":{"#mathchat-dev-blog":"/filter/mathchat-dev-blog/1","#nodejs":"/filter/nodejs/1","#polymer":"/filter/polymer/1","#web-development":"/filter/web-development/1"},"banner":"http://goo.gl/qmVf6m","url":"/posts/11-5-2014-mathchat-dev-blog-1/mathchat-dev-blog-1"},{"date":"9-24-2014","title":"Why I switched to Harp","desc":"Harp.js is a static site generator that is a module of Node.js. Switching was a matter of personal preference, and here's why.","tags":{"#nodejs":"/filter/nodejs/1","#harpjs":"/filter/harpjs/1","#javascript":"/filter/javascript/1","#dev-blog":"/filter/dev-blog/1","#web-development":"/filter/web-development/1"},"banner":"http://goo.gl/iSI1zV","url":"/posts/9-24-2014-why-i-switched-to-harp/why-i-switched-to-harp"},{"date":"9-22-2014","title":"Animated Area Under the Curve in HTML","desc":"There are a lot of JavaScript libraries used for drawing mathematical curves in HTML. However, I have yet to find one that allows me to animate the area under the curve. Using MathBox.js, It's possible","tags":{"#mathematics":"/filter/mathematics/1","#calculus":"/filter/calculus/1","#javascript":"/filter/javascript/1","#mathboxjs":"/filter/mathboxjs/1"},"banner":"http://goo.gl/QVUAg0","url":"/posts/9-22-2014-animated-area-under-the-curve-in-html/animated-area-under-the-curve-in-html"}]
+    - for( var i = 0; i < 5; i++ ) {
+        .row
+            .col-md-3
+            .col-md-6
+                .well.well-lg
+                    .jumbotron.post-banner
+                        a( href=postData[ i ].url + '.html' )
+                            img.img-responsive( src=postData[ i ].banner )
+                    h1.post-title
+                        a( href=postData[ i ].url + '.html' )
+                            != postData[ i ].title
+                    h6.post-date: != postData[ i ].date
+                    h4.post-description: != postData[ i ].desc
+                    h6.post-tags
+                        - for( var hashtag in postData[ i ].tags ) {
+                            - var tagUrl = postData[ i ].tags[ hashtag ] + '.html';
+                            a.hashtag( href=tagUrl ): != hashtag + ' '
+                        - }
+                    - var postComments = postData[ i ].url + '.html#disqus_thread'
+                    h6
+                        a( href=postComments )
+            .col-md-3
+    - }
+    - if( 1 !== 1 ) { // Check if we only have one pagination
+        .text-center
+            ul.pagination.center-block
+                - for( var i = 0; i < 1; i++ ) {
+                    - var pageLink;
+                    - if( i === 0 ) {
+                        - pageLink = '/index.html';
+                    - } else {
+                        - pageLink = '/page/' + ( i + 1 ) + '.html';
+                    - }
+                    - if( i === 0 ) {
+                        li.active
+                            a( href=pageLink ): != i + 1
+                    - } else {
+                        li 
+                            a( href=pageLink ): != i + 1
+                    - }
+                - }
+    - }
+
+block customScripts
+    script.
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'jermsblog'; // required: replace example with your forum shortname
+        
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());

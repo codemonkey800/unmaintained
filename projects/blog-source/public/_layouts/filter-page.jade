@@ -1,0 +1,27 @@
+extends ../_layouts/default
+
+block title
+    title: %s
+
+block content
+    - var postData = %j;
+    - for( var i = 0; i < postData.length; i++ ) {
+        .row
+            .col-md-3
+            .col-md-6
+                .well.well-lg
+                    .jumbotron.post-banner
+                        a( href=postData[ i ].url + '.html' )
+                            img.img-responsive( src=postData[ i ].banner )
+                    h1.post-title
+                        a( href=postData[ i ].url + '.html' )
+                            != postData[ i ].title
+                    h4: != postData[ i ].desc
+                    h5.post-date: != postData[ i ].date
+                    h6.post-tags
+                        - for( var hashtag in postData[ i ].tags ) {
+                            a.hashtag( href=postData[ i ].tags[ hashtag ] ): != hashtag + ' '
+                        - }
+            .col-md-3
+    - }
+    

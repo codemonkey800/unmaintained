@@ -1,0 +1,21 @@
+.navbar {
+    background-color: #9b59b6;
+    border-radius: 0 0 0 0;
+}
+
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+    color: #3498db;
+}
+
+.navbar-inverse .navbar-collapse {
+    border-color: transparent;
+    border-width: 0;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: transparent;
+}
+
+.pagination li>a, .pagination li>span {
+    color: #2c3e50;
+}

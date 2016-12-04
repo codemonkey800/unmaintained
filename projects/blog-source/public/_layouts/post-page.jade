@@ -1,0 +1,18 @@
+extends ../../_layouts/default
+
+block title
+    title %s
+
+block content
+    .container
+        img.img-responsive.center-block( src="%s" )
+        h3 %s
+        h4 %s
+        h6
+%s
+
+        .well.well-lg
+%s
+
+        include ../../_includes/comments
+        include ../../_includes/editor-support

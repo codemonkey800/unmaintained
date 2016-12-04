@@ -1,0 +1,174 @@
+extends ../../_layouts/default
+
+block title
+    title Why I switched to Harp
+
+block content
+    .container
+        img.img-responsive.center-block( src="http://goo.gl/iSI1zV" )
+        h3 Why I switched to Harp
+        h4 9-24-2014
+        h6
+            a.hashtag( href="/filter/nodejs/1.html" ) #nodejs 
+            a.hashtag( href="/filter/harpjs/1.html" ) #harpjs 
+            a.hashtag( href="/filter/javascript/1.html" ) #javascript 
+            a.hashtag( href="/filter/dev-blog/1.html" ) #dev-blog 
+            a.hashtag( href="/filter/web-development/1.html" ) #web-development 
+
+
+        .well.well-lg
+            h6
+                strong Introduction
+                p.
+                    Static site generation is the process of generating static sites in a dynmaic way.
+                    Essentially, web developers emplace variables in their HTML and those variables get 
+                    substituted depending on their context. For instance, post pages such as this
+                    one may have variables that contain sections of code that are replaced with dynamic 
+                    content. As an example, this is a subset of code for my default.jade layout:
+
+                .editor( data-language="jade" ).
+                    block preHtml
+                    .wrap
+                        nav( class="navbar navbar-inverse navbar-embossed", role="navigation" )
+                            .container
+                                .navbar-header
+                                    button( type="button", class="navbar-toggle collapsed",
+                                            data-toggle="collapse", data-target=".navbar-collapse" )
+                                        span.sr-only
+                                            Toggle Navigation
+                                    a.navbar-brand( href="/index.html" )
+                                        img#brand-img( src="/images/brand.svg" )
+                                div( class="collapse navbar-collapse" )
+                                    ul( class="nav navbar-nav navbar-left" )
+                                        li
+                                            a( href="/index.html" )
+                                                |Home
+                                        li
+                                            a( href="/about.html" )
+                                                |About
+            
+                        .container-fluid
+                            block content
+                p.
+                    In this code, blocks are essentially placeholders for where content may be 
+                    substitued for. For instance, <code>block content</code> is where
+                    the content of the page is place in. The contents of this post page
+                    &mdash; title, date, hashtags, post contents, comments &mdash;
+                    are all children nodes of the <code>block content</code> node.
+                br
+                p.
+                    When it comes to satic site genreation, Jekyll and Github pages reign 
+                    king for static site generation and site hosting, respectively. 
+                    This site uses Github pages; however, it does not use Jekyll.
+            h6
+                strong Why I didn't use Jekyll
+                p.
+                    TL;DR I didn't like Jekyll.
+                br
+                p.
+                    Jekyll is awesome, and I recognize it's capabilities and features. It's
+                    just I personally didn't like it for one reason: lack of filtered 
+                    pagination support. What do I mean by that exactly? Well, take my
+                    list of posts on my blog. Notice that all of my posts (Only 2 at the 
+                    time of writing) has hashtags. I wanted those hashtags to have a reason
+                    for being there; I didn't want them to just be there and look cool because
+                    hashtags are cool. I wanted them to help you, the reader, filter out
+                    commonalities between posts. If you were a mathematician and wanted
+                    to see only my maths related posts, then you could do that. If you were
+                    a colleague of mine looking for some insight on something, you could
+                    filter out my tutorial posts. Jekyll didn't have native support for that.
+                br
+                p.
+                    I know what you're thinking: I could always a custom generator plugin &mdash; 
+                    as a matter of fact, I took the generator idea from Jekyll for the PaginationGenerator
+                    class plugin that I wrote &mdash; but I didn't know Ruby. Ruby is, of course,
+                    a pretty awesome language. And the Rails framework is probably the dominating 
+                    framework for writing web applications. But I didn't want to have to spend 
+                    my time learning a new language with such little time I had (I'm a full
+                    time college student so please forgive me potential employers). I knew 
+                    absolutely nothing about Ruby, and I wanted to finish my blog site in a matter
+                    of days. Perhaps I can learn Ruby and Rails during my winter break, but
+                    I needed to write my blog in a short amount of time. Thankfully,
+                    I knew a lot of JavaScript and Node.js. Thereafter began the hunt.
+            h6
+                strong The Hunt for a JavaScript Based Static Site Generator
+                p.
+                    I searched far and wide for such a static site generator, looking in 
+                    the deepest crevices of the internet. I lie. I used 
+                    <a href="http://staticsitegenerators.net/">this website.</a> When it 
+                    came down to it, I narrowed it down between Wintersmith and Harp. 
+                br
+                p.
+                    I first tried out Wintersmith because of all the features it had: 
+                    project organization, site configuration, custom plugin support, and
+                    an abundance of already written plugins by various developers. 
+                    With all of that, it seemed like an obvious choice, right?
+                br
+                p.
+                    That was until I found out that I had no idea what I was doing.
+                    You heard that right. I had no idea what I was doing. It just felt
+                    like so much was just thrown at me in a small amount of time. 
+                    I created a new template site and it generated a new directory 
+                    structure for the website. And I did not know what I was doing.
+                br
+                p.
+                    So then I decided to try out Harp instead of Wintersmith.
+                h6
+                    strong Harp to Save the Day
+                    p.
+                        When I started reading the documentation for Harp, I immediately
+                        fell in love with it. Harp provided so much flexibility
+                        for writing sites. It can be as minimalist as you want,
+                        or it can also be as complicated as you want. It all depends
+                        on you, the developer. It gave you control of how you wanted to 
+                        structure your site. Make the entire directory a project? No problem.
+                        Designate a public folder where the content will be served? Definitely.
+                    br
+                    p.
+                        Metadata was as simple as it could be. A <code>_data.json</code> file
+                        that contained merely a json object that contained all of your
+                        desired metadata. And you could literally put it anywhere
+                        you want and access it through a typical directory style syntax 
+                        where the path separator is a dot. For instance, to access
+                        the posts metadata for my blog, I would typically write 
+                        <code>public.posts._data</code>.
+                    br
+                    p.
+                        Harp provided a lot of other features that I ended up not using because
+                        the Jade templating language and my own custom scripts worked perfectly
+                        fine. And Harp was fine with it. Harp doesn't force you 
+                        to follow a certain workflow, you make your own workflow. I know, for
+                        some developers, following the best practices for a certain framework
+                        is a good idea, but learning these best practices do take time, and
+                        actually implementing the site and following theme take even more time.
+                        But Harp allowed so much flexibility for me as a developer that I couldn't
+                        pass it up.
+                    br
+                h6
+                    strong Using Harp
+                    p.
+                        I merely used Harp as a medium for serving my content through
+                        an HTTP server and for compiling my site. I wrote a custom 
+                        server in JavaScript in Node.js that monitored particular files
+                        for file changes and then updating the appropriate files afterwards.
+                        Indeed, Harp forced me to do a lot of things that Jekyll already did for me,
+                        but it was worth it in the long run. Not only do I now have my blog
+                        up and running, but I also laid down a foundation for me to write 
+                        future blog posts. For instance, I wrote a simple script for writing 
+                        creating, removing, listing, and reloading posts using Node.js. This script
+                        is also used by the server for reloading files on file changes. I wrote my own
+                        plugins that generated separate pages and paginated filter pages for 
+                        hashtags. I wrote a lot of code just to get things working, but in my opinon,
+                        it was worth it.
+                h6
+                    strong Conclusions
+                    p.
+                        Harp.js is an awesome minimalistic static site generator that provides
+                        as much flexibility to you, the developer. It forces you to do things your
+                        way and design a workflow that works best for you. It is the reason
+                        why I use it, and it may be a reason why you should too.
+
+                em Edited 9-24-14 10:15 AM
+
+        include ../../_includes/comments
+        include ../../_includes/editor-support

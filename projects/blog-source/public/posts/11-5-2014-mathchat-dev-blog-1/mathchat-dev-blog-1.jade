@@ -1,0 +1,131 @@
+extends ../../_layouts/default
+
+block title
+    title Mathchat Dev Blog 1
+
+block content
+    .container
+        img.img-responsive.center-block( src="http://goo.gl/qmVf6m" )
+        h3 Mathchat Dev Blog 1
+        h4 11-5-2014
+        h6
+            a.hashtag( href="/filter/mathchat-dev-blog/1.html" ) #mathchat-dev-blog 
+            a.hashtag( href="/filter/nodejs/1.html" ) #nodejs 
+            a.hashtag( href="/filter/polymer/1.html" ) #polymer 
+            a.hashtag( href="/filter/web-development/1.html" ) #web-development 
+
+
+        .well.well-lg
+            h6
+                strong Introduction
+            p.
+                I finally did something productive other than making this my own blog: I finally made a 
+                web app! The app is called <strong>Mathchat</strong>, and I take inspiration from the awesome
+                web app <a href="http://mathim.com/">M\( \alpha t \)h<strong>IM</strong></a>. Now, while I love
+                M\( \alpha t \)<strong>IM</strong>, it's lacking in some areas. The user interface is pretty plain,
+                but that's understandable considering the functionality is more important. Moreover,
+                it lacks in multiline messages and \( \LaTeX \) display equations. Rather than 
+                make a fork of the original project( <a href="http://goo.gl/CvKHlZ">Found Here</a> ), 
+                I found this as a perfect opportunity to reinvent the wheel. Before I go on, you can
+                use MathChat here: <a href="http://mathchat-jermsapp.rhcloud.com/">MathChat</a>
+
+            br
+
+            h6
+                strong Platform as a Service
+            p.
+                I've always wanted to develop a web app, but I never knew how I would publish it online. 
+                GitHub pages was definitely out of the question because it only supported static content.
+                And I couldn't rent a server beause I don't really have that kind of money right now,
+                being the college student I am as of the time of this writing.
+
+            br
+
+            p.
+
+                One day while searching up interesting stuff about Node.js, I decied to search for 
+                ways to host a Node.js application online. To my surprise, there were many websites 
+                that actually provide free services for hosting web applications. While there are 
+                several websites available, I chose <a href="http://goo.gl/rTX2e">Openshift</a> 
+                because it's what came up first in my web search.
+
+            br
+
+            p.
+
+                As a brief introduction to Openshift, it is <a href="http://goo.gl/SJv5Z">Red Hat's</a>
+                version of a Platform as a Service. For the uninitated, a PaaS is simply a 
+                cloud service that simplifies the development and hosting of web applications, and allows
+                developers to manage them from the cloud. A PaaS hoster provides the both the
+                hardware platform and software required to run such web applications. 
+
+            br
+
+            p.
+
+                As a PaaS, Openshift provides the hardware and software necessary to run web applications.
+                For Openshift, Red Hat uses the concept of <em>gears</em> which are essentially 
+                allocations of hardware usage for each app. There are small, medium, and large gears,
+                each with increasing hardware allocation. Small gears allocate about 512 MB of
+                RAM, and can server approximately 15 pages/second. 
+
+            br
+
+            p.
+
+                The advantage of using a PaaS is that the setup is abstracted away from the developer.
+                You won't have to deal with all of the hussle in setting up a server and installing
+                the necessary software, such as databases, libraries, etc. Also, many PaaS provide
+                free plans which is great for beginning developers to jumpstart their web applications
+                without spending any money.
+
+            br
+
+            h6
+                strong Developing Mathchat
+
+            p.
+                What's great about Openshift is that it supported Node.js for web applications.
+                Now I love Node.js as much as the next programmer, so it made perfect sense to 
+                use it to host my app. For Mathchat, I used <a href="http://socket.io/">Socket.io</a>
+                and <a href="http://expressjs.com/">Expressjs</a> for the backend. For the frontend,
+                I used <a href="http://jade-lang.com/">Jade</a> and 
+                <a href="https://www.polymer-project.org/">Polymer</a>.
+
+            br
+
+            p.
+                Initally when I began writing the app, the most difficult part I had was figuring out how to
+                connect the data between the frontend and backend. I tried using MVC, but my code 
+                ended up being mainly <a href="http://en.wikipedia.org/wiki/Spaghetti_code">spaghetti</a>.
+                When writing the code, it reminded me what the Lead Architect at SAP told me in my
+                phone interveiw for an internship: never focus too much on the design but rather on the 
+                software; good design comes with experience. For those wondering, I didn't get the internship,
+                but I did learn some good things in that phone call. I suppose his words helped
+                me push on with app despite how bad the design was.
+
+            br
+
+            p.
+                I chose Polymer for the frontend for various reasons. The first being I love Google, the second
+                being I love Material Design, and the third being it's awesome. Seriously, web components
+                and the shadow DOM are awesome. The bulk of the user interface is made entirely with web components,
+                and without it I probably would have had messier code.
+
+            h6
+                strong Conclusions
+
+            p.
+                I know I merely brushed over some stuff here, but describing the entire project would take 
+                ages. It's better to let my code speak for itself than for me to describe it. As my first web app, 
+                I'd say I did a pretty good job. Admittedly, there is still a lot of work to be done. The 
+                user interface can be improved, I could try to implement more material design-ish guidelines,
+                I could benefit from the transitions, and I could definitely add more features. But that's 
+                the great thing about software( Or bad thing. It depends on how the softwrae in question ),
+                it's never finished, and can always be improved. Let's see how far this
+                ship will sail.
+
+            em Edited 10-24-14 3:23 AM
+
+        include ../../_includes/comments
+        include ../../_includes/editor-support
