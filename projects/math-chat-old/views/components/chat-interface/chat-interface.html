@@ -1,0 +1,108 @@
+<link rel="import" href="/polymer/polymer/polymer.html">
+<link rel="import" href="/polymer/core-drawer-panel/core-drawer-panel.html">
+<link rel="import" href="/polymer/core-icons/core-icons.html">
+<link rel="import" href="/polymer/paper-input/paper-input.html">
+<link rel="import" href="/polymer/paper-button/paper-button.html">
+<link rel="import" href="/polymer/paper-shadow/paper-shadow.html">
+
+
+<link rel="import" href="/components/chat-message-listing/chat-message-listing.html">
+<link rel="import" href="/components/chat-participants-listing/chat-participants-listing.html">
+
+<polymer-element name="chat-interface" constructor="ChatInterface" attributes="alias">
+
+    <template>
+
+        <link rel="stylesheet" href="/components/chat-interface/style.css">
+
+        <core-drawer-panel>
+
+            <div main id="main">
+
+                <div>
+                    <chat-message-listing id="messageListing"></chat-message-listing>
+                    <paper-shadow z="1"></paper-shadow>
+                </div>
+                
+                <div horizontal end-justified layout>
+                    <paper-fab id="clearButton" on-down="{{ clearClick }}" 
+                               icon="delete"></paper-fab>
+                    <paper-fab id="sendButton" on-down="{{ sendClick }}"
+                               src="/images/send.svg" ></paper-fab>
+                </div>
+        
+                <div horizontal layout>
+        
+                    <paper-input id="messageInput"
+                                 label="Message"
+                                 floatingLabel="true"
+                                 multiline
+                                 flex></paper-input>
+        
+                    <div id="messagePreview">
+                        <paper-shadow z="1"></paper-shadow>
+                        <p id="previewText">
+                        </p>
+                    </div>
+        
+                </div>
+
+            </div>
+
+            <div drawer>
+                <chat-participants-listing id="participantsListing"></chat-participants-listing>
+                <paper-shadow z="1"></paper-shadow>
+            </div>
+
+        </core-drawer-panel>
+
+
+
+
+    </template>
+
+    <script>
+
+        Polymer( {
+            alias: 'Mr. NullPointerException',
+
+            ready: function() {
+                var self = this;
+                var typingEvent = new CustomEvent( 'user-is-typing', this.alias );
+
+                this.$.messageInput.addEventListener( 'input', function() {
+                    var input = self.$.messageInput.inputValue;
+                    input = input.replace( /\n/g, '<br/>' );
+                    self.$.previewText.innerHTML = input;
+                    // self.dispatchEvent( typingEvent ); This shit is dangerous
+                    MathJax.Hub.Queue( [ 'Typeset', MathJax.Hub, self.$.previewText ] );
+                } );
+
+            },
+
+            sendClick: function() {
+                var message = this.$.previewText.innerHTML;
+                if( message === '' ) return;
+
+                var newMessageEvent = new CustomEvent( 'new-message', {
+                    detail: {
+                        alias: this.alias,
+                        message: message
+                    }
+                } );
+                this.dispatchEvent( newMessageEvent );
+
+                this.$.messageListing.appendMessage( message, this.alias );
+
+                this.$.messageInput.inputValue = '';
+                this.$.previewText.innerHTML = '';
+            },
+
+            clearClick: function() {
+                this.$.messageListing.clearMessages();
+            }
+        } );
+
+    </script>
+
+</polymer-element>

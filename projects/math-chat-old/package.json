@@ -1,0 +1,37 @@
+{
+  "name": "MathChat",
+  "version": "1.0.0",
+  "description": "A web application for chatting in Mathematics",
+  "keywords": [
+    "MathJax",
+    "Node.js",
+    "application",
+    "chat"
+  ],
+  "author": {
+    "name": "Jeremy Asuncion",
+    "email": "jeremyasuncion808@gmail.com",
+    "url": "http://codemonkey800.github.io/"
+  },
+  "homepage": "http://mathchat-jermsapp.rhcloud.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/openshift/origin-server"
+  },
+  "engines": {
+    "node": ">= 0.6.0",
+    "npm": ">= 1.0.0"
+  },
+  "dependencies": {
+    "express": "^4.10.1",
+    "jade": "^1.7.0",
+    "socket.io": "^1.2.0"
+  },
+  "devDependencies": {},
+  "bundleDependencies": [],
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "main": "server.js"
+}

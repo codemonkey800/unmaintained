@@ -1,0 +1,115 @@
+@font-face {
+    font-family: cmu;
+    src: url( /css/fonts/cmunrm.ttf );
+}
+
+
+:host {
+    display: block;
+    background: white;
+    height: 500px;
+    margin-bottom: 20px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+#messageListing {
+    list-style-type: none;
+    font-family: cmu;
+}
+
+#toolbar {
+    background: #AB47BC;
+}
+
+#menuButton:: shadow #ink {
+    background: red;
+}
+
+#menuButton::shadow #icon {
+    color: white;
+}
+
+/* Media queries copied from http://goo.gl/3Ayl7Z */
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */ 
+@media only screen and (min-width : 320px) {
+    :host {
+        height: 300px;
+        padding: 0;
+    }
+    #messageListing {
+        font-size: 12px;
+    }
+    #toolbar {
+        display: block;
+    }
+}
+
+/* iPhone 6 */
+@media only screen and ( min-width : 375px ) {
+    :host {
+        height: 500px;
+    }
+}
+
+/* iPhone 6 Plus */
+@media only screen and ( min-width : 414px ) {
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+    #toolbar {
+        display: none;
+    }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+    #messageListing {
+        font-size: 18px;
+    }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+    #messageListing {
+        font-size: 20px;
+    }
+}
+
+@media only screen and ( min-height: 480px ) {
+    :host {
+        height: 250px;
+    }
+}
+
+@media only screen and ( min-height: 568px ) {
+    :host {
+        height: 320px;
+    }
+}
+
+@media only screen and ( min-height: 667px ) {
+    :host {
+        height: 400px;
+    }
+}
+
+
+@media only screen and ( min-height: 736px ) {
+    :host {
+        height: 400px;
+    }
+}
+
+@media only screen and ( min-height: 900px ) {
+    :host {
+        height: 500px;
+    }
+}
